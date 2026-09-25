@@ -1,9 +1,9 @@
 ---
 feature: electron-arm64-port
 status: delivered
-updated: 2026-09-25
+updated: 2026-09-26
 branch: master
-commits: 680ffe8..680ffe8
+commits: 680ffe8..9535bca
 ---
 
 # MiMo Desktop Post-Market ARM64 Port
@@ -12,7 +12,20 @@ commits: 680ffe8..680ffe8
 
 **What was built** — 在 Post-Market 约束下（无源码、无上游构建环境），将 Xiaomi MiMo Desktop (Electron 41.7.2) 从 x64 移植为原生 ARM64。产物位于 `output/Xiaomi MiMo ARM64/`。核心手法：Electron 官方 ARM64 壳替换 + npm 预编译包移植 + 编译缺失组件 + asar 内模块解析补丁。Python C 扩展（pydantic_core / jiter）通过 ARM64 wheel 修复。
 
-**Verification** — 架构纯度 43/45 PE 为 ARM64 (95.6%)。功能回归全 PASS：node-pty (spawn/IO)、parcel-watcher、Python 3.12 + pydantic + httpx、qpdf 12.4.1、ripgrep 15.2.0 (NEON SIMD)、github-mcp-server 1.12.2。启动冒烟：窗口 `Xiaomi MiMo`、API/插件/SSO/引擎栈全加载、用户配置正确识别。性能基准（双方真实用户数据、同为未登录态）：冷启动 4,802 ms vs 8,280 ms（**快 72%**）；x64 空资料 8,504 ms 证明用户数据仅影响 3%。
+**Verification** — 架构纯度 43/45 PE 为 ARM64 (95.6%)。功能回归全 PASS：node-pty (spawn/IO)、parcel-watcher、Python 3.12 + pydantic + httpx、qpdf 12.4.1、ripgrep 15.2.0 (NEON SIMD)、github-mcp-server 1.12.2。启动冒烟：窗口 `Xiaomi MiMo`、API/插件/SSO/引擎栈全加载、用户配置正确识别。
+
+性能基准（`bench-run.ps1` 单次运行 + 人手关闭，真实用户数据含 18 个会话）：
+
+| 指标 | ARM64 | x64 模拟层 | 倍率 |
+|------|-------|-----------|------|
+| 总运行时间 | 17.1s | 36.4s | **2.1×** |
+| engineFetch API | 2,805 ms | 11,561 ms | **4.1×** |
+| loadEngineSessions | 2.9s | 11.8s | **4.1×** |
+| 窗口标题出现 | 5,870 ms | 6,128 ms | 1.04× |
+| 峰值 RSS | 1,213 MB | 1,712 MB | +41% |
+| CPU 累计 | 19s | 47.5s | 2.5× |
+
+「最近工作」列表延迟的根因是 **engineFetch API 在模拟层下慢 4 倍**（进程间 HTTP），不是渲染。用户观测到 x64 约 33s 才显示最近工作，与 loadEngineSessions 31s + 渲染收尾吻合。
 
 **Journey log** —
 1. asar 头登记 `*-x64` 包名，JS 中 `process.arch` 拼出 `*-arm64` 无法解析 → 目录改回 `*-x64` 名（内容 ARM64），JS 拼接写死 `x64`。
@@ -20,7 +33,9 @@ commits: 680ffe8..680ffe8
 3. onnxruntime-node 1.27.0 npm 包自带 `win32/arm64` 预编译，省了编译绑定层。
 4. Python embeddable 的 `pydantic_core` / `jiter` 是 x64 `.pyd` → ARM64 pip 装 `win_arm64.whl` 修复。
 5. **进程管理铁律**：`output\Xiaomi MiMo ARM64\` 下的进程就是正在运行的 MiMo Desktop（用户 + AI 自身），按路径批量杀会自杀。只按已记录 PID 定点操作。
-6. **性能对比要对齐 UI 态**：空 user-data 进登录页 vs 已登录主界面，加载量不同不可比。修正后双方都用真实用户数据副本、同为未登录态；空资料 vs 真实资料差异仅 3%，结论方向稳健。
+6. **性能对比要对齐 UI 态**：空 user-data 进登录页 vs 已登录主界面，加载量不同不可比。早期 bench-startup.ps1 在灰屏时杀进程量出假数据（x64 "6s"实际 33s）。
+7. **里程碑触发≠UI 可用**：窗口标题（~6s）和日志标记在渲染完成前就绪。正确做法：人手关闭 + 完整日志导出（bench-run.ps1）。
+8. **x64 慢的根因是 IPC 不是渲染**：engineFetch 进程间 HTTP 调用在模拟层下 4 倍延迟（2.8s → 11.8s），这是「最近工作」列表晚出 20s 的主因。窗口标题两边几乎一样快。
 
 ## [S1] Problem
 
