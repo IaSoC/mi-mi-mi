@@ -100,7 +100,7 @@ function Measure-Startup {
     # Set NAPI_RS_NATIVE_LIBRARY_PATH for canvas binding (avoids asar path interception)
     $nativeLib = Join-Path $exeDir "resources\native\skia.win32-arm64-msvc.node"
     if (Test-Path $nativeLib) {
-        $env:NAPI_RS_NATIVE_LIBRARY_PATH = $nativeLib
+        # (removed global set - now per-process only)
     }
 
     # Launch with stderr capture
@@ -112,6 +112,12 @@ function Measure-Startup {
     $psi.RedirectStandardError = $true
     $psi.RedirectStandardOutput = $true
     $psi.StandardErrorEncoding = [System.Text.Encoding]::UTF8
+
+    # Per-process env: only ARM64 gets the native lib path
+    $isArm64 = $ExePath -like "*ARM64*"
+    if ($isArm64 -and (Test-Path $nativeLib)) {
+        $psi.EnvironmentVariables["NAPI_RS_NATIVE_LIBRARY_PATH"] = $nativeLib
+    }
 
     $sw = [System.Diagnostics.Stopwatch]::StartNew()
     $proc = [System.Diagnostics.Process]::Start($psi)
