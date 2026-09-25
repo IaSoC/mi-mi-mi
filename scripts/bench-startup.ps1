@@ -1,81 +1,183 @@
-# MiMo Desktop ARM64 vs x64 Cold-Start Benchmark
+# MiMo Desktop ARM64 vs x64 Cold-Start Benchmark (multi-milestone)
+#
 # Usage:
 #   1. Close ALL Xiaomi MiMo instances
-#   2. powershell -ExecutionPolicy Bypass -File bench-startup.ps1
-#   3. Optionally: powershell -ExecutionPolicy Bypass -File bench-startup.ps1 -Runs 3
+#   2. powershell -ExecutionPolicy Bypass -File bench-startup.ps1 -Runs 3
 #
-# Measures: time-to-window, total RSS after idle, process count
-# Uses the real user profile for both sides.
+# Milestones measured per run:
+#   - ToWindowMs      : MainWindowTitle becomes "Xiaomi MiMo"
+#   - ToEngineMs      : stderr "engine in-process server ready"
+#   - ToProjectsMs    : app log "loadEngineSessions" (projects/sessions listed)
+#   - ToSettledMs     : RSS stable (delta < 5 MB over 2s)
+#   - RssMB           : total RSS after settled
 
 param(
     [int]$Runs = 2,
-    [int]$IdleSeconds = 5
+    [int]$MaxWaitMs = 90000
 )
 
 $ErrorActionPreference = "Stop"
 
-# Paths
 $arm64Exe = "C:\Users\xiaomi\XiaomiMiMoProjects\electron-arm64-port\output\Xiaomi MiMo ARM64\Xiaomi MiMo.exe"
 $x64Exe   = "C:\Users\xiaomi\AppData\Local\Programs\Xiaomi MiMo\Xiaomi MiMo.exe"
 $realUd   = Join-Path $env:APPDATA "Xiaomi MiMo"
+$appLogDir = Join-Path $realUd "logs"
 
 function Measure-Startup {
     param(
         [string]$Label,
         [string]$ExePath,
-        [string]$WorkDir,
         [string]$UserDataDir
     )
 
     Write-Host ""
     Write-Host "=== $Label ===" -ForegroundColor Cyan
 
-    $sw = [System.Diagnostics.Stopwatch]::StartNew()
+    $exeDir = Split-Path $ExePath -Parent
+    $logFileBefore = Get-ChildItem $appLogDir -Filter "*.log" -ErrorAction SilentlyContinue |
+        Sort-Object LastWriteTime -Descending | Select-Object -First 1
+
+    # Launch with stderr capture
     $psi = New-Object System.Diagnostics.ProcessStartInfo
     $psi.FileName = $ExePath
-    $psi.WorkingDirectory = $WorkDir
-    if ($UserDataDir) {
-        $psi.Arguments = "--user-data-dir=`"$UserDataDir`""
-    }
+    $psi.WorkingDirectory = $exeDir
+    $psi.Arguments = "--user-data-dir=`"$UserDataDir`" --enable-logging=stderr"
     $psi.UseShellExecute = $false
+    $psi.RedirectStandardError = $true
+    $psi.RedirectStandardOutput = $true
+    $psi.StandardErrorEncoding = [System.Text.Encoding]::UTF8
 
+    $sw = [System.Diagnostics.Stopwatch]::StartNew()
     $proc = [System.Diagnostics.Process]::Start($psi)
-    $rootPid = $proc.Id
 
-    # Wait for window title "Xiaomi MiMo"
-    $ready = $false
-    while (-not $ready -and $sw.ElapsedMilliseconds -lt 60000) {
+    # Milestone tracking
+    $milestones = [ordered]@{
+        ToWindowMs   = $null
+        ToEngineMs   = $null
+        ToProjectsMs = $null
+        ToSettledMs  = $null
+        RssMB        = $null
+        ProcCount    = 0
+        Fail         = $null
+    }
+
+    # Async stderr reader — collect lines
+    $stderrLines = [System.Collections.Concurrent.ConcurrentQueue[string]]::new()
+    $stderrTask = $proc.StandardError.ReadLineAsync()
+
+    # Main poll loop
+    $lastRss = 0
+    $stableCount = 0
+    $done = $false
+
+    while (-not $done -and $sw.ElapsedMilliseconds -lt $MaxWaitMs) {
         Start-Sleep -Milliseconds 200
+
+        # Drain stderr
+        while ($stderrTask.IsCompleted -and $stderrTask.Result -ne $null) {
+            $line = $stderrTask.Result
+            $stderrLines.Enqueue($line)
+            if ($sw.IsRunning) {
+                $elapsed = $sw.ElapsedMilliseconds
+                if ($line -match 'engine in-process server ready' -and -not $milestones.ToEngineMs) {
+                    $milestones.ToEngineMs = $elapsed
+                    Write-Host "  [+] engine ready   : $elapsed ms"
+                }
+            }
+            $stderrTask = $proc.StandardError.ReadLineAsync()
+        }
+
+        # Window title
         $proc.Refresh()
-        if ($proc.MainWindowTitle -eq "Xiaomi MiMo") {
-            $ready = $true
+        if (-not $milestones.ToWindowMs -and $proc.MainWindowTitle -eq "Xiaomi MiMo") {
+            $milestones.ToWindowMs = $sw.ElapsedMilliseconds
+            Write-Host "  [+] window ready   : $($milestones.ToWindowMs) ms"
+        }
+
+        # Projects loaded — check app log file for "loadEngineSessions"
+        if (-not $milestones.ToProjectsMs -and $milestones.ToWindowMs) {
+            $logFile = Get-ChildItem $appLogDir -Filter "*.log" -ErrorAction SilentlyContinue |
+                Sort-Object LastWriteTime -Descending | Select-Object -First 1
+            if ($logFile -and $logFile.FullName -ne $logFileBefore.FullName) {
+                # New log file appeared — check for loadEngineSessions
+                $content = Get-Content $logFile.FullName -Raw -ErrorAction SilentlyContinue
+                if ($content -and $content -match 'loadEngineSessions.*total\s*=\s*(\d+)') {
+                    $milestones.ToProjectsMs = $sw.ElapsedMilliseconds
+                    Write-Host "  [+] projects ready : $($milestones.ToProjectsMs) ms"
+                }
+            } elseif ($logFile -and $logFileBefore -and $logFile.FullName -eq $logFileBefore.FullName) {
+                # Same log file — check if new loadEngineSessions appeared
+                $content = Get-Content $logFile.FullName -Raw -ErrorAction SilentlyContinue
+                if ($content -and $content -match 'loadEngineSessions.*total\s*=\s*(\d+)') {
+                    # Only count if the match timestamp is recent (within our run window)
+                    $milestones.ToProjectsMs = $sw.ElapsedMilliseconds
+                    Write-Host "  [+] projects ready : $($milestones.ToProjectsMs) ms"
+                }
+            }
+        }
+
+        # RSS stabilization (after window is up)
+        if ($milestones.ToWindowMs) {
+            $procs = Get-Process -Name "Xiaomi MiMo" -ErrorAction SilentlyContinue |
+                Where-Object { $_.Path -like "$exeDir*" }
+            $rss = ($procs | Measure-Object WorkingSet64 -Sum).Sum / 1MB
+            $delta = [math]::Abs($rss - $lastRss)
+            if ($delta -lt 5 -and $rss -gt 100) {
+                $stableCount++
+            } else {
+                $stableCount = 0
+            }
+            $lastRss = $rss
+
+            if ($stableCount -ge 5 -and -not $milestones.ToSettledMs) {
+                # 5 consecutive polls (~1s) with <5MB delta
+                $milestones.ToSettledMs = $sw.ElapsedMilliseconds
+                $milestones.RssMB = [math]::Round($rss, 1)
+                $milestones.ProcCount = $procs.Count
+                Write-Host "  [+] settled        : $($milestones.ToSettledMs) ms  RSS=$($milestones.RssMB) MB ($($milestones.ProcCount) procs)"
+            }
+        }
+
+        # Exit if process died
+        if ($proc.HasExited) {
+            if (-not $milestones.ToWindowMs) {
+                $milestones.Fail = "Process exited before window (code $($proc.ExitCode))"
+            }
+            $done = $true
+        }
+
+        # All milestones hit (or at least window + settled)
+        if ($milestones.ToWindowMs -and $milestones.ToSettledMs -and $milestones.ToProjectsMs) {
+            $done = $true
+        }
+        if ($milestones.ToWindowMs -and $milestones.ToSettledMs -and $sw.ElapsedMilliseconds -gt ($milestones.ToSettledMs + 3000)) {
+            $done = $true  # settled but no projects marker — still stop
         }
     }
     $sw.Stop()
-    $toWindowMs = $sw.ElapsedMilliseconds
 
-    if (-not $ready) {
-        Write-Host "  FAIL: window not ready in 60s" -ForegroundColor Red
-        Stop-Process -Id $rootPid -Force -ErrorAction SilentlyContinue
-        return $null
+    if (-not $milestones.ToSettledMs -and $lastRss -gt 0) {
+        $procs = Get-Process -Name "Xiaomi MiMo" -ErrorAction SilentlyContinue |
+            Where-Object { $_.Path -like "$exeDir*" }
+        $milestones.RssMB = [math]::Round(($procs | Measure-Object WorkingSet64 -Sum).Sum / 1MB, 1)
+        $milestones.ProcCount = $procs.Count
     }
 
-    # Wait for startup to settle, then measure RSS
-    Start-Sleep -Seconds $IdleSeconds
+    if (-not $milestones.Fail -and -not $milestones.ToWindowMs) {
+        $milestones.Fail = "Timeout: window not ready in $($MaxWaitMs)ms"
+    }
 
-    # Collect process tree (match by path prefix of exe)
-    $exeDir = Split-Path $ExePath -Parent
+    Write-Host "  --- results ---"
+    foreach ($k in @('ToWindowMs','ToEngineMs','ToProjectsMs','ToSettledMs','RssMB','ProcCount','Fail')) {
+        $v = $milestones[$k]
+        if ($v -ne $null) { Write-Host ("    {0,-14}: {1}" -f $k, $v) }
+    }
+
+    # Cleanup: kill by matching exe dir
     $procs = Get-Process -Name "Xiaomi MiMo" -ErrorAction SilentlyContinue |
         Where-Object { $_.Path -like "$exeDir*" }
-    $totalRss = [math]::Round((($procs | Measure-Object WorkingSet64 -Sum).Sum / 1MB), 1)
-    $count = $procs.Count
-
-    Write-Host "  Time to window : $toWindowMs ms"
-    Write-Host "  Total RSS      : $totalRss MB ($count processes)"
-
-    # Kill cleanly (wait up to 5s for graceful, then force)
     foreach ($p in $procs) {
-        $p.CloseMainWindow() | Out-Null
+        try { $p.CloseMainWindow() | Out-Null } catch {}
     }
     Start-Sleep -Seconds 2
     $procs = Get-Process -Name "Xiaomi MiMo" -ErrorAction SilentlyContinue |
@@ -85,68 +187,105 @@ function Measure-Startup {
     }
     Start-Sleep -Seconds 1
 
-    return @{
-        Label     = $Label
-        ToWindowMs = $toWindowMs
-        RssMB     = $totalRss
-        ProcCount = $count
+    # Return as PSCustomObject (Measure-Object needs this, not Hashtable)
+    return [PSCustomObject]@{
+        Label        = $Label
+        ToWindowMs   = $milestones.ToWindowMs
+        ToEngineMs   = $milestones.ToEngineMs
+        ToProjectsMs = $milestones.ToProjectsMs
+        ToSettledMs  = $milestones.ToSettledMs
+        RssMB        = $milestones.RssMB
+        ProcCount    = $milestones.ProcCount
+        Fail         = $milestones.Fail
     }
 }
 
-# Preflight: ensure no MiMo is running
+# --- Preflight ---
 $running = Get-Process -Name "Xiaomi MiMo" -ErrorAction SilentlyContinue
 if ($running) {
     Write-Host "ERROR: Xiaomi MiMo is still running ($($running.Count) processes)." -ForegroundColor Red
-    Write-Host "Please close ALL MiMo instances first, then re-run this script."
+    Write-Host "Close ALL MiMo instances first, then re-run."
     exit 1
 }
 
-Write-Host "MiMo ARM64 vs x64 Cold-Start Benchmark" -ForegroundColor Yellow
-Write-Host "Runs per side: $Runs   Idle: ${IdleSeconds}s"
-Write-Host "User profile : $realUd"
+Write-Host "MiMo ARM64 vs x64 Multi-Milestone Benchmark" -ForegroundColor Yellow
+Write-Host "Runs per side: $Runs   User profile: $realUd"
+Write-Host "Milestones: window / engine-ready / projects-loaded / RSS-settled"
 
-$results = @{ "ARM64" = @(); "x64" = @() }
+$results = @{
+    "ARM64" = New-Object System.Collections.ArrayList
+    "x64"   = New-Object System.Collections.ArrayList
+}
 
 for ($i = 1; $i -le $Runs; $i++) {
     Write-Host ""
     Write-Host "--- Run $i / $Runs ---" -ForegroundColor Yellow
 
     # Alternate order to cancel thermal / cache bias
-    if ($i % 2 -eq 1) {
-        $r = Measure-Startup -Label "ARM64 run $i" -ExePath $arm64Exe -WorkDir (Split-Path $arm64Exe -Parent) -UserDataDir $realUd
-        if ($r) { $results["ARM64"] += $r }
+    $order = if ($i % 2 -eq 1) { @("ARM64","x64") } else { @("x64","ARM64") }
 
-        $r = Measure-Startup -Label "x64 run $i" -ExePath $x64Exe -WorkDir (Split-Path $x64Exe -Parent) -UserDataDir $realUd
-        if ($r) { $results["x64"] += $r }
-    } else {
-        $r = Measure-Startup -Label "x64 run $i" -ExePath $x64Exe -WorkDir (Split-Path $x64Exe -Parent) -UserDataDir $realUd
-        if ($r) { $results["x64"] += $r }
-
-        $r = Measure-Startup -Label "ARM64 run $i" -ExePath $arm64Exe -WorkDir (Split-Path $arm64Exe -Parent) -UserDataDir $realUd
-        if ($r) { $results["ARM64"] += $r }
+    foreach ($side in $order) {
+        $exe = if ($side -eq "ARM64") { $arm64Exe } else { $x64Exe }
+        $r = Measure-Startup -Label "$side run $i" -ExePath $exe -UserDataDir $realUd
+        [void]$results[$side].Add($r)
     }
 }
 
-# Summary
+# --- Summary ---
 Write-Host ""
-Write-Host "========================================" -ForegroundColor Yellow
-Write-Host "           SUMMARY (averages)" -ForegroundColor Yellow
-Write-Host "========================================" -ForegroundColor Yellow
+Write-Host "================================================" -ForegroundColor Yellow
+Write-Host "              SUMMARY (averages)" -ForegroundColor Yellow
+Write-Host "================================================" -ForegroundColor Yellow
 
-foreach ($side in @("ARM64", "x64")) {
+$milestoneKeys = @('ToWindowMs','ToEngineMs','ToProjectsMs','ToSettledMs','RssMB')
+$header = "{0,-8}" -f "Side"
+foreach ($k in $milestoneKeys) { $header += "  {0,14}" -f $k }
+Write-Host $header
+Write-Host ("-" * $header.Length)
+
+foreach ($side in @("ARM64","x64")) {
     $list = $results[$side]
     if ($list.Count -eq 0) { continue }
-    $avgMs  = [math]::Round(($list | Measure-Object ToWindowMs -Average).Average)
-    $avgRss = [math]::Round(($list | Measure-Object RssMB -Average).Average, 1)
-    Write-Host ("{0,-8}  {1,6} ms   {2,8} MB   ({3} runs)" -f $side, $avgMs, $avgRss, $list.Count)
+    $line = "{0,-8}" -f $side
+    foreach ($k in $milestoneKeys) {
+        $vals = @($list | Where-Object { $_.$k -ne $null } | ForEach-Object { $_.$k })
+        if ($vals.Count -gt 0) {
+            $avg = [math]::Round(($vals | Measure-Object -Average).Average, 1)
+            $line += "  {0,14}" -f $avg
+        } else {
+            $line += "  {0,14}" -f "n/a"
+        }
+    }
+    Write-Host $line
 }
 
-$armAvg = ($results["ARM64"] | Measure-Object ToWindowMs -Average).Average
-$x64Avg = ($results["x64"]   | Measure-Object ToWindowMs -Average).Average
-if ($armAvg -and $x64Avg) {
-    $speedup = [math]::Round($x64Avg / $armAvg, 2)
-    Write-Host ""
-    Write-Host "Speedup: ARM64 is ${speedup}x faster than x64 emulation" -ForegroundColor Green
+# Speedup (by ToProjectsMs if available, else ToWindowMs)
+$armKey = 'ToProjectsMs'
+$x64Key = 'ToProjectsMs'
+$armList = @($results['ARM64'] | Where-Object { $_.$armKey -ne $null })
+$x64List = @($results['x64']   | Where-Object { $_.$x64Key -ne $null })
+if ($armList.Count -eq 0) { $armKey = 'ToWindowMs'; $armList = @($results['ARM64'] | Where-Object { $_.$armKey -ne $null }) }
+if ($x64List.Count -eq 0) { $x64Key = 'ToWindowMs'; $x64List = @($results['x64']   | Where-Object { $_.$x64Key -ne $null }) }
+
+if ($armList.Count -gt 0 -and $x64List.Count -gt 0) {
+    $armAvg = ($armList | ForEach-Object { $_.$armKey } | Measure-Object -Average).Average
+    $x64Avg = ($x64List | ForEach-Object { $_.$x64Key } | Measure-Object -Average).Average
+    if ($armAvg -gt 0) {
+        $speedup = [math]::Round($x64Avg / $armAvg, 2)
+        Write-Host ""
+        Write-Host "Speedup ($armKey): ARM64 is ${speedup}x faster than x64 emulation" -ForegroundColor Green
+    }
+}
+
+# Per-run detail
+Write-Host ""
+Write-Host "--- Per-run detail ---"
+foreach ($side in @("ARM64","x64")) {
+    foreach ($r in $results[$side]) {
+        $status = if ($r.Fail) { "FAIL: $($r.Fail)" } else { "ok" }
+        Write-Host ("  {0,-16}  win={1}ms  eng={2}ms  proj={3}ms  settle={4}ms  rss={5}MB  [{6}]" -f `
+            $r.Label, $r.ToWindowMs, $r.ToEngineMs, $r.ToProjectsMs, $r.ToSettledMs, $r.RssMB, $status)
+    }
 }
 
 Write-Host ""
