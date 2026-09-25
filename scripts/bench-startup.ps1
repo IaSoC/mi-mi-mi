@@ -283,6 +283,8 @@ function Measure-Startup {
     }
 }
 
+    # Clear any lingering global env var from previous runs
+    Remove-Item Env:\NAPI_RS_NATIVE_LIBRARY_PATH -ErrorAction SilentlyContinue
 # --- Preflight ---
 $running = Get-Process -Name "Xiaomi MiMo" -ErrorAction SilentlyContinue
 if ($running) {
