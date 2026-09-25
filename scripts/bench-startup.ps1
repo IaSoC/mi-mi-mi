@@ -23,6 +23,66 @@ $x64Exe   = "C:\Users\xiaomi\AppData\Local\Programs\Xiaomi MiMo\Xiaomi MiMo.exe"
 $realUd   = Join-Path $env:APPDATA "Xiaomi MiMo"
 $appLogDir = Join-Path $realUd "logs"
 
+function Test-WindowPainted {
+    param([int]$ProcessId)
+    # Returns $true if the window has non-trivial pixel content (not gray/loading)
+    try {
+        $proc = Get-Process -Id $ProcessId -ErrorAction Stop
+        $hwnd = $proc.MainWindowHandle
+        if ($hwnd -eq 0) { return $false }
+
+        # Use PrintWindow to capture window content
+        Add-Type -TypeDefinition @"
+using System;
+using System.Runtime.InteropServices;
+using System.Drawing;
+using System.Drawing.Imaging;
+public class WinPaint {
+    [DllImport("user32.dll")]
+    public static extern bool PrintWindow(IntPtr hwnd, IntPtr hdc, uint flags);
+    [DllImport("user32.dll")]
+    public static extern bool GetWindowRect(IntPtr hwnd, out RECT rect);
+    [StructLayout(LayoutKind.Sequential)]
+    public struct RECT { public int Left, Top, Right, Bottom; }
+}
+"@ -ErrorAction Stop
+
+        $rect = New-Object WinPaint+RECT
+        [WinPaint]::GetWindowRect($hwnd, [ref]$rect) | Out-Null
+        $w = $rect.Right - $rect.Left
+        $h = $rect.Bottom - $rect.Top
+        if ($w -lt 50 -or $h -lt 50) { return $false }
+
+        $bmp = New-Object System.Drawing.Bitmap($w, $h)
+        $g = [System.Drawing.Graphics]::FromImage($bmp)
+        $hdc = $g.GetHdc()
+        [WinPaint]::PrintWindow($hwnd, $hdc, 2) | Out-Null  # PW_RENDERFULLCONTENT=2
+        $g.ReleaseHdc($hdc)
+        $g.Dispose()
+
+        # Sample center region pixels, compute color variance
+        $cx = [int]($w / 2); $cy = [int]($h / 2)
+        $colors = @()
+        for ($dx = -20; $dx -le 20; $dx += 4) {
+            for ($dy = -20; $dy -le 20; $dy += 4) {
+                $px = $bmp.GetPixel($cx + $dx, $cy + $dy)
+                $colors += ($px.R + $px.G + $px.B) / 3
+            }
+        }
+        $bmp.Dispose()
+
+        if ($colors.Count -lt 4) { return $false }
+        $avg = ($colors | Measure-Object -Average).Average
+        $variance = ($colors | ForEach-Object { [math]::Pow($_ - $avg, 2) } | Measure-Object -Average).Average
+        $stddev = [math]::Sqrt($variance)
+
+        # Gray screen: stddev ~ 0-3. Rendered UI: stddev > 8
+        return $stddev -gt 8
+    } catch {
+        return $false
+    }
+}
+
 function Measure-Startup {
     param(
         [string]$Label,
@@ -37,8 +97,15 @@ function Measure-Startup {
     $logFileBefore = Get-ChildItem $appLogDir -Filter "*.log" -ErrorAction SilentlyContinue |
         Sort-Object LastWriteTime -Descending | Select-Object -First 1
 
+    # Clear V8 Code Cache to prevent stale compiled js-binding.js
+    $codeCache = Join-Path $UserDataDir "Code Cache"
+    if (Test-Path $codeCache) {
+        Remove-Item $codeCache -Recurse -Force -ErrorAction SilentlyContinue
+        New-Item -ItemType Directory -Force -Path $codeCache | Out-Null
+    }
+
     # Set NAPI_RS_NATIVE_LIBRARY_PATH for canvas binding (avoids asar path interception)
-    $nativeLib = Join-Path (Split-Path $exeDir -Parent) "resources\native\skia.win32-arm64-msvc.node"
+    $nativeLib = Join-Path $exeDir "resources\native\skia.win32-arm64-msvc.node"
     if (Test-Path $nativeLib) {
         $env:NAPI_RS_NATIVE_LIBRARY_PATH = $nativeLib
     }
@@ -100,6 +167,14 @@ function Measure-Startup {
             Write-Host "  [+] window ready   : $($milestones.ToWindowMs) ms"
         }
 
+        # UI actually painted (not gray/loading screen)
+        if ($milestones.ToWindowMs -and -not $milestones.ToPaintedMs) {
+            if (Test-WindowPainted -ProcessId $proc.Id) {
+                $milestones.ToPaintedMs = $sw.ElapsedMilliseconds
+                Write-Host "  [+] UI painted     : $($milestones.ToPaintedMs) ms"
+            }
+        }
+
         # Projects loaded — check app log file for "loadEngineSessions"
         if (-not $milestones.ToProjectsMs -and $milestones.ToWindowMs) {
             $logFile = Get-ChildItem $appLogDir -Filter "*.log" -ErrorAction SilentlyContinue |
@@ -153,7 +228,7 @@ function Measure-Startup {
         }
 
         # All milestones hit (or at least window + settled)
-        if ($milestones.ToWindowMs -and $milestones.ToSettledMs -and $milestones.ToProjectsMs) {
+        if ($milestones.ToPaintedMs -and $milestones.ToSettledMs -and $milestones.ToProjectsMs) {
             $done = $true
         }
         if ($milestones.ToWindowMs -and $milestones.ToSettledMs -and $sw.ElapsedMilliseconds -gt ($milestones.ToSettledMs + 3000)) {
@@ -197,6 +272,7 @@ function Measure-Startup {
     return [PSCustomObject]@{
         Label        = $Label
         ToWindowMs   = $milestones.ToWindowMs
+        ToPaintedMs  = $milestones.ToPaintedMs
         ToEngineMs   = $milestones.ToEngineMs
         ToProjectsMs = $milestones.ToProjectsMs
         ToSettledMs  = $milestones.ToSettledMs
@@ -243,7 +319,7 @@ Write-Host "================================================" -ForegroundColor Y
 Write-Host "              SUMMARY (averages)" -ForegroundColor Yellow
 Write-Host "================================================" -ForegroundColor Yellow
 
-$milestoneKeys = @('ToWindowMs','ToEngineMs','ToProjectsMs','ToSettledMs','RssMB')
+$milestoneKeys = @('ToWindowMs','ToPaintedMs','ToEngineMs','ToProjectsMs','ToSettledMs','RssMB')
 $header = "{0,-8}" -f "Side"
 foreach ($k in $milestoneKeys) { $header += "  {0,14}" -f $k }
 Write-Host $header
@@ -266,12 +342,15 @@ foreach ($side in @("ARM64","x64")) {
 }
 
 # Speedup (by ToProjectsMs if available, else ToWindowMs)
-$armKey = 'ToProjectsMs'
-$x64Key = 'ToProjectsMs'
-$armList = @($results['ARM64'] | Where-Object { $_.$armKey -ne $null })
-$x64List = @($results['x64']   | Where-Object { $_.$x64Key -ne $null })
-if ($armList.Count -eq 0) { $armKey = 'ToWindowMs'; $armList = @($results['ARM64'] | Where-Object { $_.$armKey -ne $null }) }
-if ($x64List.Count -eq 0) { $x64Key = 'ToWindowMs'; $x64List = @($results['x64']   | Where-Object { $_.$x64Key -ne $null }) }
+# Use ToPaintedMs as primary (UI actually visible), fallback to ToProjectsMs then ToWindowMs
+$armKey = $null; $x64Key = $null
+foreach ($candidate in @('ToPaintedMs','ToProjectsMs','ToWindowMs')) {
+    $a = @($results['ARM64'] | Where-Object { $_.$candidate -ne $null })
+    $x = @($results['x64']   | Where-Object { $_.$candidate -ne $null })
+    if ($a.Count -gt 0 -and $x.Count -gt 0) { $armKey = $candidate; $x64Key = $candidate; break }
+}
+$armList = if ($armKey) { @($results['ARM64'] | Where-Object { $_.$armKey -ne $null }) } else { @() }
+$x64List = if ($x64Key) { @($results['x64']   | Where-Object { $_.$x64Key -ne $null }) } else { @() }
 
 if ($armList.Count -gt 0 -and $x64List.Count -gt 0) {
     $armAvg = ($armList | ForEach-Object { $_.$armKey } | Measure-Object -Average).Average
