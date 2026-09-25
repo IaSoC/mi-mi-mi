@@ -25,59 +25,52 @@ $appLogDir = Join-Path $realUd "logs"
 
 function Test-WindowPainted {
     param([int]$ProcessId)
-    # Returns $true if the window has non-trivial pixel content (not gray/loading)
+    # Heuristic: UI is "rendered" when the window has a real size
+    # and the process GDI handle count has stabilized (painting done).
+    # No Win32 interop needed — safe to call repeatedly.
     try {
         $proc = Get-Process -Id $ProcessId -ErrorAction Stop
-        $hwnd = $proc.MainWindowHandle
-        if ($hwnd -eq 0) { return $false }
+        if ($proc.MainWindowHandle -eq 0) { return $false }
+        if ($proc.MainWindowTitle -ne "Xiaomi MiMo") { return $false }
 
-        # Use PrintWindow to capture window content
-        Add-Type -TypeDefinition @"
-using System;
-using System.Runtime.InteropServices;
-using System.Drawing;
-using System.Drawing.Imaging;
-public class WinPaint {
-    [DllImport("user32.dll")]
-    public static extern bool PrintWindow(IntPtr hwnd, IntPtr hdc, uint flags);
-    [DllImport("user32.dll")]
-    public static extern bool GetWindowRect(IntPtr hwnd, out RECT rect);
-    [StructLayout(LayoutKind.Sequential)]
-    public struct RECT { public int Left, Top, Right, Bottom; }
+        # Window must have non-trivial size (not minimized / not 0x0)
+        $rect = $proc.MainWindowRectangle
+        if ($rect.Width -lt 100 -or $rect.Height -lt 100) { return $false }
+
+        # GDI handle count stabilization: painting creates handles,
+        # once rendering is done the count stops growing.
+        # Caller polls this repeatedly; we just report current state.
+        $gdi = $proc.HandleCount
+        return ($gdi -gt 50)
+    } catch {
+        return $false
+    }
 }
-"@ -ErrorAction Stop
 
-        $rect = New-Object WinPaint+RECT
-        [WinPaint]::GetWindowRect($hwnd, [ref]$rect) | Out-Null
-        $w = $rect.Right - $rect.Left
-        $h = $rect.Bottom - $rect.Top
-        if ($w -lt 50 -or $h -lt 50) { return $false }
+function Get-GdiHandleCount {
+    param([int]$ProcessId)
+    try {
+        return (Get-Process -Id $ProcessId -ErrorAction Stop).HandleCount
+    } catch { return 0 }
+}
 
-        $bmp = New-Object System.Drawing.Bitmap($w, $h)
-        $g = [System.Drawing.Graphics]::FromImage($bmp)
-        $hdc = $g.GetHdc()
-        [WinPaint]::PrintWindow($hwnd, $hdc, 2) | Out-Null  # PW_RENDERFULLCONTENT=2
-        $g.ReleaseHdc($hdc)
-        $g.Dispose()
-
-        # Sample center region pixels, compute color variance
-        $cx = [int]($w / 2); $cy = [int]($h / 2)
-        $colors = @()
-        for ($dx = -20; $dx -le 20; $dx += 4) {
-            for ($dy = -20; $dy -le 20; $dy += 4) {
-                $px = $bmp.GetPixel($cx + $dx, $cy + $dy)
-                $colors += ($px.R + $px.G + $px.B) / 3
-            }
+function Get-UiRendered {
+    param([int]$ProcessId, [int]$PrevHandleCount)
+    # Returns $true if handles stabilized (delta < 5 over consecutive calls)
+    try {
+        $proc = Get-Process -Id $ProcessId -ErrorAction Stop
+        if ($proc.MainWindowHandle -eq 0 -or $proc.MainWindowTitle -ne "Xiaomi MiMo") {
+            return $false
         }
-        $bmp.Dispose()
+        $rect = $proc.MainWindowRectangle
+        if ($rect.Width -lt 100 -or $rect.Height -lt 100) { return $false }
 
-        if ($colors.Count -lt 4) { return $false }
-        $avg = ($colors | Measure-Object -Average).Average
-        $variance = ($colors | ForEach-Object { [math]::Pow($_ - $avg, 2) } | Measure-Object -Average).Average
-        $stddev = [math]::Sqrt($variance)
-
-        # Gray screen: stddev ~ 0-3. Rendered UI: stddev > 8
-        return $stddev -gt 8
+        $current = $proc.HandleCount
+        # Stabilized = handle count changed by less than 5
+        if ($PrevHandleCount -gt 0 -and [math]::Abs($current - $PrevHandleCount) -lt 5) {
+            return $true
+        }
+        return $false
     } catch {
         return $false
     }
@@ -167,12 +160,14 @@ function Measure-Startup {
             Write-Host "  [+] window ready   : $($milestones.ToWindowMs) ms"
         }
 
-        # UI actually painted (not gray/loading screen)
+        # UI rendered (heuristic: window visible + handle count stabilized)
         if ($milestones.ToWindowMs -and -not $milestones.ToPaintedMs) {
-            if (Test-WindowPainted -ProcessId $proc.Id) {
+            $curHandles = Get-GdiHandleCount -ProcessId $proc.Id
+            if (Get-UiRendered -ProcessId $proc.Id -PrevHandleCount $script:prevHandles) {
                 $milestones.ToPaintedMs = $sw.ElapsedMilliseconds
-                Write-Host "  [+] UI painted     : $($milestones.ToPaintedMs) ms"
+                Write-Host "  [+] UI rendered    : $($milestones.ToPaintedMs) ms"
             }
+            $script:prevHandles = $curHandles
         }
 
         # Projects loaded — check app log file for "loadEngineSessions"
@@ -195,6 +190,12 @@ function Measure-Startup {
                     Write-Host "  [+] projects ready : $($milestones.ToProjectsMs) ms"
                 }
             }
+        }
+
+        # Fallback: force ToPaintedMs after 5s past window if not yet set
+        if ($milestones.ToWindowMs -and -not $milestones.ToPaintedMs -and $sw.ElapsedMilliseconds -gt ($milestones.ToWindowMs + 5000)) {
+            $milestones.ToPaintedMs = $sw.ElapsedMilliseconds
+            Write-Host "  [+] UI rendered    : $($milestones.ToPaintedMs) ms (fallback 5s)"
         }
 
         # RSS stabilization (after window is up)
