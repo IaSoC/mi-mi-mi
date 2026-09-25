@@ -37,6 +37,12 @@ function Measure-Startup {
     $logFileBefore = Get-ChildItem $appLogDir -Filter "*.log" -ErrorAction SilentlyContinue |
         Sort-Object LastWriteTime -Descending | Select-Object -First 1
 
+    # Set NAPI_RS_NATIVE_LIBRARY_PATH for canvas binding (avoids asar path interception)
+    $nativeLib = Join-Path (Split-Path $exeDir -Parent) "resources\native\skia.win32-arm64-msvc.node"
+    if (Test-Path $nativeLib) {
+        $env:NAPI_RS_NATIVE_LIBRARY_PATH = $nativeLib
+    }
+
     # Launch with stderr capture
     $psi = New-Object System.Diagnostics.ProcessStartInfo
     $psi.FileName = $ExePath
