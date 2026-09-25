@@ -1,0 +1,18 @@
+﻿MiMo Startup Diagnostic - ARM64
+================================
+Timestamp   : 20260926-001741
+Exe         : C:\Users\xiaomi\XiaomiMiMoProjects\electron-arm64-port\output\Xiaomi MiMo ARM64\Xiaomi MiMo.exe
+Exit code   : 0
+Total time  : 17143 ms
+Code Cache  : 1.6 MB at exit
+
+Milestones:  projects-loaded : 412 ms
+  window-title : 5870 ms
+
+Output files:
+  stderr.log
+  stdout.log
+  process-stats.csv
+  milestones.txt
+  app-log-snapshot\
+

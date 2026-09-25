@@ -1,0 +1,17 @@
+﻿[837] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+[1043] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+[3773] [query-classification] warmup-unavailable { code: 'inference-failed' }
+[10402] (node:6968) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.
+[10402] (Use `Xiaomi MiMo --trace-deprecation ...` to show where the warning was created)
+[10886] [6968:0926/001752.512:INFO:CONSOLE:276] "[sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=2805ms responseBytes=38752 engineUrl= http://127.0.0.1:50933 engineId= (default)", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[11236] [6968:0926/001752.512:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: 原始条数 = 18", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[11236] [6968:0926/001752.538:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[11236] [6968:0926/001752.543:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: 耗时(ms) fetch = 2830 repoRoots = 15 build+reconcile = 6 set = 1 total = 2852", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[12942] [6968:0926/001754.797:INFO:CONSOLE:276] "[sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=34ms responseBytes=38752 engineUrl= http://127.0.0.1:50933 engineId= (default)", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[13152] [6968:0926/001754.797:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: 原始条数 = 18", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[13152] [6968:0926/001754.802:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[13152] [6968:0926/001754.802:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: 耗时(ms) fetch = 36 repoRoots = 1 build+reconcile = 3 set = 1 total = 41", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[14605] [6968:0926/001756.480:INFO:CONSOLE:276] "[sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=56ms responseBytes=38752 engineUrl= http://127.0.0.1:50933 engineId= (default)", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[14820] [6968:0926/001756.481:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: 原始条数 = 18", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[14820] [6968:0926/001756.485:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[14820] [6968:0926/001756.485:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: 耗时(ms) fetch = 60 repoRoots = 2 build+reconcile = 3 set = 1 total = 65", source: app://-/renderer/assets/index-C2vAeNdg.js (276)

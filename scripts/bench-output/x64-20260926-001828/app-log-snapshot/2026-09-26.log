@@ -1,0 +1,696 @@
+00:00:16 [info] [intervention] {"stage":"output","at":1790352016652,"runId":"dbba850c4bdd6ef3","sessionId":"b5094fe8d78e452f","assistantId":"e6efcd9f308e74aa","textChars":7,"reviewSkipped":false}
+00:00:18 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=34ms responseBytes=38752 engineUrl= http://127.0.0.1:60734 engineId= (default)
+00:00:18 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:00:18 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:00:18 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 123 repoRoots = 52 build+reconcile = 2 set = 1 total = 178
+00:00:19 [info] [intervention] {"stage":"closed","at":1790352019641,"requestId":"f223dd5d1a9f0e26","origin":"b5094fe8d78e452f","runId":"dbba850c4bdd6ef3","sessionId":"b5094fe8d78e452f","userId":"3e62f559599eaa26","elapsedMs":507288,"textChars":19,"reviewId":"mimo-intv-mimo_pc_input_text-e6d3562a5f0f4f0b856e75cc65d98a65"}
+00:00:19 [info] [intervention] {"stage":"closed","at":1790352019642,"requestId":"f2de985072501a0d","origin":"b5094fe8d78e452f","runId":"dbba850c4bdd6ef3","sessionId":"b5094fe8d78e452f","userId":"28f50fc0423e8d96","elapsedMs":334508,"textChars":41,"reviewId":"mimo-intv-mimo_pc_input_text-f29ef6321fa34d1ca6a43b946acf23a8"}
+00:00:19 [info] [turn-power-save] released sysId=1 last=run:ses_ffe5f298357dfffeN82Wln2VmT
+00:00:19 [log] [sess-diag] engineFetch GET /session/ses_ffe5f298357dfffeN82Wln2VmT/task -> HTTP 200 elapsed=65ms responseBytes=2346 engineUrl= http://127.0.0.1:60734 engineId= mimocode
+00:00:19 [log] [sess-diag] engineFetch GET /session/ses_ffe5f298357dfffeN82Wln2VmT/recovery -> HTTP 200 elapsed=99ms responseBytes=2 engineUrl= http://127.0.0.1:60734 engineId= mimocode
+00:00:19 [log] [sess-diag] engineFetch GET /session/ses_ffe5f298357dfffeN82Wln2VmT -> HTTP 200 elapsed=100ms responseBytes=29556 engineUrl= http://127.0.0.1:60734 engineId= mimocode
+00:00:19 [info] [content-review] app=mimo_pc_output_text source=conversation why=flush batch=c62df16ca6e48764 api=/api/audit/check len=211 images=0 sha=57ff10c71f4c session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=205ms verdict=pass reviewId=mimo-mimo_pc_output_text-dd1942aac5a0439fa4b38d9d6a80ddd2 detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_output_text-dd1942aac5a0439fa4b38d9d6a80ddd2 offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:00:19 [info] [content-review] app=mimo_pc_output_text source=conversation why=flush batch=2344762296d97419 api=/api/audit/check len=39 images=0 sha=31b1c4e198e9 session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=141ms verdict=pass reviewId=mimo-mimo_pc_output_text-089f4e8fc3af45d396dd676aecb4aa90 detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_output_text-089f4e8fc3af45d396dd676aecb4aa90 offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:00:20 [info] [content-review] app=mimo_pc_output_text source=conversation why=flush batch=2daddb0ac7bc3732 api=/api/audit/check len=22 images=0 sha=df0e897c3675 session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=121ms verdict=pass reviewId=mimo-mimo_pc_output_text-24b843ddf59b4aeb94d83300513e58be detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_output_text-24b843ddf59b4aeb94d83300513e58be offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:00:20 [info] [content-review] app=mimo_pc_output_text source=conversation why=flush batch=4fdfe794d7af1c15 api=/api/audit/check len=9 images=0 sha=8bd5e8bd685e session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=138ms verdict=pass reviewId=mimo-mimo_pc_output_text-41f4503c958d42d8a3a96f2023b8ea97 detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_output_text-41f4503c958d42d8a3a96f2023b8ea97 offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:00:20 [info] [content-review] app=mimo_pc_output_text source=conversation why=flush batch=52758a831e1fbed8 api=/api/audit/check len=117 images=0 sha=a38e1a6d84b1 session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=157ms verdict=pass reviewId=mimo-mimo_pc_output_text-3c7590dc524449cca2e11a2bf85f3095 detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_output_text-3c7590dc524449cca2e11a2bf85f3095 offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:00:20 [info] [content-review] app=mimo_pc_output_text source=conversation why=flush batch=7429b65f6a54810a api=/api/audit/check len=190 images=0 sha=202ab1132bc6 session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=169ms verdict=pass reviewId=mimo-mimo_pc_output_text-674d257d6b6c4bf0adb5b1396ef6bbbc detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_output_text-674d257d6b6c4bf0adb5b1396ef6bbbc offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:00:48 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=39ms responseBytes=38752 engineUrl= http://127.0.0.1:60734 engineId= (default)
+00:00:48 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:00:48 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:00:48 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 44 repoRoots = 2 build+reconcile = 5 set = 1 total = 52
+00:01:09 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=61ms responseBytes=38752 engineUrl= http://127.0.0.1:60734 engineId= (default)
+00:01:09 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:01:09 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:01:09 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 63 repoRoots = 1 build+reconcile = 2 set = 1 total = 67
+00:01:18 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=9ms responseBytes=38752 engineUrl= http://127.0.0.1:60734 engineId= (default)
+00:01:18 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:01:18 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:01:18 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 11 repoRoots = 1 build+reconcile = 2 set = 1 total = 14
+00:01:35 [info] [intervention] {"stage":"query","at":1790352095303,"requestId":"9fc0950667efcb2d","origin":"b5094fe8d78e452f","elapsedMs":81,"textChars":21,"queryChars":21,"truncated":false,"result":"miss","reviewId":"mimo-intv-mimo_pc_input_text-abc3c970079b47eb916e89ecb69ad57e"}
+00:01:35 [info] [content-review] app=mimo_pc_input_text source=input why=oneshot batch=c8f046e678520d39 api=/api/audit/check len=21 images=0 sha=e0c0e089d58f session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=155ms verdict=pass reviewId=mimo-mimo_pc_input_text-be03724a8bf44da18f18e9bfd0068f33 detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_input_text-be03724a8bf44da18f18e9bfd0068f33 offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:01:35 [info] [intervention] {"stage":"prepared","at":1790352095460,"requestId":"9fc0950667efcb2d","origin":"b5094fe8d78e452f","elapsedMs":238,"textChars":21,"result":"ready","reviewId":"mimo-intv-mimo_pc_input_text-abc3c970079b47eb916e89ecb69ad57e"}
+00:01:35 [info] [intervention] {"stage":"claim","at":1790352095474,"requestId":"9fc0950667efcb2d","origin":"b5094fe8d78e452f","sessionId":"b5094fe8d78e452f","elapsedMs":252,"textChars":21,"reviewId":"mimo-intv-mimo_pc_input_text-abc3c970079b47eb916e89ecb69ad57e"}
+00:01:35 [info] [smart-router] {"origin":"ses_ffe5f298357dfffeN82Wln2VmT","model":"mimo-pro"}
+00:01:35 [info] [harness] session origin=ses_ffe5f298357dfffeN82Wln2VmT sid=ses_ffe5f298357dfffeN82Wln2VmT source=user msgLen=21
+00:01:35 [info] [turn-power-save] acquired sysId=2 mode=prevent-app-suspension first=run:ses_ffe5f298357dfffeN82Wln2VmT
+00:01:35 [info] [intervention] {"stage":"dispatch","at":1790352095574,"requestId":"9fc0950667efcb2d","origin":"b5094fe8d78e452f","runId":"6d364ac0569c34ca","sessionId":"b5094fe8d78e452f","elapsedMs":352,"textChars":21,"reviewId":"mimo-intv-mimo_pc_input_text-abc3c970079b47eb916e89ecb69ad57e"}
+00:01:35 [info] [intervention] {"stage":"user-bound","at":1790352095672,"requestId":"9fc0950667efcb2d","origin":"b5094fe8d78e452f","runId":"6d364ac0569c34ca","sessionId":"b5094fe8d78e452f","userId":"82eaa3dfd9509dc1","elapsedMs":450,"textChars":21,"reviewId":"mimo-intv-mimo_pc_input_text-abc3c970079b47eb916e89ecb69ad57e"}
+00:01:35 [info] [intervention] {"stage":"model.start","at":1790352095960,"requestId":"9fc0950667efcb2d","origin":"b5094fe8d78e452f","runId":"6d364ac0569c34ca","sessionId":"b5094fe8d78e452f","userId":"82eaa3dfd9509dc1","assistantId":"abab5d2b6f7c0ae7","ephemeral":false,"hasScope":true,"route":"upstream"}
+00:01:35 [info] [intervention] {"stage":"fetch.start","at":1790352095983,"requestId":"9fc0950667efcb2d","origin":"b5094fe8d78e452f","runId":"6d364ac0569c34ca","sessionId":"b5094fe8d78e452f","userId":"82eaa3dfd9509dc1","assistantId":"abab5d2b6f7c0ae7","ephemeral":false,"hasScope":true,"protocol":"chat-completions","route":"upstream"}
+00:01:46 [info] [intervention] {"stage":"fetch.response","at":1790352106813,"requestId":"9fc0950667efcb2d","origin":"b5094fe8d78e452f","runId":"6d364ac0569c34ca","sessionId":"b5094fe8d78e452f","userId":"82eaa3dfd9509dc1","assistantId":"abab5d2b6f7c0ae7","elapsedMs":10830,"status":200,"ephemeral":false,"hasScope":true,"protocol":"chat-completions","route":"upstream"}
+00:01:48 [info] [content-review/turn-binding] note-no-slot key=ses_ffe5f298357dfffeN82Wln2VmT anchor=msg:msg_g001a0d94cfa0c001s032jBpu5
+00:01:48 [info] [intervention] {"stage":"output","at":1790352108084,"runId":"6d364ac0569c34ca","sessionId":"b5094fe8d78e452f","assistantId":"abab5d2b6f7c0ae7","textChars":3,"reviewSkipped":false}
+00:01:48 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=17ms responseBytes=38752 engineUrl= http://127.0.0.1:60734 engineId= (default)
+00:01:48 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:01:48 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:01:48 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 81 repoRoots = 46 build+reconcile = 3 set = 1 total = 131
+00:01:51 [info] [intervention] {"stage":"model.start","at":1790352111145,"requestId":"9fc0950667efcb2d","origin":"b5094fe8d78e452f","runId":"6d364ac0569c34ca","sessionId":"b5094fe8d78e452f","userId":"82eaa3dfd9509dc1","assistantId":"2a73ef22f3b37ba8","ephemeral":false,"hasScope":true,"route":"upstream"}
+00:01:51 [info] [intervention] {"stage":"fetch.start","at":1790352111168,"requestId":"9fc0950667efcb2d","origin":"b5094fe8d78e452f","runId":"6d364ac0569c34ca","sessionId":"b5094fe8d78e452f","userId":"82eaa3dfd9509dc1","assistantId":"2a73ef22f3b37ba8","ephemeral":false,"hasScope":true,"protocol":"chat-completions","route":"upstream"}
+00:01:59 [info] [intervention] {"stage":"fetch.response","at":1790352119506,"requestId":"9fc0950667efcb2d","origin":"b5094fe8d78e452f","runId":"6d364ac0569c34ca","sessionId":"b5094fe8d78e452f","userId":"82eaa3dfd9509dc1","assistantId":"2a73ef22f3b37ba8","elapsedMs":8338,"status":200,"ephemeral":false,"hasScope":true,"protocol":"chat-completions","route":"upstream"}
+00:01:59 [info] [intervention] {"stage":"output","at":1790352119822,"runId":"6d364ac0569c34ca","sessionId":"b5094fe8d78e452f","assistantId":"2a73ef22f3b37ba8","textChars":3,"reviewSkipped":false}
+00:02:01 [info] [intervention] {"stage":"closed","at":1790352121783,"requestId":"9fc0950667efcb2d","origin":"b5094fe8d78e452f","runId":"6d364ac0569c34ca","sessionId":"b5094fe8d78e452f","userId":"82eaa3dfd9509dc1","elapsedMs":26561,"textChars":21,"reviewId":"mimo-intv-mimo_pc_input_text-abc3c970079b47eb916e89ecb69ad57e"}
+00:02:01 [info] [turn-power-save] released sysId=2 last=run:ses_ffe5f298357dfffeN82Wln2VmT
+00:02:01 [log] [sess-diag] engineFetch GET /session/ses_ffe5f298357dfffeN82Wln2VmT/task -> HTTP 200 elapsed=46ms responseBytes=2346 engineUrl= http://127.0.0.1:60734 engineId= mimocode
+00:02:01 [log] [sess-diag] engineFetch GET /session/ses_ffe5f298357dfffeN82Wln2VmT -> HTTP 200 elapsed=76ms responseBytes=29556 engineUrl= http://127.0.0.1:60734 engineId= mimocode
+00:02:01 [log] [sess-diag] engineFetch GET /session/ses_ffe5f298357dfffeN82Wln2VmT/recovery -> HTTP 200 elapsed=114ms responseBytes=2 engineUrl= http://127.0.0.1:60734 engineId= mimocode
+00:02:01 [info] [content-review] app=mimo_pc_output_text source=conversation why=flush batch=6bf13fd68dfcad23 api=/api/audit/check len=75 images=0 sha=c5595624d96b session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=182ms verdict=pass reviewId=mimo-mimo_pc_output_text-fe3b33cddb8a4069b5fa83024b7c8aba detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_output_text-fe3b33cddb8a4069b5fa83024b7c8aba offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:02:02 [info] [content-review] app=mimo_pc_output_text source=conversation why=flush batch=7ba6b0f1212add7a api=/api/audit/check len=103 images=0 sha=22511ac2e796 session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=200ms verdict=pass reviewId=mimo-mimo_pc_output_text-7edeb37565354cec818a505c0057aa32 detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_output_text-7edeb37565354cec818a505c0057aa32 offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:02:18 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=36ms responseBytes=38752 engineUrl= http://127.0.0.1:60734 engineId= (default)
+00:02:18 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:02:18 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:02:18 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 40 repoRoots = 3 build+reconcile = 5 set = 2 total = 49
+00:02:24 [info] [exit-app] quit via tray menu
+00:02:24 [info] [exit-app] before-quit
+00:02:24 [info] [window] window closed
+00:02:24 [info] [exit-app] window-all-closed platform=win32 appQuitting=true willQuit=false
+00:02:33 [info] [boot] MiMo Desktop version=26.923.232338 platform=win32 arch=arm64 os=Windows_NT/10.0.26200 sysver=10.0.26200 mem=7.7GB(free 3.0GB) edition=domestic packaged=true theme=system e2e=false authBypass=false logs=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\logs
+00:02:34 [info] [terminal-env] snapshot source: win-registry
+00:02:34 [info] [runtimes] injected env: MIMO_NODE,MIMO_PYTHON,MIMO_QPDF,MIMO_GITHUB_MCP_SERVER,MIMO_NODE_MODULES,MIMO_RIPGREP_PATH,MIMO_ELECTRON_NODE_HOST,PYTHONDONTWRITEBYTECODE
+00:02:34 [log] [api-base] cached-region reader injected after settle -> ignored
+00:02:34 [log] [api-base] system-country reader injected after settle -> ignored
+00:02:34 [info] [user-auth] init ok requiresCnAccount=true cachedRegion=CN localeCountry=CN
+00:02:34 [warn] [libreoffice-runtime] setup not-configured key=win32-arm64 (manifest 缺项或未发布;静默降级)
+00:02:34 [info] [on-demand-assets] setup ready descriptors=soundfont(1f),query-classifier(4f) not-configured=none
+00:02:34 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:02:34 [error] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+00:02:34 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:02:34 [info] [plugins] setup ok count=0
+00:02:34 [info] [apm] region=CN source=cache
+00:02:34 [log] [evolve-observatory] evolve observatory server listening on 127.0.0.1:54299
+00:02:34 [log] [mimo][api] listening on 127.0.0.1:54300
+00:02:34 [info] [boot] app ready in 990.179931640625ms
+00:02:34 [error] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+00:02:34 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:02:34 [info] [presentation-host] started socket=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\presentation-host\6efe6a07be18.sock
+00:02:34 [info] [application] activated (main window created)
+00:02:34 [info] [tray] enabled=true
+00:02:34 [info] [updater] setup begin
+00:02:34 [info] [updater] setup platform=win32 packaged=true version=26.923.232338 e2e=false
+00:02:34 [info] [updater/win] transaction reconcile kind=none
+00:02:34 [info] [updater/win] auto-updater path feed=https://mimocode-cdn.xiaomimimo.com/mimocode/mimodesktop/manifest.json
+00:02:34 [info] [engine] prewarm startEngine
+00:02:34 [info] [plugins] automation background startup settled {"elapsedMs":725}
+00:02:36 [info] [db] prewarm ok in 1866ms
+00:02:36 [info] [artifacts] reconciliation starting
+00:02:36 [log] [xiaomi-auth] probeStatus start (hidden-window path)
+00:02:36 [info] [engine] HostMcp runtime available=true
+00:02:36 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:02:37 [warn] [query-classification] warmup-unavailable {"code":"inference-failed"}
+00:02:39 [log] [DeviceId] generated:
+00:02:41 [log] [mimo] engine in-process server ready http://127.0.0.1:61954
+00:02:41 [info] [engine] prewarm ok
+00:02:41 [info] [mimo] loop_streak_recovery=on · experimental crop enabled for next requests
+00:02:41 [info] [libreoffice-runtime] prefetch skipped (not-configured)
+00:02:41 [info] [on-demand-assets] prefetch start queue=[soundfont,query-classifier]
+00:02:41 [info] [on-demand-assets] soundfont cache-hit (1 files);skip download
+00:02:41 [info] [on-demand-assets] query-classifier cache-hit (4 files);skip download
+00:02:41 [log] [model-catalog] xiaomi login not confirmed -> skip fetch, keep cache
+00:02:41 [info] Checking for update
+00:02:41 [log] [xiaomi-auth] probeStatus done kind=authenticated userId=602054437
+00:02:42 [info] [experiment] initializing app=mimoDesktop(新加坡) env=ksmoscloudsrv service=<sdk-default>
+00:02:42 [info] [config] loading from: https://cdn-exp-sg-recommend.pt.xiaomi.com/service/getClientBitMapExpConf/mimoDesktop(%E6%96%B0%E5%8A%A0%E5%9D%A1)
+00:02:42 [info] [user-auth] initialize done xiaomi-logged-in=true
+00:02:42 [info] Update for version 26.923.232338 is not available (latest version: 26.923.232338, downgrade is disallowed).
+00:02:43 [info] [config] loaded tree for mimoDesktop(新加坡): children=2, upRuleIds=0
+00:02:43 [info] [config] remote config loaded: 1 apps
+00:02:43 [info] [config] loaded successfully: 1 apps
+00:02:43 [info] [experiment] key=feature_gates id=101197 type=string value={\n    "domestic": { "show_mcp_entry": false, "show_custom_model_button": true, "loop_streak_recovery": true, "show_evolve_entry": true,"show_computeruse": false, "show_browseruse": false, "show_pay": … elapsed=1028ms
+00:02:43 [info] [feature-gates] refresh: ok (elapsed=1058ms)
+00:02:43 [error] (node:9904) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `Xiaomi MiMo --trace-deprecation ...` to show where the warning was created)
+00:02:44 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=2856ms responseBytes=38752 engineUrl= http://127.0.0.1:61954 engineId= (default)
+00:02:44 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:02:44 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:02:44 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 2881 repoRoots = 14 build+reconcile = 6 set = 1 total = 2903
+00:02:44 [info] [artifacts] reconciliation started
+00:02:50 [info] [boot] MiMo Desktop version=26.923.232338 platform=win32 arch=x64 os=Windows_NT/10.0.26200 sysver=10.0.26200 mem=7.7GB(free 2.9GB) edition=domestic packaged=true theme=system e2e=false authBypass=false logs=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\logs
+00:02:51 [info] [terminal-env] snapshot source: win-registry
+00:02:51 [info] [runtimes] injected env: MIMO_NODE,MIMO_NPM,MIMO_PYTHON,MIMO_QPDF,MIMO_GITHUB_MCP_SERVER,MIMO_NODE_MODULES,MIMO_RIPGREP_PATH,MIMO_ELECTRON_NODE_HOST,PYTHONDONTWRITEBYTECODE
+00:02:51 [log] [api-base] cached-region reader injected after settle -> ignored
+00:02:51 [log] [api-base] system-country reader injected after settle -> ignored
+00:02:51 [info] [user-auth] init ok requiresCnAccount=true cachedRegion=CN localeCountry=CN
+00:02:51 [info] [libreoffice-runtime] setup ready key=win32-x64 version=25.8.7 archive=160665171 bytes
+00:02:51 [info] [on-demand-assets] setup ready descriptors=soundfont(1f),query-classifier(4f) not-configured=none
+00:02:51 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:02:51 [error] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+00:02:51 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:02:51 [info] [plugins] setup ok count=0
+00:02:51 [info] [apm] region=CN source=cache
+00:02:51 [log] [evolve-observatory] evolve observatory server listening on 127.0.0.1:63356
+00:02:51 [log] [mimo][api] listening on 127.0.0.1:63357
+00:02:51 [info] [boot] app ready in 2253.2099609375ms
+00:02:51 [error] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+00:02:51 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:02:51 [info] [presentation-host] started socket=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\presentation-host\2388cfde0559.sock
+00:02:51 [info] [application] activated (main window created)
+00:02:51 [info] [tray] enabled=true
+00:02:51 [info] [updater] setup begin
+00:02:51 [info] [updater] setup platform=win32 packaged=true version=26.923.232338 e2e=false
+00:02:51 [info] [updater/win] transaction reconcile kind=none
+00:02:51 [info] [updater/win] auto-updater path feed=https://mimocode-cdn.xiaomimimo.com/mimocode/mimodesktop/manifest.json
+00:02:51 [info] [engine] prewarm startEngine
+00:02:52 [info] [plugins] automation background startup settled {"elapsedMs":1134}
+00:02:55 [info] [db] prewarm ok in 3658ms
+00:02:55 [info] [artifacts] reconciliation starting
+00:02:55 [log] [xiaomi-auth] probeStatus start (hidden-window path)
+00:02:56 [info] [engine] HostMcp runtime available=true
+00:02:56 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:05 [info] [boot] MiMo Desktop version=26.923.232338 platform=win32 arch=x64 os=Windows_NT/10.0.26200 sysver=10.0.26200 mem=7.7GB(free 2.9GB) edition=domestic packaged=true theme=system e2e=false authBypass=false logs=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\logs
+00:03:05 [info] [terminal-env] snapshot source: win-registry
+00:03:05 [info] [runtimes] injected env: MIMO_NODE,MIMO_NPM,MIMO_PYTHON,MIMO_QPDF,MIMO_GITHUB_MCP_SERVER,MIMO_NODE_MODULES,MIMO_RIPGREP_PATH,MIMO_ELECTRON_NODE_HOST,PYTHONDONTWRITEBYTECODE
+00:03:05 [log] [api-base] cached-region reader injected after settle -> ignored
+00:03:05 [log] [api-base] system-country reader injected after settle -> ignored
+00:03:05 [info] [user-auth] init ok requiresCnAccount=true cachedRegion=CN localeCountry=CN
+00:03:05 [info] [libreoffice-runtime] setup ready key=win32-x64 version=25.8.7 archive=160665171 bytes
+00:03:05 [info] [on-demand-assets] setup ready descriptors=soundfont(1f),query-classifier(4f) not-configured=none
+00:03:05 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:05 [error] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+00:03:05 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:05 [info] [plugins] setup ok count=0
+00:03:05 [info] [apm] region=CN source=cache
+00:03:05 [log] [evolve-observatory] evolve observatory server listening on 127.0.0.1:63358
+00:03:05 [log] [mimo][api] listening on 127.0.0.1:63359
+00:03:05 [info] [boot] app ready in 2142.89892578125ms
+00:03:05 [error] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+00:03:05 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:05 [info] [presentation-host] started socket=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\presentation-host\8bbca591d815.sock
+00:03:06 [info] [application] activated (main window created)
+00:03:06 [info] [tray] enabled=true
+00:03:06 [info] [updater] setup begin
+00:03:06 [info] [updater] setup platform=win32 packaged=true version=26.923.232338 e2e=false
+00:03:06 [info] [updater/win] transaction reconcile kind=none
+00:03:06 [info] [updater/win] auto-updater path feed=https://mimocode-cdn.xiaomimimo.com/mimocode/mimodesktop/manifest.json
+00:03:06 [info] [engine] prewarm startEngine
+00:03:06 [info] [plugins] automation background startup settled {"elapsedMs":1121}
+00:03:09 [info] [db] prewarm ok in 3741ms
+00:03:09 [info] [artifacts] reconciliation starting
+00:03:10 [log] [xiaomi-auth] probeStatus start (hidden-window path)
+00:03:11 [info] [engine] HostMcp runtime available=true
+00:03:11 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:16 [log] [DeviceId] generated:
+00:03:16 [info] [query-classification] ready
+00:03:18 [info] [boot] MiMo Desktop version=26.923.232338 platform=win32 arch=arm64 os=Windows_NT/10.0.26200 sysver=10.0.26200 mem=7.7GB(free 3.0GB) edition=domestic packaged=true theme=system e2e=false authBypass=false logs=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\logs
+00:03:18 [info] [terminal-env] snapshot source: win-registry
+00:03:18 [info] [runtimes] injected env: MIMO_NODE,MIMO_PYTHON,MIMO_QPDF,MIMO_GITHUB_MCP_SERVER,MIMO_NODE_MODULES,MIMO_RIPGREP_PATH,MIMO_ELECTRON_NODE_HOST,PYTHONDONTWRITEBYTECODE
+00:03:18 [log] [api-base] cached-region reader injected after settle -> ignored
+00:03:18 [log] [api-base] system-country reader injected after settle -> ignored
+00:03:18 [info] [user-auth] init ok requiresCnAccount=true cachedRegion=CN localeCountry=CN
+00:03:18 [warn] [libreoffice-runtime] setup not-configured key=win32-arm64 (manifest 缺项或未发布;静默降级)
+00:03:18 [info] [on-demand-assets] setup ready descriptors=soundfont(1f),query-classifier(4f) not-configured=none
+00:03:18 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:18 [error] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+00:03:18 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:18 [info] [plugins] setup ok count=0
+00:03:18 [info] [apm] region=CN source=cache
+00:03:19 [log] [evolve-observatory] evolve observatory server listening on 127.0.0.1:62378
+00:03:19 [log] [mimo][api] listening on 127.0.0.1:62379
+00:03:19 [info] [boot] app ready in 902.458984375ms
+00:03:19 [error] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+00:03:19 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:19 [info] [presentation-host] started socket=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\presentation-host\58bca3aebf55.sock
+00:03:19 [info] [application] activated (main window created)
+00:03:19 [info] [tray] enabled=true
+00:03:19 [info] [updater] setup begin
+00:03:19 [info] [updater] setup platform=win32 packaged=true version=26.923.232338 e2e=false
+00:03:19 [info] [updater/win] transaction reconcile kind=none
+00:03:19 [info] [updater/win] auto-updater path feed=https://mimocode-cdn.xiaomimimo.com/mimocode/mimodesktop/manifest.json
+00:03:19 [info] [engine] prewarm startEngine
+00:03:19 [info] [plugins] automation background startup settled {"elapsedMs":669}
+00:03:20 [info] [db] prewarm ok in 1828ms
+00:03:20 [info] [artifacts] reconciliation starting
+00:03:20 [log] [xiaomi-auth] probeStatus start (hidden-window path)
+00:03:23 [log] [DeviceId] generated:
+00:03:23 [info] [engine] HostMcp runtime available=true
+00:03:23 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:24 [warn] [query-classification] warmup-unavailable {"code":"inference-failed"}
+00:03:26 [log] [mimo] engine in-process server ready http://127.0.0.1:63327
+00:03:26 [info] [engine] prewarm ok
+00:03:26 [info] [mimo] loop_streak_recovery=on · experimental crop enabled for next requests
+00:03:26 [info] Checking for update
+00:03:26 [info] [artifacts] reconciliation started
+00:03:26 [info] [libreoffice-runtime] prefetch skipped (not-configured)
+00:03:26 [info] [on-demand-assets] prefetch start queue=[soundfont,query-classifier]
+00:03:26 [info] [on-demand-assets] soundfont cache-hit (1 files);skip download
+00:03:26 [info] [on-demand-assets] query-classifier cache-hit (4 files);skip download
+00:03:27 [log] [model-catalog] xiaomi login not confirmed -> skip fetch, keep cache
+00:03:27 [log] [xiaomi-auth] probeStatus done kind=authenticated userId=602054437
+00:03:28 [info] [experiment] initializing app=mimoDesktop(新加坡) env=ksmoscloudsrv service=<sdk-default>
+00:03:28 [info] [config] loading from: https://cdn-exp-sg-recommend.pt.xiaomi.com/service/getClientBitMapExpConf/mimoDesktop(%E6%96%B0%E5%8A%A0%E5%9D%A1)
+00:03:28 [info] [user-auth] initialize done xiaomi-logged-in=true
+00:03:28 [info] Update for version 26.923.232338 is not available (latest version: 26.923.232338, downgrade is disallowed).
+00:03:29 [info] [config] loaded tree for mimoDesktop(新加坡): children=2, upRuleIds=0
+00:03:29 [info] [config] remote config loaded: 1 apps
+00:03:29 [info] [config] loaded successfully: 1 apps
+00:03:29 [info] [experiment] key=feature_gates id=101197 type=string value={\n    "domestic": { "show_mcp_entry": false, "show_custom_model_button": true, "loop_streak_recovery": true, "show_evolve_entry": true,"show_computeruse": false, "show_browseruse": false, "show_pay": … elapsed=1358ms
+00:03:29 [info] [feature-gates] refresh: ok (elapsed=1366ms)
+00:03:29 [error] (node:9052) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `Xiaomi MiMo --trace-deprecation ...` to show where the warning was created)
+00:03:29 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=3387ms responseBytes=38752 engineUrl= http://127.0.0.1:63327 engineId= (default)
+00:03:29 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:03:29 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:03:29 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 3421 repoRoots = 7 build+reconcile = 6 set = 2 total = 3436
+00:03:35 [info] [boot] MiMo Desktop version=26.923.232338 platform=win32 arch=arm64 os=Windows_NT/10.0.26200 sysver=10.0.26200 mem=7.7GB(free 3.0GB) edition=domestic packaged=true theme=system e2e=false authBypass=false logs=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\logs
+00:03:35 [info] [terminal-env] snapshot source: win-registry
+00:03:35 [info] [runtimes] injected env: MIMO_NODE,MIMO_PYTHON,MIMO_QPDF,MIMO_GITHUB_MCP_SERVER,MIMO_NODE_MODULES,MIMO_RIPGREP_PATH,MIMO_ELECTRON_NODE_HOST,PYTHONDONTWRITEBYTECODE
+00:03:35 [log] [api-base] cached-region reader injected after settle -> ignored
+00:03:35 [log] [api-base] system-country reader injected after settle -> ignored
+00:03:35 [info] [user-auth] init ok requiresCnAccount=true cachedRegion=CN localeCountry=CN
+00:03:35 [warn] [libreoffice-runtime] setup not-configured key=win32-arm64 (manifest 缺项或未发布;静默降级)
+00:03:35 [info] [on-demand-assets] setup ready descriptors=soundfont(1f),query-classifier(4f) not-configured=none
+00:03:35 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:35 [error] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+00:03:35 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:35 [info] [plugins] setup ok count=0
+00:03:35 [info] [apm] region=CN source=cache
+00:03:35 [log] [evolve-observatory] evolve observatory server listening on 127.0.0.1:52305
+00:03:35 [log] [mimo][api] listening on 127.0.0.1:52306
+00:03:35 [info] [boot] app ready in 966.40087890625ms
+00:03:35 [error] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+00:03:35 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:35 [info] [presentation-host] started socket=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\presentation-host\04004106b97b.sock
+00:03:36 [info] [application] activated (main window created)
+00:03:36 [info] [tray] enabled=true
+00:03:36 [info] [updater] setup begin
+00:03:36 [info] [updater] setup platform=win32 packaged=true version=26.923.232338 e2e=false
+00:03:36 [info] [updater/win] transaction reconcile kind=none
+00:03:36 [info] [updater/win] auto-updater path feed=https://mimocode-cdn.xiaomimimo.com/mimocode/mimodesktop/manifest.json
+00:03:36 [info] [engine] prewarm startEngine
+00:03:36 [info] [plugins] automation background startup settled {"elapsedMs":721}
+00:03:37 [info] [db] prewarm ok in 1838ms
+00:03:37 [info] [artifacts] reconciliation starting
+00:03:37 [log] [xiaomi-auth] probeStatus start (hidden-window path)
+00:03:39 [log] [DeviceId] generated:
+00:03:39 [info] [engine] HostMcp runtime available=true
+00:03:39 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:40 [warn] [query-classification] warmup-unavailable {"code":"inference-failed"}
+00:03:42 [log] [mimo] engine in-process server ready http://127.0.0.1:52211
+00:03:42 [info] [engine] prewarm ok
+00:03:42 [info] [mimo] loop_streak_recovery=on · experimental crop enabled for next requests
+00:03:42 [info] [artifacts] reconciliation started
+00:03:43 [info] [libreoffice-runtime] prefetch skipped (not-configured)
+00:03:43 [info] [on-demand-assets] prefetch start queue=[soundfont,query-classifier]
+00:03:43 [info] [on-demand-assets] soundfont cache-hit (1 files);skip download
+00:03:43 [info] [on-demand-assets] query-classifier cache-hit (4 files);skip download
+00:03:43 [log] [model-catalog] xiaomi login not confirmed -> skip fetch, keep cache
+00:03:43 [info] Checking for update
+00:03:43 [log] [xiaomi-auth] probeStatus done kind=authenticated userId=602054437
+00:03:44 [info] [experiment] initializing app=mimoDesktop(新加坡) env=ksmoscloudsrv service=<sdk-default>
+00:03:44 [info] [config] loading from: https://cdn-exp-sg-recommend.pt.xiaomi.com/service/getClientBitMapExpConf/mimoDesktop(%E6%96%B0%E5%8A%A0%E5%9D%A1)
+00:03:44 [info] [user-auth] initialize done xiaomi-logged-in=true
+00:03:44 [info] [config] loaded tree for mimoDesktop(新加坡): children=2, upRuleIds=0
+00:03:44 [info] [config] remote config loaded: 1 apps
+00:03:44 [info] [config] loaded successfully: 1 apps
+00:03:44 [info] [experiment] key=feature_gates id=101197 type=string value={\n    "domestic": { "show_mcp_entry": false, "show_custom_model_button": true, "loop_streak_recovery": true, "show_evolve_entry": true,"show_computeruse": false, "show_browseruse": false, "show_pay": … elapsed=239ms
+00:03:44 [info] [feature-gates] refresh: ok (elapsed=249ms)
+00:03:45 [error] (node:6856) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `Xiaomi MiMo --trace-deprecation ...` to show where the warning was created)
+00:03:45 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=3274ms responseBytes=38752 engineUrl= http://127.0.0.1:52211 engineId= (default)
+00:03:45 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:03:45 [info] Update for version 26.923.232338 is not available (latest version: 26.923.232338, downgrade is disallowed).
+00:03:45 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:03:45 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 3298 repoRoots = 14 build+reconcile = 6 set = 1 total = 3318
+00:03:52 [info] [boot] MiMo Desktop version=26.923.232338 platform=win32 arch=x64 os=Windows_NT/10.0.26200 sysver=10.0.26200 mem=7.7GB(free 2.9GB) edition=domestic packaged=true theme=system e2e=false authBypass=false logs=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\logs
+00:03:52 [info] [terminal-env] snapshot source: win-registry
+00:03:52 [info] [runtimes] injected env: MIMO_NODE,MIMO_NPM,MIMO_PYTHON,MIMO_QPDF,MIMO_GITHUB_MCP_SERVER,MIMO_NODE_MODULES,MIMO_RIPGREP_PATH,MIMO_ELECTRON_NODE_HOST,PYTHONDONTWRITEBYTECODE
+00:03:52 [log] [api-base] cached-region reader injected after settle -> ignored
+00:03:52 [log] [api-base] system-country reader injected after settle -> ignored
+00:03:52 [info] [user-auth] init ok requiresCnAccount=true cachedRegion=CN localeCountry=CN
+00:03:52 [info] [libreoffice-runtime] setup ready key=win32-x64 version=25.8.7 archive=160665171 bytes
+00:03:52 [info] [on-demand-assets] setup ready descriptors=soundfont(1f),query-classifier(4f) not-configured=none
+00:03:52 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:52 [error] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+00:03:52 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:52 [info] [plugins] setup ok count=0
+00:03:52 [info] [apm] region=CN source=cache
+00:03:52 [log] [evolve-observatory] evolve observatory server listening on 127.0.0.1:59194
+00:03:52 [log] [mimo][api] listening on 127.0.0.1:59195
+00:03:52 [info] [boot] app ready in 2063.178955078125ms
+00:03:52 [error] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+00:03:52 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:03:52 [info] [presentation-host] started socket=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\presentation-host\1902cf1065c7.sock
+00:03:53 [info] [application] activated (main window created)
+00:03:53 [info] [tray] enabled=true
+00:03:53 [info] [updater] setup begin
+00:03:53 [info] [updater] setup platform=win32 packaged=true version=26.923.232338 e2e=false
+00:03:53 [info] [updater/win] transaction reconcile kind=none
+00:03:53 [info] [updater/win] auto-updater path feed=https://mimocode-cdn.xiaomimimo.com/mimocode/mimodesktop/manifest.json
+00:03:53 [info] [engine] prewarm startEngine
+00:03:53 [info] [plugins] automation background startup settled {"elapsedMs":1115}
+00:03:56 [info] [db] prewarm ok in 3674ms
+00:03:56 [info] [artifacts] reconciliation starting
+00:03:56 [log] [xiaomi-auth] probeStatus start (hidden-window path)
+00:03:57 [info] [engine] HostMcp runtime available=true
+00:03:57 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:04:03 [log] [DeviceId] generated:
+00:04:51 [info] [boot] MiMo Desktop version=26.923.232338 platform=win32 arch=arm64 os=Windows_NT/10.0.26200 sysver=10.0.26200 mem=7.7GB(free 3.0GB) edition=domestic packaged=true theme=system e2e=false authBypass=false logs=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\logs
+00:04:51 [info] [terminal-env] snapshot source: win-registry
+00:04:51 [info] [runtimes] injected env: MIMO_NODE,MIMO_PYTHON,MIMO_QPDF,MIMO_GITHUB_MCP_SERVER,MIMO_NODE_MODULES,MIMO_RIPGREP_PATH,MIMO_ELECTRON_NODE_HOST,PYTHONDONTWRITEBYTECODE
+00:04:51 [log] [api-base] cached-region reader injected after settle -> ignored
+00:04:51 [log] [api-base] system-country reader injected after settle -> ignored
+00:04:51 [info] [user-auth] init ok requiresCnAccount=true cachedRegion=CN localeCountry=CN
+00:04:51 [warn] [libreoffice-runtime] setup not-configured key=win32-arm64 (manifest 缺项或未发布;静默降级)
+00:04:51 [info] [on-demand-assets] setup ready descriptors=soundfont(1f),query-classifier(4f) not-configured=none
+00:04:51 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:04:51 [error] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+00:04:51 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:04:51 [info] [plugins] setup ok count=0
+00:04:51 [info] [apm] region=CN source=cache
+00:04:51 [log] [evolve-observatory] evolve observatory server listening on 127.0.0.1:62991
+00:04:51 [log] [mimo][api] listening on 127.0.0.1:62992
+00:04:51 [info] [boot] app ready in 890.55908203125ms
+00:04:51 [error] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+00:04:51 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:04:51 [info] [presentation-host] started socket=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\presentation-host\fa27082eeb08.sock
+00:04:51 [info] [application] activated (main window created)
+00:04:51 [info] [tray] enabled=true
+00:04:51 [info] [updater] setup begin
+00:04:51 [info] [updater] setup platform=win32 packaged=true version=26.923.232338 e2e=false
+00:04:51 [info] [updater/win] transaction reconcile kind=none
+00:04:51 [info] [updater/win] auto-updater path feed=https://mimocode-cdn.xiaomimimo.com/mimocode/mimodesktop/manifest.json
+00:04:51 [info] [engine] prewarm startEngine
+00:04:52 [info] [plugins] automation background startup settled {"elapsedMs":756}
+00:04:53 [info] [db] prewarm ok in 1902ms
+00:04:53 [info] [artifacts] reconciliation starting
+00:04:53 [log] [xiaomi-auth] probeStatus start (hidden-window path)
+00:04:55 [log] [DeviceId] generated:
+00:04:57 [info] [engine] HostMcp runtime available=true
+00:04:57 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:04:58 [warn] [query-classification] warmup-unavailable {"code":"inference-failed"}
+00:05:00 [info] Checking for update
+00:05:00 [log] [mimo] engine in-process server ready http://127.0.0.1:59111
+00:05:00 [info] [engine] prewarm ok
+00:05:00 [info] [mimo] loop_streak_recovery=on · experimental crop enabled for next requests
+00:05:00 [info] [libreoffice-runtime] prefetch skipped (not-configured)
+00:05:00 [info] [on-demand-assets] prefetch start queue=[soundfont,query-classifier]
+00:05:00 [info] [on-demand-assets] soundfont cache-hit (1 files);skip download
+00:05:00 [info] [on-demand-assets] query-classifier cache-hit (4 files);skip download
+00:05:01 [log] [model-catalog] xiaomi login not confirmed -> skip fetch, keep cache
+00:05:01 [info] Update for version 26.923.232338 is not available (latest version: 26.923.232338, downgrade is disallowed).
+00:05:01 [info] [artifacts] reconciliation started
+00:05:01 [log] [xiaomi-auth] probeStatus done kind=authenticated userId=602054437
+00:05:02 [info] [experiment] initializing app=mimoDesktop(新加坡) env=ksmoscloudsrv service=<sdk-default>
+00:05:02 [info] [config] loading from: https://cdn-exp-sg-recommend.pt.xiaomi.com/service/getClientBitMapExpConf/mimoDesktop(%E6%96%B0%E5%8A%A0%E5%9D%A1)
+00:05:02 [info] [user-auth] initialize done xiaomi-logged-in=true
+00:05:04 [info] [config] loaded tree for mimoDesktop(新加坡): children=2, upRuleIds=0
+00:05:04 [info] [config] remote config loaded: 1 apps
+00:05:04 [info] [config] loaded successfully: 1 apps
+00:05:04 [info] [experiment] key=feature_gates id=101197 type=string value={\n    "domestic": { "show_mcp_entry": false, "show_custom_model_button": true, "loop_streak_recovery": true, "show_evolve_entry": true,"show_computeruse": false, "show_browseruse": false, "show_pay": … elapsed=1815ms
+00:05:04 [info] [feature-gates] refresh: ok (elapsed=1840ms)
+00:05:04 [error] (node:6484) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `Xiaomi MiMo --trace-deprecation ...` to show where the warning was created)
+00:05:04 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=3817ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:05:04 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:05:04 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:05:04 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 3842 repoRoots = 16 build+reconcile = 6 set = 2 total = 3866
+00:05:31 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=26ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:05:31 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:05:31 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:05:31 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 31 repoRoots = 62 build+reconcile = 3 set = 1 total = 96
+00:06:01 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=32ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:06:01 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:06:01 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:06:01 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 37 repoRoots = 2 build+reconcile = 5 set = 1 total = 44
+00:06:31 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=24ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:06:31 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:06:31 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:06:31 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 28 repoRoots = 2 build+reconcile = 4 set = 1 total = 36
+00:06:49 [log] [sess-diag] engineFetch GET /session/ses_ffe5f298357dfffeN82Wln2VmT/task -> HTTP 200 elapsed=323ms responseBytes=2346 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:06:50 [log] [sess-diag] engineFetch GET /session/ses_ffe5f298357dfffeN82Wln2VmT/recovery -> HTTP 200 elapsed=128ms responseBytes=2 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:06:50 [log] [sess-diag] engineFetch GET /session/ses_ffe5f298357dfffeN82Wln2VmT/message -> HTTP 200 elapsed=84ms responseBytes=4527371 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:06:51 [log] [sess-diag] engineFetch GET /session/ses_ffe5f298357dfffeN82Wln2VmT/actors -> HTTP 200 elapsed=204ms responseBytes=579 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:07:01 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=49ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:07:01 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:07:01 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:07:01 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 52 repoRoots = 2 build+reconcile = 5 set = 1 total = 61
+00:07:31 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=46ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:07:31 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:07:31 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:07:31 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 50 repoRoots = 2 build+reconcile = 4 set = 1 total = 58
+00:08:01 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=38ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:08:01 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:08:01 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:08:01 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 42 repoRoots = 2 build+reconcile = 4 set = 1 total = 49
+00:08:31 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=38ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:08:31 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:08:31 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:08:31 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 40 repoRoots = 2 build+reconcile = 2 set = 1 total = 45
+00:09:01 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=25ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:09:01 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:09:01 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:09:01 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 29 repoRoots = 3 build+reconcile = 5 set = 1 total = 38
+00:09:31 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=31ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:09:31 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:09:31 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:09:31 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 35 repoRoots = 3 build+reconcile = 4 set = 1 total = 43
+00:10:01 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=38ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:10:01 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:10:01 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:10:01 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 43 repoRoots = 3 build+reconcile = 4 set = 1 total = 51
+00:10:31 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=78ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:10:31 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:10:31 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:10:31 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 177 repoRoots = 2 build+reconcile = 2 set = 1 total = 181
+00:11:01 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=24ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:11:01 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:11:01 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:11:01 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 28 repoRoots = 44 build+reconcile = 3 set = 1 total = 75
+00:11:31 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=12ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:11:31 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:11:31 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:11:31 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 14 repoRoots = 2 build+reconcile = 3 set = 1 total = 20
+00:12:01 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=22ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:12:01 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:12:01 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:12:01 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 27 repoRoots = 2 build+reconcile = 4 set = 1 total = 34
+00:12:31 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=20ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:12:31 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:12:31 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:12:31 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 24 repoRoots = 2 build+reconcile = 4 set = 1 total = 31
+00:12:38 [info] [intervention] {"stage":"query","at":1790352758208,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","elapsedMs":132,"textChars":101,"queryChars":101,"truncated":false,"result":"miss","reviewId":"mimo-intv-mimo_pc_input_text-599018120cb643a9a59041f7ae1110ee"}
+00:12:38 [info] [content-review] app=mimo_pc_input_text source=input why=oneshot batch=7c791fdd05261e94 api=/api/audit/check len=101 images=0 sha=1dc89ca5594e session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=168ms verdict=pass reviewId=mimo-mimo_pc_input_text-d6e1d6b09cbe444ea531e5eefd2731af detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_input_text-d6e1d6b09cbe444ea531e5eefd2731af offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:12:38 [info] [intervention] {"stage":"prepared","at":1790352758378,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","elapsedMs":302,"textChars":101,"result":"ready","reviewId":"mimo-intv-mimo_pc_input_text-599018120cb643a9a59041f7ae1110ee"}
+00:12:38 [info] [intervention] {"stage":"claim","at":1790352758398,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","sessionId":"b5094fe8d78e452f","elapsedMs":322,"textChars":101,"reviewId":"mimo-intv-mimo_pc_input_text-599018120cb643a9a59041f7ae1110ee"}
+00:12:38 [info] [smart-router] {"origin":"ses_ffe5f298357dfffeN82Wln2VmT","model":"mimo-pro"}
+00:12:38 [log] [sess-diag] engineFetch GET /session/ses_ffe5f298357dfffeN82Wln2VmT/task -> HTTP 200 elapsed=40ms responseBytes=2346 engineUrl= http://127.0.0.1:59111 engineId= mimocode
+00:12:38 [info] [harness] session origin=ses_ffe5f298357dfffeN82Wln2VmT sid=ses_ffe5f298357dfffeN82Wln2VmT source=user msgLen=101
+00:12:38 [info] [turn-power-save] acquired sysId=0 mode=prevent-app-suspension first=run:ses_ffe5f298357dfffeN82Wln2VmT
+00:12:38 [info] [intervention] {"stage":"dispatch","at":1790352758890,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","elapsedMs":814,"textChars":101,"reviewId":"mimo-intv-mimo_pc_input_text-599018120cb643a9a59041f7ae1110ee"}
+00:12:39 [info] [intervention] {"stage":"user-bound","at":1790352759000,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","elapsedMs":924,"textChars":101,"reviewId":"mimo-intv-mimo_pc_input_text-599018120cb643a9a59041f7ae1110ee"}
+00:12:39 [info] [intervention] {"stage":"model.start","at":1790352759552,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"1c991a195bb6dad0","ephemeral":false,"hasScope":true,"route":"upstream"}
+00:12:39 [info] [intervention] {"stage":"fetch.start","at":1790352759577,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"1c991a195bb6dad0","ephemeral":false,"hasScope":true,"protocol":"chat-completions","route":"upstream"}
+00:12:44 [info] [intervention] {"stage":"fetch.response","at":1790352764127,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"1c991a195bb6dad0","elapsedMs":4550,"status":200,"ephemeral":false,"hasScope":true,"protocol":"chat-completions","route":"upstream"}
+00:12:47 [info] [content-review/turn-binding] note-no-slot key=ses_ffe5f298357dfffeN82Wln2VmT anchor=msg:msg_g001a0d9571a29001zyeVe9dJC
+00:12:47 [info] [intervention] {"stage":"output","at":1790352767838,"runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","assistantId":"1c991a195bb6dad0","textChars":4,"reviewSkipped":false}
+00:12:50 [log] [perm-autopass] allow permission=bash
+00:12:52 [info] [intervention] {"stage":"model.start","at":1790352772844,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"8bae1c60fc354e56","ephemeral":false,"hasScope":true,"route":"upstream"}
+00:12:52 [info] [intervention] {"stage":"fetch.start","at":1790352772867,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"8bae1c60fc354e56","ephemeral":false,"hasScope":true,"protocol":"chat-completions","route":"upstream"}
+00:13:01 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=17ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:13:01 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:13:01 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:13:01 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 21 repoRoots = 2 build+reconcile = 4 set = 1 total = 28
+00:13:05 [info] [intervention] {"stage":"fetch.response","at":1790352785934,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"8bae1c60fc354e56","elapsedMs":13067,"status":200,"ephemeral":false,"hasScope":true,"protocol":"chat-completions","route":"upstream"}
+00:13:31 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=17ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:13:31 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:13:31 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:13:31 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 21 repoRoots = 2 build+reconcile = 5 set = 1 total = 28
+00:13:40 [info] [intervention] {"stage":"output","at":1790352820034,"runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","assistantId":"8bae1c60fc354e56","textChars":3,"reviewSkipped":false}
+00:14:01 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=18ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:14:01 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:14:01 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:14:01 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 21 repoRoots = 2 build+reconcile = 3 set = 1 total = 27
+00:14:29 [log] [perm-autopass] allow permission=external_directory
+00:14:30 [info] [intervention] {"stage":"model.start","at":1790352870231,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"6d24d5165da9eb73","ephemeral":false,"hasScope":true,"route":"upstream"}
+00:14:30 [info] [intervention] {"stage":"fetch.start","at":1790352870256,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"6d24d5165da9eb73","ephemeral":false,"hasScope":true,"protocol":"chat-completions","route":"upstream"}
+00:14:31 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=17ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:14:31 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:14:31 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:14:31 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 27 repoRoots = 2 build+reconcile = 4 set = 1 total = 34
+00:14:42 [info] [intervention] {"stage":"fetch.response","at":1790352882089,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"6d24d5165da9eb73","elapsedMs":11833,"status":200,"ephemeral":false,"hasScope":true,"protocol":"chat-completions","route":"upstream"}
+00:14:42 [info] [intervention] {"stage":"output","at":1790352882414,"runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","assistantId":"6d24d5165da9eb73","textChars":1,"reviewSkipped":false}
+00:14:44 [log] [perm-autopass] allow permission=bash
+00:14:46 [info] [intervention] {"stage":"model.start","at":1790352886066,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"d59788fb5730604e","ephemeral":false,"hasScope":true,"route":"upstream"}
+00:14:46 [info] [intervention] {"stage":"fetch.start","at":1790352886089,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"d59788fb5730604e","ephemeral":false,"hasScope":true,"protocol":"chat-completions","route":"upstream"}
+00:14:51 [info] [experiment] key=feature_gates id=101197 type=string value={\n    "domestic": { "show_mcp_entry": false, "show_custom_model_button": true, "loop_streak_recovery": true, "show_evolve_entry": true,"show_computeruse": false, "show_browseruse": false, "show_pay": … elapsed=1ms
+00:14:51 [info] [feature-gates] refresh: ok (elapsed=33ms)
+00:14:52 [info] [intervention] {"stage":"fetch.response","at":1790352892056,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"d59788fb5730604e","elapsedMs":5967,"status":200,"ephemeral":false,"hasScope":true,"protocol":"chat-completions","route":"upstream"}
+00:15:01 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=24ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:15:01 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:15:01 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:15:01 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 27 repoRoots = 2 build+reconcile = 4 set = 1 total = 34
+00:15:04 [info] [config] loading from: https://cdn-exp-sg-recommend.pt.xiaomi.com/service/getClientBitMapExpConf/mimoDesktop(%E6%96%B0%E5%8A%A0%E5%9D%A1)
+00:15:04 [info] [config] loaded tree for mimoDesktop(新加坡): children=2, upRuleIds=0
+00:15:04 [info] [config] remote config loaded: 1 apps
+00:15:04 [info] [config] loaded successfully: 1 apps
+00:15:07 [info] [intervention] {"stage":"model.start","at":1790352907095,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"41562d2d53b42392","ephemeral":false,"hasScope":true,"route":"upstream"}
+00:15:07 [info] [intervention] {"stage":"fetch.start","at":1790352907120,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"41562d2d53b42392","ephemeral":false,"hasScope":true,"protocol":"chat-completions","route":"upstream"}
+00:15:31 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=18ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:15:31 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:15:31 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:15:31 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 22 repoRoots = 8 build+reconcile = 4 set = 1 total = 35
+00:15:33 [info] [intervention] {"stage":"fetch.response","at":1790352933623,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","assistantId":"41562d2d53b42392","elapsedMs":26503,"status":200,"ephemeral":false,"hasScope":true,"protocol":"chat-completions","route":"upstream"}
+00:15:51 [info] [intervention] {"stage":"output","at":1790352951984,"runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","assistantId":"41562d2d53b42392","textChars":2,"reviewSkipped":false}
+00:15:53 [info] [content-review] app=mimo_pc_output_text source=conversation why=limit batch=55f70cc733675923 api=/api/audit/check len=392 images=0 sha=b8d7f986f6c5 session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=208ms verdict=pass reviewId=mimo-mimo_pc_output_text-183f0507b1064b32999f04a81f036d49 detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_output_text-183f0507b1064b32999f04a81f036d49 offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:15:56 [info] [intervention] {"stage":"closed","at":1790352956399,"requestId":"e00f2e8cda3652f7","origin":"b5094fe8d78e452f","runId":"1ef5cb723608d1fa","sessionId":"b5094fe8d78e452f","userId":"c379ffe60f7139cb","elapsedMs":198323,"textChars":101,"reviewId":"mimo-intv-mimo_pc_input_text-599018120cb643a9a59041f7ae1110ee"}
+00:15:56 [info] [turn-power-save] released sysId=0 last=run:ses_ffe5f298357dfffeN82Wln2VmT
+00:15:56 [log] [sess-diag] engineFetch GET /session/ses_ffe5f298357dfffeN82Wln2VmT/task -> HTTP 200 elapsed=86ms responseBytes=2346 engineUrl= http://127.0.0.1:59111 engineId= mimocode
+00:15:56 [log] [sess-diag] engineFetch GET /session/ses_ffe5f298357dfffeN82Wln2VmT/recovery -> HTTP 200 elapsed=150ms responseBytes=2 engineUrl= http://127.0.0.1:59111 engineId= mimocode
+00:15:56 [log] [sess-diag] engineFetch GET /session/ses_ffe5f298357dfffeN82Wln2VmT -> HTTP 200 elapsed=169ms responseBytes=29556 engineUrl= http://127.0.0.1:59111 engineId= mimocode
+00:15:56 [info] [content-review] app=mimo_pc_output_text source=conversation why=flush batch=bc05b53254023302 api=/api/audit/check len=41 images=0 sha=eb1b3e0ba9ac session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=239ms verdict=pass reviewId=mimo-mimo_pc_output_text-79f5977a260d47fab519990bb6a41e0d detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_output_text-79f5977a260d47fab519990bb6a41e0d offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:15:56 [info] [content-review] app=mimo_pc_output_text source=conversation why=flush batch=b63d0f84bcc51b8f api=/api/audit/check len=171 images=0 sha=11212decf5f7 session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=166ms verdict=pass reviewId=mimo-mimo_pc_output_text-2e9f570eea6540b8ac1fde088e07a569 detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_output_text-2e9f570eea6540b8ac1fde088e07a569 offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:15:56 [info] [content-review] app=mimo_pc_output_text source=conversation why=flush batch=02995523e50997ca api=/api/audit/check len=14 images=0 sha=831b6b4b45b8 session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=135ms verdict=pass reviewId=mimo-mimo_pc_output_text-4f1d6b3cb35f46de8bffe6effbc2ee39 detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_output_text-4f1d6b3cb35f46de8bffe6effbc2ee39 offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:15:57 [info] [content-review] app=mimo_pc_output_text source=conversation why=flush batch=55f70cc733675923 api=/api/audit/check len=291 images=0 sha=6accc241a40a session=ses_ffe5f298357dfffeN82Wln2VmT elapsed=181ms verdict=pass reviewId=mimo-mimo_pc_output_text-4bf7f70198f74a1485c1c48d48fc621e detail=[serverVerdict=pass resultCode=1 subCode=9 aigc=- hints=0 detailsLen=0 resp=[passed=pass resultCode=1 reviewId=mimo-mimo_pc_output_text-4bf7f70198f74a1485c1c48d48fc621e offlineReason= offlineDetails=[0 chars] hint=[0 items] subCode=9 aigc=null]]
+00:16:01 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=41ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:16:01 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:16:01 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:16:01 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 94 repoRoots = 2 build+reconcile = 3 set = 1 total = 100
+00:16:31 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=71ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:16:31 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:16:31 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:16:31 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 77 repoRoots = 67 build+reconcile = 4 set = 2 total = 150
+00:17:01 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=25ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:17:01 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:17:01 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:17:01 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 30 repoRoots = 2 build+reconcile = 4 set = 1 total = 37
+00:17:28 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=465ms responseBytes=38752 engineUrl= http://127.0.0.1:59111 engineId= (default)
+00:17:28 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:17:28 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:17:28 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 474 repoRoots = 3 build+reconcile = 11 set = 2 total = 490
+00:17:31 [info] [exit-app] quit via tray menu
+00:17:31 [info] [exit-app] before-quit
+00:17:31 [info] [window] window closed
+00:17:31 [info] [exit-app] window-all-closed platform=win32 appQuitting=true willQuit=false
+00:17:42 [info] [boot] MiMo Desktop version=26.923.232338 platform=win32 arch=arm64 os=Windows_NT/10.0.26200 sysver=10.0.26200 mem=7.7GB(free 2.8GB) edition=domestic packaged=true theme=system e2e=false authBypass=false logs=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\logs
+00:17:42 [info] [terminal-env] snapshot source: win-registry
+00:17:42 [info] [runtimes] injected env: MIMO_NODE,MIMO_PYTHON,MIMO_QPDF,MIMO_GITHUB_MCP_SERVER,MIMO_NODE_MODULES,MIMO_RIPGREP_PATH,MIMO_ELECTRON_NODE_HOST,PYTHONDONTWRITEBYTECODE
+00:17:42 [log] [api-base] cached-region reader injected after settle -> ignored
+00:17:42 [log] [api-base] system-country reader injected after settle -> ignored
+00:17:42 [info] [user-auth] init ok requiresCnAccount=true cachedRegion=CN localeCountry=CN
+00:17:42 [warn] [libreoffice-runtime] setup not-configured key=win32-arm64 (manifest 缺项或未发布;静默降级)
+00:17:42 [info] [on-demand-assets] setup ready descriptors=soundfont(1f),query-classifier(4f) not-configured=none
+00:17:42 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:17:42 [error] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+00:17:42 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:17:42 [info] [plugins] setup ok count=0
+00:17:42 [info] [apm] region=CN source=cache
+00:17:42 [log] [evolve-observatory] evolve observatory server listening on 127.0.0.1:51175
+00:17:42 [log] [mimo][api] listening on 127.0.0.1:51176
+00:17:42 [info] [boot] app ready in 940.1298828125ms
+00:17:42 [error] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+00:17:42 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:17:42 [info] [presentation-host] started socket=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\presentation-host\72c7ce32869f.sock
+00:17:42 [info] [application] activated (main window created)
+00:17:42 [info] [tray] enabled=true
+00:17:42 [info] [updater] setup begin
+00:17:42 [info] [updater] setup platform=win32 packaged=true version=26.923.232338 e2e=false
+00:17:42 [info] [updater/win] transaction reconcile kind=none
+00:17:42 [info] [updater/win] auto-updater path feed=https://mimocode-cdn.xiaomimimo.com/mimocode/mimodesktop/manifest.json
+00:17:42 [info] [engine] prewarm startEngine
+00:17:43 [info] [plugins] automation background startup settled {"elapsedMs":673}
+00:17:44 [info] [db] prewarm ok in 1834ms
+00:17:44 [info] [artifacts] reconciliation starting
+00:17:44 [log] [xiaomi-auth] probeStatus start (hidden-window path)
+00:17:45 [info] [engine] HostMcp runtime available=true
+00:17:45 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:17:45 [warn] [query-classification] warmup-unavailable {"code":"inference-failed"}
+00:17:47 [log] [DeviceId] generated:
+00:17:49 [log] [mimo] engine in-process server ready http://127.0.0.1:50933
+00:17:49 [info] [engine] prewarm ok
+00:17:49 [info] [mimo] loop_streak_recovery=on · experimental crop enabled for next requests
+00:17:49 [info] [libreoffice-runtime] prefetch skipped (not-configured)
+00:17:49 [info] [on-demand-assets] prefetch start queue=[soundfont,query-classifier]
+00:17:49 [info] [on-demand-assets] soundfont cache-hit (1 files);skip download
+00:17:49 [info] [on-demand-assets] query-classifier cache-hit (4 files);skip download
+00:17:49 [info] Checking for update
+00:17:49 [log] [model-catalog] xiaomi login not confirmed -> skip fetch, keep cache
+00:17:50 [log] [xiaomi-auth] probeStatus done kind=authenticated userId=602054437
+00:17:51 [info] [experiment] initializing app=mimoDesktop(新加坡) env=ksmoscloudsrv service=<sdk-default>
+00:17:51 [info] [config] loading from: https://cdn-exp-sg-recommend.pt.xiaomi.com/service/getClientBitMapExpConf/mimoDesktop(%E6%96%B0%E5%8A%A0%E5%9D%A1)
+00:17:51 [info] [user-auth] initialize done xiaomi-logged-in=true
+00:17:51 [info] Update for version 26.923.232338 is not available (latest version: 26.923.232338, downgrade is disallowed).
+00:17:52 [info] [config] loaded tree for mimoDesktop(新加坡): children=2, upRuleIds=0
+00:17:52 [info] [config] remote config loaded: 1 apps
+00:17:52 [info] [config] loaded successfully: 1 apps
+00:17:52 [info] [experiment] key=feature_gates id=101197 type=string value={\n    "domestic": { "show_mcp_entry": false, "show_custom_model_button": true, "loop_streak_recovery": true, "show_evolve_entry": true,"show_computeruse": false, "show_browseruse": false, "show_pay": … elapsed=909ms
+00:17:52 [info] [feature-gates] refresh: ok (elapsed=932ms)
+00:17:52 [error] (node:6968) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `Xiaomi MiMo --trace-deprecation ...` to show where the warning was created)
+00:17:52 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=2805ms responseBytes=38752 engineUrl= http://127.0.0.1:50933 engineId= (default)
+00:17:52 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:17:52 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:17:52 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 2830 repoRoots = 15 build+reconcile = 6 set = 1 total = 2852
+00:17:54 [info] [artifacts] reconciliation started
+00:17:54 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=34ms responseBytes=38752 engineUrl= http://127.0.0.1:50933 engineId= (default)
+00:17:54 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:17:54 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:17:54 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 36 repoRoots = 1 build+reconcile = 3 set = 1 total = 41
+00:17:56 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=56ms responseBytes=38752 engineUrl= http://127.0.0.1:50933 engineId= (default)
+00:17:56 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:17:56 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:17:56 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 60 repoRoots = 2 build+reconcile = 3 set = 1 total = 65
+00:17:58 [info] [exit-app] quit via tray menu
+00:17:58 [info] [exit-app] before-quit
+00:17:58 [info] [window] window closed
+00:17:58 [info] [exit-app] window-all-closed platform=win32 appQuitting=true willQuit=false
+00:18:29 [info] [boot] MiMo Desktop version=26.923.232338 platform=win32 arch=x64 os=Windows_NT/10.0.26200 sysver=10.0.26200 mem=7.7GB(free 2.8GB) edition=domestic packaged=true theme=system e2e=false authBypass=false logs=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\logs
+00:18:29 [info] [terminal-env] snapshot source: win-registry
+00:18:29 [info] [runtimes] injected env: MIMO_NODE,MIMO_NPM,MIMO_PYTHON,MIMO_QPDF,MIMO_GITHUB_MCP_SERVER,MIMO_NODE_MODULES,MIMO_RIPGREP_PATH,MIMO_ELECTRON_NODE_HOST,PYTHONDONTWRITEBYTECODE
+00:18:29 [log] [api-base] cached-region reader injected after settle -> ignored
+00:18:29 [log] [api-base] system-country reader injected after settle -> ignored
+00:18:29 [info] [user-auth] init ok requiresCnAccount=true cachedRegion=CN localeCountry=CN
+00:18:29 [info] [libreoffice-runtime] setup ready key=win32-x64 version=25.8.7 archive=160665171 bytes
+00:18:29 [info] [on-demand-assets] setup ready descriptors=soundfont(1f),query-classifier(4f) not-configured=none
+00:18:29 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:18:29 [error] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+00:18:29 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:18:29 [info] [plugins] setup ok count=0
+00:18:30 [info] [apm] region=CN source=cache
+00:18:30 [log] [evolve-observatory] evolve observatory server listening on 127.0.0.1:55625
+00:18:30 [log] [mimo][api] listening on 127.0.0.1:55626
+00:18:30 [info] [boot] app ready in 2165.5791015625ms
+00:18:30 [error] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+00:18:30 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:18:30 [info] [presentation-host] started socket=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\presentation-host\250ffb25eea9.sock
+00:18:30 [info] [application] activated (main window created)
+00:18:30 [info] [tray] enabled=true
+00:18:30 [info] [updater] setup begin
+00:18:30 [info] [updater] setup platform=win32 packaged=true version=26.923.232338 e2e=false
+00:18:30 [info] [updater/win] transaction reconcile kind=none
+00:18:30 [info] [updater/win] auto-updater path feed=https://mimocode-cdn.xiaomimimo.com/mimocode/mimodesktop/manifest.json
+00:18:30 [info] [engine] prewarm startEngine
+00:18:31 [info] [plugins] automation background startup settled {"elapsedMs":1165}
+00:18:34 [info] [db] prewarm ok in 3782ms
+00:18:34 [info] [artifacts] reconciliation starting
+00:18:34 [log] [xiaomi-auth] probeStatus start (hidden-window path)
+00:18:35 [info] [engine] HostMcp runtime available=true
+00:18:35 [info] [engine] reloadConfigOnNextSession (plugin change)
+00:18:41 [log] [DeviceId] generated:
+00:18:41 [info] [query-classification] ready
+00:18:46 [log] [xiaomi-auth] probeStatus done kind=indeterminate
+00:18:46 [info] [user-auth] initialize done xiaomi-logged-in=false
+00:18:46 [error] [xiaomi-auth] hidden session preparation failed Error: ERR_FAILED (-2) loading 'https://mimo-server-cn.xiaomimimo.com/api/user/xiaomi/me'\n    at rejectAndCleanup (node:electron/js2c/browser_init:2:89772)\n    at finishListener (node:electron/js2c/browser_init:2:89934)\n    at WebContents.stopLoadingListener (node:electron/js2c/browser_init:2:90321)\n    at WebContents.emit (node:events:521:24)
+00:18:46 [info] Checking for update
+00:18:47 [info] [libreoffice-runtime] prefetch start key=win32-x64 version=25.8.7
+00:18:47 [info] [on-demand-assets] prefetch start queue=[soundfont,query-classifier]
+00:18:47 [info] [on-demand-assets] soundfont cache-hit (1 files);skip download
+00:18:47 [info] [on-demand-assets] query-classifier cache-hit (4 files);skip download
+00:18:47 [info] [libreoffice-runtime] cache-hit exact (version=25.8.7);skip download
+00:18:48 [log] [mimo] engine in-process server ready http://127.0.0.1:52280
+00:18:48 [info] [engine] prewarm ok
+00:18:48 [log] [xiaomi-auth] probeStatus start (hidden-window path)
+00:18:48 [log] [model-catalog] xiaomi login not confirmed -> skip fetch, keep cache
+00:18:48 [info] [mimo] loop_streak_recovery=on · experimental crop enabled for next requests
+00:18:48 [info] Update for version 26.923.232338 is not available (latest version: 26.923.232338, downgrade is disallowed).
+00:18:50 [info] [artifacts] reconciliation started
+00:18:52 [log] [xiaomi-auth] probeStatus done kind=authenticated userId=602054437
+00:18:55 [info] [experiment] initializing app=mimoDesktop(新加坡) env=ksmoscloudsrv service=<sdk-default>
+00:18:55 [info] [config] loading from: https://cdn-exp-sg-recommend.pt.xiaomi.com/service/getClientBitMapExpConf/mimoDesktop(%E6%96%B0%E5%8A%A0%E5%9D%A1)
+00:18:55 [error] (node:1840) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `Xiaomi MiMo --trace-deprecation ...` to show where the warning was created)
+00:18:58 [info] [config] loaded tree for mimoDesktop(新加坡): children=2, upRuleIds=0
+00:18:58 [info] [config] remote config loaded: 1 apps
+00:18:58 [info] [config] loaded successfully: 1 apps
+00:18:58 [info] [experiment] key=feature_gates id=101197 type=string value={\n    "domestic": { "show_mcp_entry": false, "show_custom_model_button": true, "loop_streak_recovery": true, "show_evolve_entry": true,"show_computeruse": false, "show_browseruse": false, "show_pay": … elapsed=2768ms
+00:18:58 [info] [feature-gates] refresh: ok (elapsed=2785ms)
+00:18:58 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=11561ms responseBytes=38752 engineUrl= http://127.0.0.1:52280 engineId= (default)
+00:18:58 [log] [sess-diag] loadEngineSessions: 原始条数 = 18
+00:18:58 [log] [sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18
+00:18:58 [log] [sess-diag] loadEngineSessions: 耗时(ms) fetch = 11680 repoRoots = 43 build+reconcile = 26 set = 5 total = 11754
+00:19:03 [info] [exit-app] quit via tray menu
+00:19:03 [info] [exit-app] before-quit
+00:19:03 [info] [window] window closed
+00:19:03 [info] [exit-app] window-all-closed platform=win32 appQuitting=true willQuit=false

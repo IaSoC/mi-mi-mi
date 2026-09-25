@@ -1,0 +1,189 @@
+18:03:10 [info] [boot] MiMo Desktop version=26.923.232338 platform=win32 arch=x64 os=Windows_NT/10.0.26200 sysver=10.0.26200 mem=7.7GB(free 0.8GB) edition=domestic packaged=true theme=system e2e=false authBypass=false logs=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\logs
+18:03:10 [info] [terminal-env] snapshot source: win-registry
+18:03:10 [info] [runtimes] injected env: MIMO_NODE,MIMO_NPM,MIMO_PYTHON,MIMO_QPDF,MIMO_GITHUB_MCP_SERVER,MIMO_NODE_MODULES,MIMO_RIPGREP_PATH,MIMO_ELECTRON_NODE_HOST,PYTHONDONTWRITEBYTECODE
+18:03:10 [log] [api-base] cached-region reader injected after settle -> ignored
+18:03:10 [log] [api-base] system-country reader injected after settle -> ignored
+18:03:10 [info] [user-auth] init ok requiresCnAccount=true cachedRegion=CN localeCountry=CN
+18:03:10 [info] [libreoffice-runtime] setup ready key=win32-x64 version=25.8.7 archive=160665171 bytes
+18:03:10 [info] [on-demand-assets] setup ready descriptors=soundfont(1f),query-classifier(4f) not-configured=none
+18:03:10 [info] [engine] reloadConfigOnNextSession (plugin change)
+18:03:10 [error] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+18:03:10 [info] [engine] reloadConfigOnNextSession (plugin change)
+18:03:10 [info] [plugins] setup ok count=0
+18:03:10 [info] [apm] region=CN source=edition
+18:03:11 [log] [evolve-observatory] evolve observatory server listening on 127.0.0.1:53161
+18:03:11 [log] [mimo][api] listening on 127.0.0.1:53162
+18:03:11 [info] [boot] app ready in 12184.906005859375ms
+18:03:11 [error] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+18:03:11 [info] [engine] reloadConfigOnNextSession (plugin change)
+18:03:11 [info] [presentation-host] started socket=C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\presentation-host\1a478f689b36.sock
+18:03:13 [info] [application] activated (main window created)
+18:03:13 [info] [tray] enabled=true
+18:03:13 [info] [updater] setup begin
+18:03:13 [info] [updater] setup platform=win32 packaged=true version=26.923.232338 e2e=false
+18:03:13 [info] [updater/win] transaction reconcile kind=none
+18:03:13 [info] [updater/win] auto-updater path feed=https://mimocode-cdn.xiaomimimo.com/mimocode/mimodesktop/manifest.json
+18:03:13 [info] [engine] prewarm startEngine
+18:03:13 [info] [plugins] automation background startup settled {"elapsedMs":3415}
+18:03:19 [warn] [query-classification] warmup-unavailable {"code":"resource-missing"}
+18:03:20 [info] [db] prewarm ok in 7508ms
+18:03:20 [info] [artifacts] reconciliation starting
+18:03:20 [info] [win-shortcut] icon-fixed C:\Users\xiaomi\Desktop\Xiaomi MiMo.lnk → C:\Users\xiaomi\AppData\Local\Programs\Xiaomi MiMo\Xiaomi MiMo.exe
+18:03:20 [info] [win-shortcut] icon-fixed C:\Users\xiaomi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Xiaomi MiMo.lnk → C:\Users\xiaomi\AppData\Local\Programs\Xiaomi MiMo\Xiaomi MiMo.exe
+18:03:20 [info] [updater/win-shortcut] repaired 2 shortcut(s) forceIconRefresh=true
+18:03:21 [log] [xiaomi-auth] probeStatus fast path=no-credentials
+18:03:21 [log] [xiaomi-auth] probeStatus done kind=unauthenticated
+18:03:21 [info] [experiment] key=feature_gates skipped: no signed-in user
+18:03:21 [info] [feature-gates] refresh: miss (elapsed=5ms)
+18:03:21 [info] [user-auth] initialize done xiaomi-logged-in=false
+18:03:22 [info] [engine] HostMcp runtime available=true
+18:03:22 [info] [engine] reloadConfigOnNextSession (plugin change)
+18:03:27 [info] Checking for update
+18:03:27 [info] Generated new staging user ID: 96ac18de-7530-5186-898d-02ec8bb461c9
+18:03:27 [log] [mimo] engine in-process server ready http://127.0.0.1:53167
+18:03:27 [info] [engine] prewarm ok
+18:03:27 [info] [artifacts] reconciliation started
+18:03:28 [info] Update for version 26.923.232338 is not available (latest version: 26.923.232338, downgrade is disallowed).
+18:03:33 [info] [libreoffice-runtime] prefetch start key=win32-x64 version=25.8.7
+18:03:33 [info] [on-demand-assets] prefetch start queue=[soundfont,query-classifier]
+18:03:33 [info] [on-demand-assets] soundfont downloading 1 files, expected total=39900972 bytes
+18:03:33 [info] [on-demand-assets] soundfont file[1/1] MuseScore_General.sf3 start (expected=39900972 bytes, url=https://mimocode-cdn.xiaomimimo.com/mimocode/mimo-vendor/soundfont/5b85b6c2c61d10b2b91cddd41efcce7b25cd31c8271d511c73afafbef20b6fa3.sf3)
+18:03:33 [info] [libreoffice-runtime] archive start (expected=160665171 bytes, url=https://mimocode-cdn.xiaomimimo.com/mimocode/mimo-vendor/libreoffice/win32-x64/cabbde6cfeb65df418c60ea9f62bbe5ed085bae729eaeddabcb8ea989d42b7a1.tar.gz)
+18:03:36 [log] \n\n
+18:03:36 [log] ╔════════════════════════════════════════════════════════════════════════════════╗
+18:03:36 [log] ║  🔐 小米账号登录流程开始                                                                 ║
+18:03:36 [log] ╚════════════════════════════════════════════════════════════════════════════════╝
+18:03:36 [log] [SSO:XiaomiSSO] 时间:
+18:03:36 [log] \n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─
+18:03:36 [log] [SSO:XiaomiSSO] diagnostic details redacted
+18:03:37 [log] [model-catalog] xiaomi login not confirmed -> skip fetch, keep cache
+18:03:44 [log] [DeviceId] generated:
+18:03:44 [log] [xiaomi-auth] login-surface load start=https://mimo-server-cn.xiaomimimo.com/api/user/xiaomi/me
+18:03:44 [log] [SSO:XiaomiSSO] Waiting for page to stabilize...
+18:03:45 [log] [sess-diag] engineFetch GET /global/import/scan -> HTTP 200 elapsed=10212ms responseBytes=163 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:03:45 [log] [SSO:XiaomiSSO] diagnostic details redacted
+18:03:45 [log] [SSO:CookieListener] diagnostic details redacted
+18:03:45 [log] [xiaomi-auth] login-surface at=login-flow url=https://account.xiaomi.com/pass/serviceLogin?…
+18:03:45 [log] [xiaomi-auth] login-surface at=login-flow url=https://account.xiaomi.com/fe/service/login?…
+18:03:47 [error] (node:29680) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `Xiaomi MiMo --trace-deprecation ...` to show where the warning was created)
+18:03:48 [log] [xiaomi-auth] login-surface at=login-flow url=https://account.xiaomi.com/fe/service/login?…
+18:03:57 [info] [on-demand-assets] soundfont file[1/1] MuseScore_General.sf3 done (elapsed=23692ms)
+18:03:57 [info] [on-demand-assets] soundfont ready (downloaded, elapsed=23716ms, attempts=1)
+18:03:57 [info] [on-demand-assets] query-classifier downloading 4 files, expected total=170750527 bytes
+18:03:57 [info] [on-demand-assets] query-classifier file[1/4] model_fp16.onnx start (expected=157028981 bytes, url=https://mimocode-cdn.xiaomimimo.com/mimocode/mimo-vendor/query-classifier/30a68d6e5e95e380b8525c7a2cab035859e779baf526ae0e7b81b4e7d5a82e10.onnx)
+18:04:09 [info] [libreoffice-runtime] archive done (elapsed=35661ms)
+18:04:09 [info] [libreoffice-runtime] signature done (elapsed=609ms)
+18:04:09 [info] [libreoffice-runtime] archive verified (elapsed=34ms)
+18:04:22 [info] [on-demand-assets] query-classifier file[1/4] model_fp16.onnx done (elapsed=25106ms)
+18:04:22 [info] [on-demand-assets] query-classifier file[2/4] tokenizer.json start (expected=13718451 bytes, url=https://mimocode-cdn.xiaomimimo.com/mimocode/mimo-vendor/query-classifier/38239a292564cf5b181260d9b1e9acfd4c6b75d38455f0fc3ca4c34f0ee15552.json)
+18:04:25 [info] [libreoffice-runtime] extracted (elapsed=15334ms)
+18:04:25 [info] [libreoffice-runtime] runtime verified (elapsed=2ms)
+18:04:25 [info] [libreoffice-runtime] installed version=25.8.7 → C:\Users\xiaomi\AppData\Roaming\Xiaomi MiMo\runtimes\libreoffice\25.8.7\win32-x64
+18:04:25 [info] [libreoffice-runtime] ready (downloaded version=25.8.7, elapsed=51712ms, attempts=1)
+18:04:25 [info] [on-demand-assets] query-classifier file[2/4] tokenizer.json done (elapsed=2941ms)
+18:04:25 [info] [on-demand-assets] query-classifier file[3/4] tokenizer_config.json start (expected=572 bytes, url=https://mimocode-cdn.xiaomimimo.com/mimocode/mimo-vendor/query-classifier/a610934a0c3e4f0287078cfaf77b6931fd13598445d27f860cc436b8bf2c4454.json)
+18:04:25 [info] [on-demand-assets] query-classifier file[3/4] tokenizer_config.json done (elapsed=112ms)
+18:04:25 [info] [on-demand-assets] query-classifier file[4/4] manifest.json start (expected=2523 bytes, url=https://mimocode-cdn.xiaomimimo.com/mimocode/mimo-vendor/query-classifier/1a28cdc6d5a2dcb5004afb5bee3087c065dc5f312985f796ddb17ef6435c1701.json)
+18:04:25 [info] [on-demand-assets] query-classifier file[4/4] manifest.json done (elapsed=110ms)
+18:04:25 [info] [on-demand-assets] query-classifier ready (downloaded, elapsed=28274ms, attempts=1)
+18:04:44 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=72553ms responseBytes=2 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:04:44 [log] [sess-diag] loadEngineSessions: 原始条数 = 0
+18:04:44 [log] [sess-diag] loadEngineSessions: 空/非数组 → 保留现状
+18:13:10 [info] [experiment] key=feature_gates skipped: no signed-in user
+18:13:10 [info] [feature-gates] refresh: miss (elapsed=121ms)
+18:18:45 [error] \n
+18:18:45 [error] ╔════════════════════════════════════════════════════════════════════════════════╗
+18:18:45 [error] ║  ❌ 小米账号登录流程出错                                                                  ║
+18:18:45 [error] ╚════════════════════════════════════════════════════════════════════════════════╝
+18:18:45 [error] [SSO:XiaomiSSO] 登录失败: Error: Login timeout after 15 minutes
+18:18:45 [error] [miaccount] login failed kind=Error msg=Login timeout after 15 minutes
+18:18:45 [log] [xiaomi-auth] sdk login not authenticated kind=indeterminate
+18:23:10 [info] [experiment] key=feature_gates skipped: no signed-in user
+18:23:10 [info] [feature-gates] refresh: miss (elapsed=1ms)
+18:33:10 [info] [experiment] key=feature_gates skipped: no signed-in user
+18:33:10 [info] [feature-gates] refresh: miss (elapsed=44ms)
+18:43:10 [info] [experiment] key=feature_gates skipped: no signed-in user
+18:43:10 [info] [feature-gates] refresh: miss (elapsed=17ms)
+18:50:28 [info] [hidden-bounds] bounds drifted after show, re-applied {"current":{"x":170,"y":81,"width":1368,"height":883},"target":{"x":170,"y":81,"width":1367,"height":882}}
+18:50:29 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=501ms responseBytes=2 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:50:29 [log] [sess-diag] loadEngineSessions: 原始条数 = 0
+18:50:29 [log] [sess-diag] loadEngineSessions: 空/非数组 → 保留现状
+18:50:30 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=355ms responseBytes=2 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:50:30 [log] [sess-diag] loadEngineSessions: 原始条数 = 0
+18:50:30 [log] [sess-diag] loadEngineSessions: 空/非数组 → 保留现状
+18:50:47 [log] \n\n
+18:50:47 [log] ╔════════════════════════════════════════════════════════════════════════════════╗
+18:50:47 [log] ║  🔐 小米账号登录流程开始                                                                 ║
+18:50:47 [log] ╚════════════════════════════════════════════════════════════════════════════════╝
+18:50:47 [log] [SSO:XiaomiSSO] 时间:
+18:50:47 [log] \n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─
+18:50:47 [log] [SSO:XiaomiSSO] diagnostic details redacted
+18:50:47 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=174ms responseBytes=2 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:50:47 [log] [sess-diag] loadEngineSessions: 原始条数 = 0
+18:50:47 [log] [sess-diag] loadEngineSessions: 空/非数组 → 保留现状
+18:50:47 [log] [xiaomi-auth] login-surface load start=https://mimo-server-cn.xiaomimimo.com/api/user/xiaomi/me
+18:50:48 [log] [SSO:XiaomiSSO] Waiting for page to stabilize...
+18:50:48 [log] [SSO:XiaomiSSO] diagnostic details redacted
+18:50:48 [log] [SSO:CookieListener] diagnostic details redacted
+18:50:48 [log] [xiaomi-auth] login-surface at=login-flow url=https://account.xiaomi.com/pass/serviceLogin?…
+18:50:49 [log] [xiaomi-auth] login-surface at=login-flow url=https://account.xiaomi.com/fe/service/login?…
+18:50:49 [log] [xiaomi-auth] login-surface at=login-flow url=https://account.xiaomi.com/fe/service/login?…
+18:50:54 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=324ms responseBytes=2 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:50:54 [log] [sess-diag] loadEngineSessions: 原始条数 = 0
+18:50:54 [log] [sess-diag] loadEngineSessions: 空/非数组 → 保留现状
+18:50:54 [log] [xiaomi-auth] login-surface at=account-other url=https://account.xiaomi.com/fe/service/lpLogin/lp?…
+18:50:56 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=54ms responseBytes=2 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:50:56 [log] [sess-diag] loadEngineSessions: 原始条数 = 0
+18:50:56 [log] [sess-diag] loadEngineSessions: 空/非数组 → 保留现状
+18:51:00 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=53ms responseBytes=2 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:51:00 [log] [sess-diag] loadEngineSessions: 原始条数 = 0
+18:51:00 [log] [sess-diag] loadEngineSessions: 空/非数组 → 保留现状
+18:51:30 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=81ms responseBytes=2 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:51:30 [log] [sess-diag] loadEngineSessions: 原始条数 = 0
+18:51:30 [log] [sess-diag] loadEngineSessions: 空/非数组 → 保留现状
+18:51:38 [log] [SSO:CookieListener] diagnostic details redacted
+18:51:38 [log] [SSO:CookieListener] diagnostic details redacted
+18:51:38 [log] [SSO:XiaomiSSO] diagnostic details redacted
+18:51:38 [log] [xiaomi-auth] login-surface at=me url=http://mimo-server-cn.xiaomimimo.com/api/user/xiaomi/me?…
+18:51:38 [log] [xiaomi-auth] probeMe in-window start
+18:51:39 [log] [xiaomi-auth] login-surface at=me url=http://mimo-server-cn.xiaomimimo.com/api/user/xiaomi/me?…
+18:51:39 [log] [SSO:XiaomiSSO] diagnostic details redacted
+18:51:39 [log] [SSO:XiaomiSSO] diagnostic details redacted
+18:51:39 [log] [SSO:XiaomiSSO] 耗时:
+18:51:39 [log] [SSO:XiaomiSSO] diagnostic details redacted
+18:51:39 [log] \n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─\n[SSO:XiaomiSSO] ─
+18:51:39 [log] [SSO:XiaomiSSO] 📍 Step 2: 保存账户信息到加密存储
+18:51:39 [log] [SSO:Account] Account saved to secure storage
+18:51:39 [log] [SSO:XiaomiSSO] ✅ 账户已保存
+18:51:39 [log] [SSO:XiaomiSSO] 耗时:
+18:51:39 [log] [SSO:XiaomiSSO] 登录凭据已保存，跳过可选登录后处理
+18:51:39 [log] [miaccount] login completed; business session will be established by hidden redirect chain
+18:51:39 [log] [xiaomi-auth] probeMe ok loggedIn=true region=CN country=CN
+18:51:42 [info] [experiment] key=feature_gates skipped: no signed-in user
+18:51:42 [info] [feature-gates] refresh: miss (elapsed=3ms)
+18:52:00 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=176ms responseBytes=2 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:52:00 [log] [sess-diag] loadEngineSessions: 原始条数 = 0
+18:52:00 [log] [sess-diag] loadEngineSessions: 空/非数组 → 保留现状
+18:52:18 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=130ms responseBytes=2 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:52:18 [log] [sess-diag] loadEngineSessions: 原始条数 = 0
+18:52:18 [log] [sess-diag] loadEngineSessions: 空/非数组 → 保留现状
+18:52:25 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=325ms responseBytes=2 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:52:25 [log] [sess-diag] loadEngineSessions: 原始条数 = 0
+18:52:25 [log] [sess-diag] loadEngineSessions: 空/非数组 → 保留现状
+18:52:30 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=39ms responseBytes=2 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:52:30 [log] [sess-diag] loadEngineSessions: 原始条数 = 0
+18:52:30 [log] [sess-diag] loadEngineSessions: 空/非数组 → 保留现状
+18:52:38 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=33ms responseBytes=2 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:52:38 [log] [sess-diag] loadEngineSessions: 原始条数 = 0
+18:52:38 [log] [sess-diag] loadEngineSessions: 空/非数组 → 保留现状
+18:52:41 [log] [sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=39ms responseBytes=2 engineUrl= http://127.0.0.1:53167 engineId= (default)
+18:52:41 [log] [sess-diag] loadEngineSessions: 原始条数 = 0
+18:52:41 [log] [sess-diag] loadEngineSessions: 空/非数组 → 保留现状
+18:53:10 [info] [experiment] initializing app=mimoDesktop(新加坡) env=ksmoscloudsrv service=<sdk-default>
+18:53:10 [info] [config] loading from: https://cdn-exp-sg-recommend.pt.xiaomi.com/service/getClientBitMapExpConf/mimoDesktop(%E6%96%B0%E5%8A%A0%E5%9D%A1)
+18:53:11 [info] [config] loaded tree for mimoDesktop(新加坡): children=2, upRuleIds=0
+18:53:11 [info] [config] remote config loaded: 1 apps
+18:53:11 [info] [config] loaded successfully: 1 apps
+18:53:11 [info] [experiment] key=feature_gates id=101197 type=string value={\n    "domestic": { "show_mcp_entry": false, "show_custom_model_button": true, "loop_streak_recovery": true, "show_evolve_entry": true,"show_computeruse": false, "show_browseruse": false, "show_pay": … elapsed=715ms
+18:53:11 [info] [feature-gates] refresh: ok (elapsed=771ms)
+18:57:20 [info] [exit-app] session-end (OS shutdown/logout) -> appQuitting=true

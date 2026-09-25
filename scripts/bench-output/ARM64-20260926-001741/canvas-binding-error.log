@@ -1,0 +1,4 @@
+resourcesPath: C:\Users\xiaomi\XiaomiMiMoProjects\electron-arm64-port\output\Xiaomi MiMo ARM64\resources
+platform: win32 arch: arm64
+NAPI_RS_NATIVE_LIBRARY_PATH: C:\Users\xiaomi\XiaomiMiMoProjects\electron-arm64-port\output\Xiaomi MiMo ARM64\resources\native\skia.win32-arm64-msvc.node
+loadErrors count: 0

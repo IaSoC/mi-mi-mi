@@ -1,0 +1,24 @@
+﻿[304] 
+[631] [api-base] region=CN source=edition base=https://mimo-server-cn.xiaomimimo.com/api
+[838] [api-base] cached-region reader injected after settle -> ignored
+[1057] [api-base] system-country reader injected after settle -> ignored
+[1321] [apm] region=CN source=cache
+[1323] [evolve-observatory] evolve observatory server listening on 127.0.0.1:51175
+[1323] [mimo][api] listening on 127.0.0.1:51176
+[1554] [plugins] automation background startup settled { elapsedMs: 673 }
+[2948] [xiaomi-auth] probeStatus start (hidden-window path)
+[5865] [DeviceId] generated:
+[7867] [mimo] engine in-process server ready http://127.0.0.1:50933
+[8083] [mimo] loop_streak_recovery=on · experimental crop enabled for next requests
+[8293] Checking for update
+[8294] [model-catalog] xiaomi login not confirmed -> skip fetch, keep cache
+[8743] [xiaomi-auth] probeStatus done kind=authenticated userId=602054437
+[9574] [experiment] initializing app=mimoDesktop(新加坡) env=ksmoscloudsrv service=<sdk-default>
+[9781] [config] loading from: https://cdn-exp-sg-recommend.pt.xiaomi.com/service/getClientBitMapExpConf/mimoDesktop(%E6%96%B0%E5%8A%A0%E5%9D%A1)
+[9781] Update for version 26.923.232338 is not available (latest version: 26.923.232338, downgrade is disallowed).
+[10402] [config] loaded tree for mimoDesktop(新加坡): children=2, upRuleIds=0
+[10610] [config] remote config loaded: 1 apps
+[10610] [config] loaded successfully: 1 apps
+[10610] [experiment] key=feature_gates id=101197 type=string value={
+[10610]     "domestic": { "show_mcp_entry": false, "show_custom_model_button": true, "loop_streak_recovery": true, "show_evolve_entry": true,"show_computeruse": false, "show_browseruse": false, "show_pay": … elapsed=909ms
+[10610] [feature-gates] refresh: ok (elapsed=932ms)

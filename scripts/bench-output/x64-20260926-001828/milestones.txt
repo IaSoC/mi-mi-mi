@@ -1,0 +1,2 @@
+﻿[325ms] projects-loaded loadEngineSessions found in app log
+[6128ms] window-title MainWindowTitle = 'Xiaomi MiMo'

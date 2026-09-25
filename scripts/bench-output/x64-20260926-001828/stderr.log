@@ -1,0 +1,17 @@
+﻿[2000] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+[2270] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+[18894] [xiaomi-auth] hidden session preparation failed Error: ERR_FAILED (-2) loading 'https://mimo-server-cn.xiaomimimo.com/api/user/xiaomi/me'
+[18895]     at rejectAndCleanup (node:electron/js2c/browser_init:2:89772)
+[18895]     at finishListener (node:electron/js2c/browser_init:2:89934)
+[18895]     at WebContents.stopLoadingListener (node:electron/js2c/browser_init:2:90321)
+[18895]     at WebContents.emit (node:events:521:24) {
+[18896]   errno: -2,
+[18896]   code: 'ERR_FAILED',
+[18896]   url: 'https://mimo-server-cn.xiaomimimo.com/api/user/xiaomi/me'
+[18896] }
+[27351] (node:1840) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.
+[27352] (Use `Xiaomi MiMo --trace-deprecation ...` to show where the warning was created)
+[30996] [1840:0926/001858.893:INFO:CONSOLE:276] "[sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=11561ms responseBytes=38752 engineUrl= http://127.0.0.1:52280 engineId= (default)", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[31000] [1840:0926/001858.893:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: 原始条数 = 18", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[31000] [1840:0926/001858.950:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[31000] [1840:0926/001858.978:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: 耗时(ms) fetch = 11680 repoRoots = 43 build+reconcile = 26 set = 5 total = 11754", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
