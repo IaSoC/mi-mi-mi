@@ -1,0 +1,3 @@
+﻿[4214ms] window-title MainWindowTitle = 'Xiaomi MiMo'
+[10525ms] landing-page first INFO:CONSOLE (React bundle executed)
+[11016ms] projects-loaded loadEngineSessions total=2837ms

@@ -1,0 +1,34 @@
+# Build / port artifacts (proprietary Xiaomi MiMo Desktop payload — do not ship)
+/output/
+/cache/
+
+# Local logs and temp
+*.log
+!scripts/bench-output/**/*.log
+launch-stdout.txt
+launch-stderr.txt
+
+# Secrets / credentials (never commit)
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+*credential*
+*secret*
+**/Cookies
+**/Cookies-journal
+**/Login Data*
+**/Local Storage/**
+**/Session Storage/**
+**/Network/**
+**/Partitions/
+
+# Editor / OS
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini

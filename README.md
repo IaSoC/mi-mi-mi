@@ -152,6 +152,8 @@ The modified application has currently demonstrated:
 - [x] MiMo conversation works
 - [x] Agent functionality works
 - [x] File writing works
+- [x] ARM64 process tree (main/gpu/network/renderer/audio/crashpad)
+- [x] Native components audit (49/55 PE = ARM64)
 
 Further testing is required before claiming that the application is completely ARM64-native.
 
@@ -163,27 +165,28 @@ In particular, successful startup does not prove that all components are ARM64.
 
 ### 1. Core application
 
-- [ ] New conversation
-- [ ] Multi-turn conversation
-- [ ] Long-running Agent task
-- [ ] File creation
-- [ ] File reading
-- [ ] File modification
-- [ ] File deletion
-- [ ] Directory operations
+- [x] New conversation
+- [x] New project
+- [x] Multi-turn conversation
+- [x] Long-running Agent task
+- [x] File creation
+- [x] File reading
+- [x] File modification
+- [x] File deletion
+- [x] Directory operations
 - [ ] Application restart
-- [ ] State persistence
+- [x] State persistence
 
 ### 2. Electron functionality
 
-- [ ] GPU acceleration
-- [ ] Clipboard
-- [ ] Drag & Drop
-- [ ] Notifications
-- [ ] File dialogs
+- [x] GPU acceleration
+- [x] Clipboard
+- [x] Drag & Drop
+- [x] Notifications
+- [x] File dialogs
 - [ ] External browser invocation
 - [ ] Multiple windows
-- [ ] Main/renderer IPC
+- [x] Main/renderer IPC
 
 ### 3. Process architecture
 

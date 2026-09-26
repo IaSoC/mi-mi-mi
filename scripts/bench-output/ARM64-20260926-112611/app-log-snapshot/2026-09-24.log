@@ -39,7 +39,7 @@
 18:03:22 [info] [engine] HostMcp runtime available=true
 18:03:22 [info] [engine] reloadConfigOnNextSession (plugin change)
 18:03:27 [info] Checking for update
-18:03:27 [info] Generated new staging user ID: 96ac18de-7530-5186-898d-02ec8bb461c9
+18:03:27 [info] Generated new staging user ID: REDACTED
 18:03:27 [log] [mimo] engine in-process server ready http://127.0.0.1:53167
 18:03:27 [info] [engine] prewarm ok
 18:03:27 [info] [artifacts] reconciliation started

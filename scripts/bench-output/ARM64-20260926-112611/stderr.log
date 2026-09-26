@@ -1,0 +1,9 @@
+﻿[891] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+[1100] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+[4472] [query-classification] warmup-unavailable { code: 'inference-failed' }
+[10281] (node:4296) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.
+[10281] (Use `Xiaomi MiMo --trace-deprecation ...` to show where the warning was created)
+[10508] [4296:0926/112621.676:INFO:CONSOLE:276] "[sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=2783ms responseBytes=38752 engineUrl= http://127.0.0.1:60168 engineId= (default)", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[10973] [4296:0926/112621.676:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: 原始条数 = 18", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[10974] [4296:0926/112621.676:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[10974] [4296:0926/112621.715:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: 耗时(ms) fetch = 2813 repoRoots = 18 build+reconcile = 6 set = 1 total = 2837", source: app://-/renderer/assets/index-C2vAeNdg.js (276)

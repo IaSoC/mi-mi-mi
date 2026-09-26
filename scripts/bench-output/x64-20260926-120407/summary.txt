@@ -1,13 +1,15 @@
 ﻿MiMo Startup Diagnostic - x64
 ================================
-Timestamp   : 20260926-001828
+Timestamp   : 20260926-120407
 Exe         : C:\Users\xiaomi\AppData\Local\Programs\Xiaomi MiMo\Xiaomi MiMo.exe
 Exit code   : 0
-Total time  : 36378 ms
-Code Cache  : 1.6 MB at exit
+Total time  : 31235 ms
+Code Cache  : 7.2 MB at exit
 
-Milestones:  projects-loaded : 325 ms
-  window-title : 6128 ms
+Milestones:  window-title : 6514 ms
+  shimmer-painted : 6765 ms
+  landing-page : 21036 ms
+  projects-loaded : 21526 ms
 
 Output files:
   stderr.log

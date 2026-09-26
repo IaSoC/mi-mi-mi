@@ -1,0 +1,13 @@
+﻿[1943] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+[2166] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+[16247] [query-classification] warmup-unavailable { code: 'worker-timeout' }
+[20414] (node:8748) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.
+[20414] (Use `Xiaomi MiMo --trace-deprecation ...` to show where the warning was created)
+[21035] [8748:0926/120428.486:INFO:CONSOLE:276] "[sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=4104ms responseBytes=38752 engineUrl= http://127.0.0.1:52648 engineId= (default)", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[21294] [8748:0926/120428.486:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: 原始条数 = 18", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[21514] [8748:0926/120428.613:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[21514] [8748:0926/120428.621:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: 耗时(ms) fetch = 4226 repoRoots = 68 build+reconcile = 39 set = 6 total = 4339", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[29986] [8748:0926/120437.432:INFO:CONSOLE:276] "[sess-diag] engineFetch GET /experimental/session?roots=true&limit=2000 -> HTTP 200 elapsed=3037ms responseBytes=38752 engineUrl= http://127.0.0.1:52648 engineId= (default)", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[30196] [8748:0926/120437.433:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: 原始条数 = 18", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[30196] [8748:0926/120437.439:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: reconcile 后 convos = 18 order = 18", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
+[30402] [8748:0926/120437.458:INFO:CONSOLE:276] "[sess-diag] loadEngineSessions: 耗时(ms) fetch = 3073 repoRoots = 13 build+reconcile = 15 set = 3 total = 3105", source: app://-/renderer/assets/index-C2vAeNdg.js (276)
