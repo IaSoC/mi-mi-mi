@@ -141,20 +141,18 @@ while (-not $proc.HasExited) {
         $stderrWriter.Flush()
 
         # Detect milestones from stderr
+        if ($line -match 'INFO:CONSOLE' -and -not $milestones['landing-page']) {
+            Write-Milestone "landing-page" "first INFO:CONSOLE (React bundle executed)"
+        }
+        if ($line -match 'loadEngineSessions.*total\s*=\s*(\d+)' -and -not $milestones['projects-loaded']) {
+            $ms = $matches[1]
+            Write-Milestone "projects-loaded" "loadEngineSessions total=${ms}ms"
+        }
         if ($line -match 'engine in-process server ready' -and -not $milestones['engine-ready']) {
             Write-Milestone "engine-ready" $line.Trim()
         }
         if ($line -match 'automation background startup settled' -and -not $milestones['startup-settled']) {
             Write-Milestone "startup-settled" $line.Trim()
-        }
-        if ($line -match 'xiaomi-auth.*probeStatus.*done' -and -not $milestones['auth-done']) {
-            Write-Milestone "auth-done" $line.Trim()
-        }
-        if ($line -match 'Time to window') {
-            Write-Milestone "time-to-window-reported" $line.Trim()
-        }
-        if ($line -match 'feature-gates.*refresh' -and -not $milestones['feature-gates']) {
-            Write-Milestone "feature-gates" $line.Trim()
         }
 
         $stderrTask = $proc.StandardError.ReadLineAsync()
@@ -169,7 +167,7 @@ while (-not $proc.HasExited) {
         $stdoutTask = $proc.StandardOutput.ReadLineAsync()
     }
 
-    # Window title milestone
+    # Milestone 1: Window appears
     try {
         $proc.Refresh()
         if (-not $milestones['window-title'] -and $proc.MainWindowTitle -eq "Xiaomi MiMo") {
@@ -177,22 +175,20 @@ while (-not $proc.HasExited) {
         }
     } catch {}
 
-    # UI painted heuristic (window size + handle stability)
-    if ($milestones['window-title'] -and -not $uiPainted) {
+    # Milestone 2: Shimmer logo painted (handle count stabilization = first paint done)
+    if ($milestones['window-title'] -and -not $milestones['shimmer-painted']) {
         try {
             $proc.Refresh()
             $rect = $proc.MainWindowRectangle
             if ($rect.Width -gt 100 -and $rect.Height -gt 100) {
-                # Check if handles have been stable for ~2 seconds
                 $curHandles = $proc.HandleCount
                 if (-not $milestones['_lastHandles']) {
                     $milestones['_lastHandles'] = $curHandles
                     $milestones['_handlesStableMs'] = $sw.ElapsedMilliseconds
                 } elseif ([math]::Abs($curHandles - $milestones['_lastHandles']) -lt 5) {
                     $stableMs = $sw.ElapsedMilliseconds - $milestones['_handlesStableMs']
-                    if ($stableMs -gt 2000) {
-                        $uiPainted = $true
-                        Write-Milestone "ui-rendered" "handles stable ${stableMs}ms, size=$($rect.Width)x$($rect.Height)"
+                    if ($stableMs -gt 800) {
+                        Write-Milestone "shimmer-painted" "handles stable ${stableMs}ms (startup-loader visible)"
                     }
                 } else {
                     $milestones['_lastHandles'] = $curHandles
@@ -209,19 +205,6 @@ while (-not $proc.HasExited) {
         $lastStatMs = $now
     }
 
-    # Check app log for loadEngineSessions
-    if (-not $milestones['projects-loaded']) {
-        try {
-            $logFile = Get-ChildItem $appLogDir -Filter "*.log" -ErrorAction SilentlyContinue |
-                Sort-Object LastWriteTime -Descending | Select-Object -First 1
-            if ($logFile) {
-                $tail = Get-Content $logFile.FullName -Tail 50 -ErrorAction SilentlyContinue
-                if ($tail -match 'loadEngineSessions.*total\s*=') {
-                    Write-Milestone "projects-loaded" "loadEngineSessions found in app log"
-                }
-            }
-        } catch {}
-    }
 }
 
 $sw.Stop()
