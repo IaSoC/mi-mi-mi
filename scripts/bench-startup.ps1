@@ -26,7 +26,7 @@ function Get-NativeLibPath {
     param([string]$ExePath)
     $exeDir = Split-Path $ExePath -Parent
     $lib = Join-Path $exeDir "resources\native\skia.win32-arm64-msvc.node"
-    return if (Test-Path $lib) { $lib } else { $null }
+    if (Test-Path $lib) { return $lib } else { return $null }
 }
 
 function Measure-Startup {
