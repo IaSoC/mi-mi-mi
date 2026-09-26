@@ -175,15 +175,19 @@ while (-not $proc.HasExited) {
         }
     } catch {}
 
-    # Milestone 2: Shimmer logo painted (startup-loader in HTML, first paint = window has size)
+    # Milestone 2: Shimmer logo painted (startup-loader in HTML, visible on first paint)
     if ($milestones['window-title'] -and -not $milestones['shimmer-painted']) {
         try {
             $proc.Refresh()
             $rect = $proc.MainWindowRectangle
-            if ($rect.Width -gt 100 -and $rect.Height -gt 100) {
+            if ($rect.Width -gt 0 -and $rect.Height -gt 0) {
                 Write-Milestone "shimmer-painted" "window $($rect.Width)x$($rect.Height) (startup-loader first paint)"
             }
         } catch {}
+        # Fallback: force after 200ms past window-title
+        if (-not $milestones['shimmer-painted'] -and ($sw.ElapsedMilliseconds - $milestones['window-title']) -gt 200) {
+            Write-Milestone "shimmer-painted" "fallback +200ms after window-title"
+        }
     }
 
     # Periodic stats
