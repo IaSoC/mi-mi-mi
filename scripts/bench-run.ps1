@@ -175,25 +175,13 @@ while (-not $proc.HasExited) {
         }
     } catch {}
 
-    # Milestone 2: Shimmer logo painted (handle count stabilization = first paint done)
+    # Milestone 2: Shimmer logo painted (startup-loader in HTML, first paint = window has size)
     if ($milestones['window-title'] -and -not $milestones['shimmer-painted']) {
         try {
             $proc.Refresh()
             $rect = $proc.MainWindowRectangle
             if ($rect.Width -gt 100 -and $rect.Height -gt 100) {
-                $curHandles = $proc.HandleCount
-                if (-not $milestones['_lastHandles']) {
-                    $milestones['_lastHandles'] = $curHandles
-                    $milestones['_handlesStableMs'] = $sw.ElapsedMilliseconds
-                } elseif ([math]::Abs($curHandles - $milestones['_lastHandles']) -lt 5) {
-                    $stableMs = $sw.ElapsedMilliseconds - $milestones['_handlesStableMs']
-                    if ($stableMs -gt 800) {
-                        Write-Milestone "shimmer-painted" "handles stable ${stableMs}ms (startup-loader visible)"
-                    }
-                } else {
-                    $milestones['_lastHandles'] = $curHandles
-                    $milestones['_handlesStableMs'] = $sw.ElapsedMilliseconds
-                }
+                Write-Milestone "shimmer-painted" "window $($rect.Width)x$($rect.Height) (startup-loader first paint)"
             }
         } catch {}
     }
