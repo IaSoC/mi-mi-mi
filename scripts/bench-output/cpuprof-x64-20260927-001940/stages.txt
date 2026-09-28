@@ -1,0 +1,4 @@
+﻿18918  startup-loader  present 1707x1043
+27956  sidebar-chrome  项目+最近 visible
+27960  interactive  BUTTON:新建任务
+28033  main-ui  slogan innerText:一起探索无限可能

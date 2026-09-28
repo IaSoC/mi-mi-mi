@@ -1,0 +1,9 @@
+﻿{"event":"start","out":"C:\\Users\\xiaomi\\XiaomiMiMoProjects\\electron-arm64-port\\scripts\\bench-output\\cpuprof-ARM64-20260927-001929\\startup.cpuprofile","port":9333,"timeout":90000}
+{"event":"targets","ts":0,"count":1,"types":["page"]}
+{"event":"connected","ts":2915,"ws":"ws://127.0.0.1:9333/devtools/page/D0AF6C8223DDA9EFE5D3AE715C1CC9C8"}
+{"event":"Profiler.enable ok","ts":4643}
+{"event":"sampling","ts":4704,"sampleUs":100}
+{"event":"profiler-started","ts":6577}
+{"event":"poll","ts":6588,"t0":false,"rows":0,"hasRecent":false}
+{"event":"list-ready","ts":9295,"rows":8,"polls":4}
+{"event":"stopping","ts":9296,"readyTs":9295,"polls":4}

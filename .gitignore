@@ -8,6 +8,25 @@
 launch-stdout.txt
 launch-stderr.txt
 
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Bench artifacts — only deck-cited evidence is tracked (see AGENTS.md).
+# Everything else under bench-output (traces, screenshots, SERP snapshots,
+# ad-hoc runs) stays local and must not be committed. Extracted app bundles
+# (e.g. index-*.js from app.asar) are proprietary payload, never committed.
+scripts/bench-output/*
+!scripts/bench-output/ARM64-20260926-112611/
+!scripts/bench-output/x64-20260926-120407/
+!scripts/bench-output/functional-ARM64-20260926-225827/
+!scripts/bench-output/functional-x64-20260926-225842/
+!scripts/bench-output/deep-ARM64-20260926-232826/
+!scripts/bench-output/deep-x64-20260926-232856/
+!scripts/bench-output/cpuprof-ARM64-20260927-001929/
+!scripts/bench-output/cpuprof-x64-20260927-001940/
+!scripts/bench-output/startup-10run-20260926.md
+
 # Secrets / credentials (never commit)
 .env
 .env.*

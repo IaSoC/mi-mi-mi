@@ -1,0 +1,4 @@
+﻿[2313] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+[2887] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+[2996] 
+[3003] DevTools listening on ws://127.0.0.1:9333/devtools/browser/bbea4154-a535-4b8b-8a8f-f2afcafeac9b

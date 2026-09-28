@@ -1,0 +1,7 @@
+﻿[1072] [plugins] registry corrupt/unreadable at startup seed; closing automation HostMcp gate
+[1188] 
+[1210] DevTools listening on ws://127.0.0.1:9333/devtools/browser/e60dc1f1-af03-4e2d-bab9-b3b68cbb2c0b
+[1311] [plugins] registry corrupt/unreadable at readiness settle; keeping automation HostMcp gate closed
+[4827] [query-classification] warmup-unavailable { code: 'inference-failed' }
+[9690] (node:16048) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.
+[9692] (Use `Xiaomi MiMo --trace-deprecation ...` to show where the warning was created)

@@ -1,0 +1,13 @@
+﻿{"event":"cdp-connected","hostMs":5736,"detail":"ws://127.0.0.1:9333/devtools/page/052BB128D6696B471C3ECEEA1C7ECC5B"}
+{"event":"window-title","hostMs":6485,"detail":"MainWindowTitle"}
+{"event":"perf-fp","hostMs":9672,"detail":"fp=4680"}
+{"event":"perf-fcp","hostMs":9761,"detail":"fcp=4680"}
+{"event":"perf-responseEnd","hostMs":9775,"detail":"responseEnd=2395"}
+{"event":"startup-loader","hostMs":9790,"detail":"present 1707x1043"}
+{"event":"perf-dcl","hostMs":9941,"detail":"dcl=6432"}
+{"event":"perf-load","hostMs":10020,"detail":"load=6440"}
+{"event":"sidebar-chrome","hostMs":10612,"detail":"项目+最近 visible"}
+{"event":"interactive","hostMs":10686,"detail":"BUTTON:新建任务"}
+{"event":"main-ui","hostMs":10693,"detail":"slogan innerText:一起探索无限可能"}
+{"event":"engine-sessions","hostMs":13069,"detail":"fetch=3068ms"}
+{"event":"list-ready","hostMs":13324,"detail":"subRows=11 topRows=3 texts=[\"分析脚本运行结果与性能优化方向\",\"整理对话与文档为HTML版本\",\"测试脚本加载慢，建议面板探测加入项目区\",\"根据Readme测试功能并确认执行架构体系 (fork #1)\",\"根据Readme测试功能并确认执行架构体系\",\"调查 OpenWrt 上 3ginfo-lite 的 GitHub 仓库\",\"那个，目前ACR122U NDEF 还只能用 ACR122U 写卡，我这边有一个 PN5180…\",\"我项目的记忆，或者是什么地方似乎出现…\",\"寻找一下 NDEF 的定义文档，看看…\",\"好问题。接下来是——请你找一下如何正…\",\"（看看时间）现在是 9 月 17 日 23：48，周四晚。好消息是，RDR-PN80 的硬件都…\"]"}

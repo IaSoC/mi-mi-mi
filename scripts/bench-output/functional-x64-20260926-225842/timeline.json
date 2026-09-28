@@ -1,0 +1,66 @@
+﻿{
+    "label":  "x64",
+    "exe":  "C:\\Users\\xiaomi\\AppData\\Local\\Programs\\Xiaomi MiMo\\Xiaomi MiMo.exe",
+    "stamp":  "20260926-225842",
+    "hostMs":  {
+                   "windowTitle":  7943,
+                   "startupLoader":  19163,
+                   "sidebarChrome":  25983,
+                   "mainUi":  26025,
+                   "interactive":  26001,
+                   "listReady":  31162,
+                   "engineSessions":  30692,
+                   "engineReady":  null
+               },
+    "engineFetchMs":  10951,
+    "pagePerfMs":  {
+                       "dcl":  15693,
+                       "responseEnd":  4720,
+                       "load":  15723,
+                       "fcp":  15736,
+                       "fp":  15736
+                   },
+    "stages":  [
+                   {
+                       "id":  "F1-window",
+                       "name":  "window",
+                       "hostMs":  7943
+                   },
+                   {
+                       "id":  "F2-loader",
+                       "name":  "startup-logo",
+                       "hostMs":  19163
+                   },
+                   {
+                       "id":  "F3-sidebar",
+                       "name":  "sidebar-chrome",
+                       "hostMs":  25983
+                   },
+                   {
+                       "id":  "F4-mainui",
+                       "name":  "main-ui",
+                       "hostMs":  26025
+                   },
+                   {
+                       "id":  "F5-interactive",
+                       "name":  "interactive",
+                       "hostMs":  26001
+                   },
+                   {
+                       "id":  "F6-list",
+                       "name":  "list-ready",
+                       "hostMs":  31162
+                   },
+                   {
+                       "id":  "F7-engine",
+                       "name":  "engine-sessions",
+                       "hostMs":  30692
+                   }
+               ],
+    "derivedMs":  {
+                      "winToLoader":  11220,
+                      "loaderToMainUi":  6862,
+                      "mainUiToList":  5137,
+                      "listToInteractive":  -5161
+                  }
+}
