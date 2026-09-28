@@ -2,6 +2,9 @@
 /output/
 /cache/
 
+# Release artifacts (rebuilt from output\, never committed)
+/dist/
+
 # Local logs and temp
 *.log
 !scripts/bench-output/**/*.log
