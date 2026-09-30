@@ -1,3 +1,6 @@
+# Linked worktrees created by compose-style workflows
+/.worktrees/
+
 # Build / port artifacts (proprietary Xiaomi MiMo Desktop payload — do not ship)
 /output/
 /cache/

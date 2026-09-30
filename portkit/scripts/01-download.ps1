@@ -1,5 +1,5 @@
 # 01-download.ps1 — Download all ARM64 components
-# Downloads to cache/downloads/ for use by 02-build.ps1
+# Downloads to cache/downloads/ for use by 02-extract.ps1
 
 param(
     [string]$CacheDir = "..\cache\downloads"

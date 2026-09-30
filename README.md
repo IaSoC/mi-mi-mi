@@ -1,402 +1,82 @@
 # Mi Mi Mi
 
-*An experiment on the portability of a "platform-independent" development framework, where everything goes wrong with Windows on ARM.*
+*An experiment on the portability of a “platform-independent” development framework, where everything goes wrong with Windows on ARM.*
 
 **«MiMo-on-MiMo-on-Timi.»**
 
-Mi Mi Mi is an experimental project investigating how portable a closed-source Electron application really is when moved from x86-64 to ARM64 — using only its post-market installation environment.
-
-The experiment uses **Xiaomi MiMo v2.6 Series** to assist with the migration of **Xiaomi MiMo Desktop**, running on a **Xiaomi Book S 12.4** powered by a **Qualcomm Snapdragon 8cx Gen 2** under **Windows on ARM**.
-
-And yes, the application being migrated is the application hosting the agent doing the migration.
-
----
-
-## The Setup
-
-```
-┌──────────────────────────────┐
-│       MiMo v2.6 Series       │
-│          AI Agent            │
-└──────────────┬───────────────┘
-               │
-               │ modifies
-               ▼
-┌──────────────────────────────┐
-│       MiMo Desktop           │
-│       Electron application   │
-└──────────────┬───────────────┘
-               │
-               │ originally
-               ▼
-┌──────────────────────────────┐
-│       x64 Electron           │
-│       Windows on ARM         │
-│          Prism               │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│     Snapdragon 8cx Gen 2     │
-│       Xiaomi Book S 12.4     │
-└──────────────────────────────┘
-```
+Mi Mi Mi 是一项实验：在只有 post-market 安装包的前提下，把闭源 Electron 应用 **Xiaomi MiMo Desktop** 从 x86-64 迁移到 Windows on ARM 上的原生 ARM64。
 
-The goal is to investigate whether the middle layer can instead become:
+实验在 **Xiaomi Book S 12.4**（Snapdragon 8cx Gen 2，Windows on ARM）上进行：用 **Xiaomi MiMo** 辅助迁移 **Xiaomi MiMo Desktop**——被迁移的应用，恰好就是托管这次迁移的应用。
 
-```
-MiMo v2.6 Series
-       │
-       ▼
-MiMo Desktop
-       │
-       ▼
-ARM64 Electron
-       │
-       ▼
-Windows ARM64
-       │
-       ▼
-Snapdragon 8cx Gen 2
-```
+## 实验问题
 
----
+> **一个真实 Electron 应用里，到底有多少东西是架构相关的？**
 
-## Why?
+更具体地：
 
-Electron is *kinda* platform-independent.
+> **能否只用安装后的产物，把闭源 Electron 应用从 x86-64 迁到 ARM64？**
 
-A large portion of an Electron application's logic consists of:
+关键区分不是「能不能在 ARM64 上跑」——它已经能跑了（经 Prism）。而是：
 
-- JavaScript
-- HTML
-- CSS
-- Chromium APIs
-- Electron APIs
+> **核心执行路径能否不再依赖 x64 兼容层？**
 
-These are largely independent of CPU architecture.
+原路径：`ARM64 CPU → Windows on ARM → Prism → x64 Electron → MiMo Desktop`  
+目标路径：`ARM64 CPU → Windows on ARM → ARM64 Electron → MiMo Desktop`
 
-The architecture-dependent boundary tends to appear around:
+## 四态判别（速查）
 
-- Electron itself
-- Node.js native modules
-- `.node` addons
-- DLLs
-- bundled executables
-- helper processes
-- installers
-- updaters
-- operating-system integration
+| 状态 | 含义 |
+|------|------|
+| **ARM64** | 已确认 ARM64 |
+| **x64** | 已确认 x64 |
+| **Independent** | 无 CPU 架构相关二进制依赖 |
+| **Unknown** | 证据不足 |
 
-So the experiment asks:
+**「能跑」≠「全 ARM64 原生」。** 文件存在也不证明应用加载它。明细见 [docs/STATUS.md](docs/STATUS.md)。
 
-> **How much of a real Electron application is actually architecture-dependent?**
+## 从哪里开始
 
-More specifically:
+| 我想… | 去读 |
+|-------|------|
+| 构建 / 安装 ARM64 版（使用者） | [docs/BUILD.md](docs/BUILD.md) · [docs/release/DROP-IN.md](docs/release/DROP-IN.md) |
+| 从零重铸骨架（维护者） | [portkit/README.md](portkit/README.md)（作者路径） |
+| 当前证据状态与研究清单 | [docs/STATUS.md](docs/STATUS.md) |
+| 移植过程的完整设计与结论 | [docs/compose/spec/electron-arm64-port.md](docs/compose/spec/electron-arm64-port.md) |
+| 演示文稿 | [docs/compose/deck/](docs/compose/deck/) |
+| 致小米的一封信 | [docs/letter-xiaomi.md](docs/letter-xiaomi.md) |
+| AI 代理工作约定 | [AGENTS.md](AGENTS.md) |
 
-> **Can a closed-source Electron application be migrated from x86-64 to ARM64 using only the post-market installation artifact?**
+**操作正典是 `docs/BUILD.md`。** 消费者路径 = drop-in（官方 payload + 骨架 + asar 补丁）；`portkit/` 仅用于作者重建。
 
----
+## 实验约束
 
-## Why Windows on ARM?
+本实验故意从「已安装的应用」出发，而非官方源码仓库。**不假设**拥有：
 
-The original application runs as an x64 application through Microsoft's x64 compatibility layer, **Prism**.
+- 官方源码
+- 官方构建系统
+- 内部 CI
+- 原生 ARM64 构建配置
+- 厂商开发环境
 
-The original execution path is approximately:
+因此它更接近 **post-market 可移植性调查**，而非常规的源码级移植。
 
-```
-ARM64 CPU → Windows on ARM → Prism → x64 Electron → MiMo Desktop
-```
+## 结论应如何理解
 
-The experiment attempts to replace this with:
+最有趣的结论未必是「迁移成功」。
 
-```
-ARM64 CPU → Windows on ARM → ARM64 Electron → MiMo Desktop
-```
+若应用**改动极少即可运行**，说明架构相关边界比想象中更小。  
+若**失败**，失败点本身指出抽象在哪里断裂。
 
-The important distinction is therefore not merely:
-
-> *"Does the application run on ARM64?"*
-
-It already does.
-
-The question is:
-
-> ***"Can the application run without requiring x64 compatibility for its core execution path?"***
-
----
-
-## Experimental Constraints
-
-This experiment deliberately starts from the installed application rather than an official source repository.
-
-We do **not** assume access to:
-
-- official source code
-- official build system
-- internal CI
-- original ARM64 build configuration
-- vendor development environment
-
-The experiment therefore resembles a **post-market portability investigation** rather than a conventional source-level port.
-
----
-
-## Current Results
-
-### Initial ARM64 Electron test
-
-The modified application has currently demonstrated:
-
-- [x] Application launches
-- [x] MiMo conversation works
-- [x] Agent functionality works
-- [x] File writing works
-- [x] ARM64 process tree (main/gpu/network/renderer/audio/crashpad)
-- [x] Native components audit (49/55 PE = ARM64)
-
-Further testing is required before claiming that the application is completely ARM64-native.
-
-In particular, successful startup does not prove that all components are ARM64.
-
----
-
-## Verification Plan
-
-### 1. Core application
-
-- [x] New conversation
-- [x] New project
-- [x] Multi-turn conversation
-- [x] Long-running Agent task
-- [x] File creation
-- [x] File reading
-- [x] File modification
-- [x] File deletion
-- [x] Directory operations
-- [ ] Application restart
-- [x] State persistence
-
-### 2. Electron functionality
-
-- [x] GPU acceleration
-- [x] Clipboard
-- [x] Drag & Drop
-- [x] Notifications
-- [x] File dialogs
-- [ ] External browser invocation
-- [ ] Multiple windows
-- [x] Main/renderer IPC
-
-### 3. Process architecture
-
-Inspect the complete process tree and record:
-
-| Field | Example |
-|-------|---------|
-| Process | `Xiaomi MiMo.exe` |
-| Architecture | ARM64 |
-| Executable path | `output\Xiaomi MiMo ARM64\` |
-| Parent process | — |
-| Purpose | Main Electron process |
-
-Look specifically for:
-
-- ARM64 processes
-- x64 processes
-- x86 processes
-- helper executables
-- updater processes
-- crash reporters
-- GPU processes
-- utility processes
-
-### 4. Native components
-
-Inspect the installation environment for:
-
-```
-*.dll   *.exe   *.node   *.asar
-```
-
-Architecture-specific components should be classified as:
-
-| Classification | Meaning |
-|---------------|---------|
-| ARM64 | Confirmed ARM64 |
-| x64 | Confirmed x64 |
-| x86 | Confirmed x86 |
-| Independent | No CPU-specific binary dependency |
-| Unknown | Insufficient evidence |
-
-A file being present does not by itself prove that the application uses it.
-
----
-
-## Architecture Status
-
-The experiment uses **four states** rather than a binary "ARM64/x64" classification.
-
-| Status | Meaning |
-|--------|---------|
-| **ARM64** | Confirmed ARM64 |
-| **x64** | Confirmed x64 |
-| **Independent** | No CPU-specific binary dependency |
-| **Unknown** | Insufficient evidence |
-
-This prevents the experiment from confusing:
-
-> *"It works"*
-
-with:
-
-> *"Everything is ARM64-native."*
-
----
-
-## The Interesting Part
-
-The most interesting outcome may not be whether the migration succeeds.
-
-If the application works with **surprisingly few changes**, that suggests the architecture-dependent boundary of the application is relatively small.
-
-If it **fails**, the failure itself identifies where the abstraction breaks.
-
-For example:
-
-| Layer | Portability |
-|-------|-------------|
-| JavaScript | portable |
-| Chromium | portable through Electron |
-| Electron runtime | architecture-specific |
-| Native addon | architecture-specific |
-| `helper.exe` | architecture-specific |
-| Updater | architecture-specific |
-
-The experiment therefore treats both success and failure as useful results.
-
----
-
-## Mi Mi Mi
-
-### Why "Mi Mi Mi"?
-
-Because the experiment forms an unusually recursive stack:
-
-```
-MiMo model
-    │
-    ▼
-MiMo Agent
-    │
-    ▼
-MiMo Desktop
-    │
-    ▼
-Xiaomi Book S
-    │
-    ▼
-Timi / Xiaomi hardware ecosystem
-```
-
-In other words:
-
-> ***A Xiaomi model, using a Xiaomi agent, modifying Xiaomi software, running on a Xiaomi ARM64 computer.***
-
-Or, less formally:
-
-> ***MiMo migrated MiMo on Timi.***
-
----
+成功与失败都是有用的结果。
 
 ## Disclaimer
 
-**Mi Mi Mi is an independent research project.**
+**Mi Mi Mi 是独立研究项目。**
 
-This repository does not contain Xiaomi MiMo Desktop, Xiaomi proprietary source code, signing certificates, private keys, service credentials, or other proprietary resources belonging to Xiaomi Corporation.
+本仓库不包含 Xiaomi MiMo Desktop、小米专有源码、签名证书、私钥、服务凭证或其他属于 Xiaomi 的专有资源。用户须通过合法渠道获取所需软件，并遵守相应许可与服务条款。
 
-Users are responsible for obtaining any required proprietary software or resources through legitimate channels and for complying with the applicable software licenses and terms of service.
+项目作者无权代表小米公司签名可执行文件。
 
-The project author does not have the ability to sign executables on behalf of Xiaomi Corporation.
-
-This project is provided **AS IS**, without warranty of any kind.
-
-It is not an official Xiaomi project, and it does not imply endorsement, support, or participation by Xiaomi, Timi Personal Computing Co., Ltd., Microsoft, Qualcomm, or Electron.
-
-If something breaks, crashes, refuses to start, or somehow summons a Prism translation layer from another dimension:
-
-*that's probably part of the research.*
-
----
-
-## Status
-
-**Experimental.**
-
-Current result:
-
-> ***"It works."***
-
-Current question:
-
-> ***"How much of it is actually ARM64?"***
-
----
-
-## To Dear Xiaomi Corporation
-
-Dear Xiaomi Corporation,
-
-Let's skip the void of *"What will people do?"* imagination.
-
-Let's talk about your own advertisement for MiMo Desktop:
-
-> *"The all-in-one AI desktop app for professionals—high-quality office work, design, coding, and multimodal creation."*
-
-Yeah.
-
-Office work.
-
-So which laptops do people doing professional office work use?
-
-**ThinkPad!** 🤓👆
-
-Increasingly, those ThinkPads—and other professional Windows laptops—are shipping with ARM64 processors.
-
-I'm not going to pretend I know exactly how Copilot+ PCs will change our lives.
-
-But one thing is becoming increasingly difficult to ignore:
-
-**Windows on ARM is entering professional computing.**
-
-There are already machines such as the **ThinkPad T14s Gen 6**, alongside an expanding range of Windows on ARM devices.
-
-If MiMo Desktop is meant to be an all-in-one AI desktop application for professionals, supporting Windows on ARM should eventually be part of that story.
-
-And, well...
-
-I happened to have a Xiaomi Book S.
-
-So I tried it myself.
-
-I took the ARM64 Electron runtime, reconstructed the necessary development environment, dealt with the architecture-dependent parts, and got MiMo Desktop running natively on Windows on ARM.
-
-Not because Xiaomi asked me to.
-
-Not because I had the source code.
-
-Just because I wondered:
-
-> ***"How difficult could it actually be?"***
-
-Apparently, at least some of it was possible.
-
-So, Xiaomi—
-
-**I did it.**
-
-**Now it's your turn.** 🤓👍
-
----
+本项目按 **AS IS** 提供，不附带任何明示或默示担保。它不是小米官方项目，也不意味着小米、Timi Personal Computing Co., Ltd.、Microsoft、Qualcomm 或 Electron 的背书、支持或参与。
 
 *MIT © 2026 IaSoC — See `portkit/LICENSE` for build tooling licensing.*

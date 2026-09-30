@@ -6,8 +6,9 @@ Guidance for AI agents working in this repository. Read this before editing anyt
 
 **Mi Mi Mi** — an experimental, post-market port of the closed-source Electron app
 **Xiaomi MiMo Desktop** from x64 to native ARM64 on Windows on ARM. There is no upstream
-source code: the starting point is the installed x64 application. See `README.md` for the
-research framing and `portkit/README.md` for the build/extraction workflow.
+source code: the starting point is the installed x64 application. See `README.md` for
+research framing, `docs/BUILD.md` for the operational build/install guide (drop-in is
+canonical; `portkit/` is the author path only), and `docs/STATUS.md` for evidence status.
 
 The host machine is a Xiaomi Book S 12.4 (Snapdragon 8cx Gen 2, Windows on ARM). Work is
 Windows-only; there is no CI, no test framework, and no package.json at the repo root.
@@ -16,15 +17,32 @@ Windows-only; there is no CI, no test framework, and no package.json at the repo
 
 | Path | What it is | Tracked? |
 |------|-----------|----------|
-| `README.md` | Project narrative and verification plan | yes |
+| `README.md` | Chinese entry index (positioning + doc map + four-state quick-ref) | yes |
+| `README.en.md` | English mirror of `README.md` | yes |
 | `AGENTS.md` | This file | yes |
 | `.gitignore` | Defines what must never be committed | yes |
-| `portkit/` | Reproducible build tooling (`00-setup` → `03-verify`) | yes |
+| `docs/BUILD.md` | **Operational canonical**: build/install guide (drop-in primary, portkit author path) | yes |
+| `docs/BUILD.en.md` | English mirror of `docs/BUILD.md` | yes |
+| `docs/STATUS.md` | Evidence status, four-state detail, research checklist | yes |
+| `docs/STATUS.en.md` | English mirror of `docs/STATUS.md` | yes |
+| `docs/letter-xiaomi.md` | Letter to Xiaomi (moved out of README) | yes |
+| `docs/letter-xiaomi.en.md` | English mirror of the letter | yes |
+| `portkit/` | Author-path tooling (`00-setup` → `01-download` → `02-extract` → `03-verify`); not the consumer install path | yes |
+| `portkit/README.md` | Chinese author-path guide | yes |
+| `portkit/README.en.md` | English mirror of portkit README | yes |
+| `docs/release/DROP-IN.md` | Chinese drop-in install guide | yes |
+| `docs/release/DROP-IN.en.md` | English drop-in install guide | yes |
 | `scripts/` | Benchmarks, CDP probes, analysis utilities | yes |
 | `docs/compose/` | Presentation deck source and specs | yes |
 | `output/` | Built ARM64 application (proprietary payload) | **never** |
 | `cache/` | Downloads, extracted sources, test user profiles | **never** |
 | `scripts/bench-output/` | Benchmark artifacts (logs, traces, screenshots) | mostly no |
+
+**Reader entrypoints:** humans and agents looking for “how do I run/build this” read
+`docs/BUILD.md` (drop-in is the canonical consumer path; `portkit/` is the author path).
+`docs/STATUS.md` holds evidence and the research checklist — do not treat “it works” as
+fully ARM64. Dual-language convention: `*.md` Chinese, `*.en.md` English mirrors;
+update both when changing structure.
 
 When `git status` shows a flood of untracked files, check this table first. Most of them are
 build artifacts under `output/`/`cache/` (already ignored) or run artifacts under
