@@ -149,7 +149,7 @@ new = "".join(out)
 final_count = new.count('<section class="slide')
 print("slide count", final_count)
 new = new.replace("/ 18", f"/ {final_count:02d}").replace(f"16 / {final_count:02d}", f"16 / {final_count:02d}")
-# page-ind
+# page-ind (keyboard-only deck has none; regex is a no-op then)
 new = re.sub(r'id="page-ind">\s*\d+\s*/\s*\d+', f'id="page-ind">1 / {final_count:02d}', new)
 # data-dur total ok
 p.write_text(new, encoding="utf-8")

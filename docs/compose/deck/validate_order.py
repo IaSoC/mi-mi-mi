@@ -137,7 +137,7 @@ def label(e: dict) -> str:
 def main() -> int:
     assert "animationDelay" in js_text, "deck.js must write inline animation-delay"
     sections = parse_slides(html_text)
-    assert len(sections) == 29, len(sections)
+    assert len(sections) == 28, len(sections)
 
     failed = 0
     for n, sec in enumerate(sections, 1):

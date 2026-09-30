@@ -8,7 +8,7 @@ js = (root / "deck.js").read_text(encoding="utf-8")
 
 assert "styles.css" in html and "deck.js" in html
 assert "http://" not in html
-# offline deck: https only allowed for the project GitHub repo link on P28
+# offline deck: https only allowed for the project GitHub repo link
 for u in re.findall(r'https://[^"\s>]+', html):
     assert u == "https://github.com/IaSoC/mi-mi-mi", u
 assert "cdn" not in html.lower() and "fonts.googleapis" not in html
@@ -18,8 +18,8 @@ slides = html.count('<section class="slide')
 print("slides", slides)
 durs = [int(x) for x in re.findall(r'data-dur="(\d+)"', html)]
 print("durations", durs, "total_s", sum(durs))
-assert slides == 29, slides
-assert 110 <= sum(durs) <= 300  # user will finalize duration later
+assert slides == 32, slides
+assert 110 <= sum(durs) <= 300
 
 for needle in [
     "Mi-Mi-Mi",
@@ -29,7 +29,6 @@ for needle in [
     "2.65",
     "WoA",
     "To Dear Xiaomi",
-    "Still 2.6",
     "engFetch",
     "Age · localStorage",
     "2685ms",
@@ -90,8 +89,19 @@ for needle in [
     "SURGICAL PATCH",
     "PATH DISGUISE",
     "ASAR BYPASS",
+    # prologue (PPT default template cold open)
+    "我是一只鸽子",
+    "OPENING · PPT DEFAULT TEMPLATE",
+    "遥测里传的是 ARM64",
+    "鸽下去的代价",
+    "智能应用控制",
+    "telemetry-arm64.png",
+    "sac-block.jpg",
+    "pptx-title",
+    "pptx-bullets",
+    "Mi Sans",
 ]:
-    assert needle in html, needle
+    assert needle in html or needle in css, needle
 
 # local assets only: every referenced file exists, no remote refs
 asset_srcs = re.findall(r'src="([^"]+)"', html)
@@ -101,8 +111,12 @@ for src in asset_srcs:
     assert (root / src).is_file(), src
 print("assets", len(asset_srcs), "OK")
 
-# page corners + hud all say /25
-assert html.count(" / 29") == 30, html.count(" / 29")  # 29 corners + page-ind
+# page corners all say /32 (no HUD page-ind — keyboard-only navigation)
+assert html.count(" / 32") == 32, html.count(" / 32")
+
+# page numbers stay outside the reveal/stagger group; no narration HUD
+assert not re.search(r'class="[^"]*corner[^"]*reveal[^"]*"[^>]*>\d{2} / \d+</div>', html)
+assert 'id="subtitle"' not in html and "subtitle" not in js
 
 # palette: MiMo official tokens present, legacy dark palette gone
 for token in ["#f9f6f3", "#1d0601", "#ff6700", "#f3eee8", "#e8e2db", "#ff9a57", "#d6cec4"]:
@@ -111,13 +125,17 @@ for legacy in ["#0b0d10", "#ff6b35", "#e8eaed", "#f4f1ea", "#5b8cff", "#050607",
     assert legacy not in css, "css:" + legacy
     assert legacy not in html, "html:" + legacy
 assert ".slide.theater" in css
+assert ".slide.pptx" in css
+assert '"Mi Sans"' in css
 
 print("narrative beats OK")
 print("css_bytes", len(css), "js_bytes", len(js))
 
 # JS syntax-ish checks
 assert "function show" in js or "function show(" in js or "show(" in js
-assert "setAuto" in js and "keydown" in js
+assert "keydown" in js
+assert "setAuto" not in js  # auto-advance removed; keyboard-only navigation
+assert "btn-play" not in html and "page-ind" not in html
 assert "--w:" in css or "--w:" in html or "var(--w" in css
 print("controls OK")
 print("PASS")

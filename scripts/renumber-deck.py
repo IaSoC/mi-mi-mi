@@ -33,7 +33,7 @@ def corner_repl(m):
 text2 = re.sub(r'(class="corner[^"]*">)\d{2} / \d+', corner_repl, text)
 corners = counter["n"]
 
-# 2) HUD indicator
+# 2) HUD indicator (optional; keyboard-only deck has none)
 text2, ind = re.subn(
     r'(<span id="page-ind">)\d+ / \d+(</span>)',
     rf"\g<1>1 / {total}\g<2>",
@@ -53,7 +53,7 @@ text2 = re.sub(r"<!-- \d+ ([^>]*?) -->", comment_sub, text2)
 
 print(f"corners={corners} page-ind={ind} comments={cc['n']}")
 assert corners == total, f"corners {corners} != {total}"
-assert ind == 1
+assert ind in (0, 1), ind
 assert cc["n"] == total, f"comments {cc['n']} != {total}"
 
 # no stale foreign totals in corners (e.g. " / 21" when total is 25)

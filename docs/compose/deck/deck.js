@@ -2,18 +2,10 @@
   const stage = document.getElementById("stage");
   const slides = Array.from(document.querySelectorAll(".slide"));
   const progressBar = document.getElementById("progress-bar");
-  const subtitleEl = document.getElementById("subtitle");
-  const pageInd = document.getElementById("page-ind");
-  const btnPrev = document.getElementById("btn-prev");
-  const btnNext = document.getElementById("btn-next");
-  const btnPlay = document.getElementById("btn-play");
 
   const BASE_W = 1600;
   const BASE_H = 1000;
   let index = 0;
-  let auto = false;
-  let timer = null;
-
 
   function prepStagger(slide) {
     const nodes = slide.querySelectorAll(".reveal, .block, .wf-row, .wf-total, .track-line");
@@ -30,16 +22,16 @@
   }
 
   function fitStage() {
-    const pad = 24;
-    const vw = window.innerWidth - pad;
-    const vh = window.innerHeight - pad;
+    // innerWidth/Height match the layout viewport that #stage-wrap (fixed inset:0)
+    // uses as its containing block — keep scale and left/top in that same space.
+    // Explicitly place the *scaled* box; grid-centering the 1600×1000 layout box
+    // against a smaller viewport (200% DPI / Edge zoom) makes the visual drift.
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
     const scale = Math.min(vw / BASE_W, vh / BASE_H);
     stage.style.transform = `scale(${scale})`;
-  }
-
-  function durationOf(i) {
-    const n = Number(slides[i]?.dataset.dur || 8);
-    return Math.max(2, n) * 1000;
+    stage.style.left = `${Math.round((vw - BASE_W * scale) / 2)}px`;
+    stage.style.top = `${Math.round((vh - BASE_H * scale) / 2)}px`;
   }
 
   function show(i, { pushHash = true } = {}) {
@@ -56,35 +48,11 @@
         s.classList.remove("active", "playing");
       }
     });
-    const sub = slides[index].dataset.sub || "";
-    subtitleEl.textContent = sub;
-    pageInd.textContent = `${index + 1} / ${slides.length}`;
     progressBar.style.width = `${((index + 1) / slides.length) * 100}%`;
     if (pushHash) {
       const hash = `#p${index + 1}`;
       if (location.hash !== hash) history.replaceState(null, "", hash);
     }
-    if (auto) restartTimer();
-  }
-
-  function restartTimer() {
-    clearTimeout(timer);
-    const dur = durationOf(index);
-    timer = setTimeout(() => {
-      if (index >= slides.length - 1) {
-        setAuto(false);
-        return;
-      }
-      show(index + 1);
-    }, dur);
-  }
-
-  function setAuto(on) {
-    auto = on;
-    btnPlay.textContent = on ? "❚❚" : "▶";
-    btnPlay.title = on ? "Pause (A)" : "Auto play (A)";
-    if (on) restartTimer();
-    else clearTimeout(timer);
   }
 
   function parseHash() {
@@ -94,21 +62,25 @@
     return Number.isFinite(n) ? n : 0;
   }
 
-  btnPrev.addEventListener("click", () => show(index - 1));
-  btnNext.addEventListener("click", () => show(index + 1));
-  btnPlay.addEventListener("click", () => setAuto(!auto));
-
   window.addEventListener("keydown", (e) => {
     if (e.target && /input|textarea/i.test(e.target.tagName)) return;
     switch (e.key) {
       case "ArrowRight":
+      case "ArrowDown":
       case "PageDown":
       case " ":
+      case "Enter":
+      case "n":
+      case "N":
         e.preventDefault();
         show(index + 1);
         break;
       case "ArrowLeft":
+      case "ArrowUp":
       case "PageUp":
+      case "p":
+      case "P":
+      case "Backspace":
         e.preventDefault();
         show(index - 1);
         break;
@@ -120,13 +92,11 @@
         e.preventDefault();
         show(slides.length - 1);
         break;
-      case "a":
-      case "A":
-        setAuto(!auto);
-        break;
-      case "p":
-      case "P":
-        setAuto(false);
+      case "f":
+      case "F":
+        e.preventDefault();
+        if (document.fullscreenElement) document.exitFullscreen();
+        else document.documentElement.requestFullscreen?.();
         break;
       default:
         break;
@@ -136,18 +106,14 @@
   window.addEventListener("resize", fitStage);
   window.addEventListener("hashchange", () => show(parseHash(), { pushHash: false }));
 
-  const params = new URLSearchParams(location.search);
   fitStage();
   slides.forEach(prepStagger);
   show(parseHash());
-  if (params.get("auto") === "1") setAuto(true);
 
   // expose for recording scripts
   window.__deck = {
     show,
-    setAuto,
     get index() { return index; },
     get total() { return slides.length; },
-    durationOf,
   };
 })();

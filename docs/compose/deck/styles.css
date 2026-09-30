@@ -19,42 +19,47 @@
   --code: #1d0601;
   --code-bg: rgba(255, 103, 0, 0.09);
   --radius: 14px;
-  --font: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font: "Mi Sans", "MiSans", "MiSansVF", "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
   --mono: "Cascadia Code", Consolas, "SF Mono", ui-monospace, monospace;
+  /* Office / PPT default-template tokens for the cold-open pages */
+  --pptx-bg: #ffffff;
+  --pptx-ink: #262626;
+  --pptx-body: #404040;
+  --pptx-dim: #666666;
+  --pptx-blue: #4472c4;
+  --pptx-line: #d0d0d0;
+  --pptx-photo: #f2f2f2;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
   height: 100%;
-  background: #ece6de;
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--font);
   overflow: hidden;
 }
 
 #stage-wrap {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(1200px 700px at 20% -10%, #f4efe8 0%, transparent 55%),
-    radial-gradient(900px 600px at 100% 100%, #efe6da 0%, transparent 50%),
-    #ece6de;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: var(--bg);
 }
 
+/* Layout box stays 1600×1000 for slide metrics; fitStage() positions the
+   *scaled* box with absolute left/top. Never center the unscaled box — at
+   200% display zoom that overflows and the visual appears offset. */
 #stage {
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 1600px;
   height: 1000px;
-  transform-origin: center center;
+  transform-origin: 0 0;
   background: var(--bg);
   overflow: hidden;
-  box-shadow: 0 40px 120px rgba(29, 6, 1, 0.28);
-  border: 1px solid rgba(29, 6, 1, 0.1);
-  border-radius: 4px;
 }
 
 .slide {
@@ -92,6 +97,179 @@ html, body {
   --ink-dim: rgba(244, 239, 233, 0.55);
   --border: rgba(244, 239, 233, 0.16);
   --corner: rgba(244, 239, 233, 0.4);
+}
+
+/* ── Cold open: Office / PowerPoint default-template look ──
+   White page, left title with blue underline, bullets, photo frames.
+   Deliberately plain — the joke is that the prologue is a template. */
+.slide.pptx {
+  background: var(--pptx-bg);
+  color: var(--pptx-ink);
+  --bg: var(--pptx-bg);
+  --surface: var(--pptx-photo);
+  --ink: var(--pptx-ink);
+  --ink-body: var(--pptx-body);
+  --ink-dim: var(--pptx-dim);
+  --border: var(--pptx-line);
+  --corner: #8a8a8a;
+  --accent: var(--pptx-blue);
+  --accent-soft: #8eacd8;
+  --code-bg: #eef3fa;
+  --code: var(--pptx-ink);
+  padding: 64px 88px 88px;
+}
+
+.pptx-frame {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 1424px;
+}
+
+.pptx-eyebrow {
+  color: var(--pptx-blue) !important;
+  letter-spacing: 0.16em;
+  margin-bottom: 10px;
+}
+
+.pptx-title {
+  font-family: var(--font);
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--pptx-ink);
+  border-bottom: 4px solid var(--pptx-blue);
+  padding-bottom: 14px;
+  margin-bottom: 28px;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.pptx-body {
+  font-family: var(--font);
+  font-size: 26px;
+  line-height: 1.65;
+  color: var(--pptx-body);
+  max-width: 920px;
+  margin-bottom: 16px;
+}
+
+.pptx-body strong {
+  color: var(--pptx-ink);
+  font-weight: 600;
+}
+
+.pptx-body code,
+.pptx-bullets code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  color: #1f4e79;
+  background: var(--code-bg);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.pptx-bullets {
+  list-style: none;
+  max-width: 980px;
+  margin: 8px 0 24px;
+  padding: 0;
+}
+
+.pptx-bullets li {
+  font-family: var(--font);
+  font-size: 28px;
+  line-height: 1.55;
+  color: var(--pptx-body);
+  margin: 16px 0;
+  padding-left: 4px;
+}
+
+.pptx-bullets li::before {
+  content: "•";
+  color: var(--pptx-blue);
+  font-weight: 700;
+  margin-right: 14px;
+}
+
+.pptx-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+  gap: 40px;
+  align-items: start;
+  width: 100%;
+  max-width: 1424px;
+}
+
+.pptx-copy {
+  min-width: 0;
+}
+
+.pptx-photo {
+  background: #fff;
+  border: 1px solid var(--pptx-line);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 10px 10px 8px;
+  margin: 0;
+  max-width: 100%;
+}
+
+.pptx-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  object-position: top center;
+  background: var(--pptx-photo);
+}
+
+.pptx-photo.tall img {
+  max-height: 640px;
+}
+
+.pptx-photo.wide img {
+  max-height: 420px;
+}
+
+.pptx-photo figcaption {
+  font-family: var(--font);
+  font-size: 12px;
+  color: #8a8a8a;
+  margin-top: 8px;
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+
+.pptx-foot {
+  font-family: var(--font);
+  font-size: 16px;
+  color: var(--pptx-dim);
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+.pptx-date {
+  position: absolute;
+  left: 88px;
+  bottom: 36px;
+  font-family: var(--font);
+  font-size: 14px;
+  color: #8a8a8a;
+  letter-spacing: 0.06em;
+  z-index: 2;
+}
+
+/* keep prologue page counters readable on white */
+.slide.pptx .corner {
+  color: #8a8a8a;
+  text-transform: none;
+  letter-spacing: 0.04em;
 }
 
 .grid-bg {
@@ -1786,56 +1964,6 @@ code {
   width: 0%;
   background: linear-gradient(90deg, var(--accent), #ffc59e);
   transition: width 0.25s ease;
-}
-
-#subtitle {
-  min-height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 80px 8px;
-  font-size: 18px;
-  color: rgba(249, 246, 243, 0.92);
-  text-align: center;
-  background: linear-gradient(transparent, rgba(23, 17, 13, 0.78) 30%);
-  pointer-events: none;
-}
-
-#controls {
-  position: absolute;
-  right: 28px;
-  bottom: 58px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  pointer-events: auto;
-  opacity: 0.35;
-  transition: opacity 0.2s ease;
-}
-
-#controls:hover { opacity: 1; }
-
-#controls button {
-  width: 40px;
-  height: 36px;
-  border-radius: 8px;
-  border: 1px solid rgba(29, 6, 1, 0.18);
-  background: rgba(249, 246, 243, 0.9);
-  color: #1d0601;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-#controls button:hover {
-  background: #fff;
-}
-
-#page-ind {
-  margin-left: 8px;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--ink-dim);
-  letter-spacing: 0.08em;
 }
 
 /* Dual startup tracks (P4) - two lanes animate in, then sit parallel */

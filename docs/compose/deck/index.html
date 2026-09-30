@@ -8,10 +8,87 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<p data-aigc-mark="1" style="margin:0 0 8px;font-size:10px;line-height:1.3;color:#6b6560;font-weight:400;">AI生成</p>
+  <p data-aigc-mark="1" style="position:fixed;top:6px;left:10px;z-index:30;margin:0;font-size:10px;line-height:1.3;color:#6b6560;font-weight:400;opacity:.55;pointer-events:none;">AI生成</p>
 
   <div id="stage-wrap">
     <div id="stage" aria-live="polite">
+
+      <!-- PROLOGUE 1 — pigeon -->
+      <section class="slide pptx" data-dur="5" data-sub="我是一只鸽子。视频计划一拖再拖，直到发现遥测在传 ARM64。">
+        <div class="pptx-frame">
+          <p class="eyebrow pptx-eyebrow reveal">OPENING · PPT DEFAULT TEMPLATE</p>
+          <h2 class="pptx-title reveal d1">我是一只鸽子</h2>
+          <p class="pptx-body reveal d2">视频该发的时候没发。<br>鸽子有鸽子的节奏。</p>
+          <p class="pptx-body reveal d3">直到我随口问了 MiMo 一个问题——</p>
+          <p class="pptx-body reveal d4">然后整件事开始不对劲。</p>
+          <p class="pptx-foot reveal d5">本页起为冷开场 · 请当作 Office 默认模板观看</p>
+        </div>
+        <div class="corner br">01 / 32</div>
+        <div class="pptx-date">2026-09-30</div>
+      </section>
+
+      <!-- PROLOGUE 2 — telemetry -->
+      <section class="slide pptx" data-dur="8" data-sub="问 MiMo 后发现：遥测把 ARM64 当成平台维度上报，更新矩阵里却没有 win-arm64。">
+        <div class="pptx-frame">
+          <p class="eyebrow pptx-eyebrow reveal">TELEMETRY · SELF-REFERENCE</p>
+          <h2 class="pptx-title reveal d1">遥测里传的是 ARM64</h2>
+          <div class="pptx-split">
+            <div class="pptx-copy">
+              <p class="pptx-body reveal d2">我问 MiMo：这台设备在你们那边怎么被记？</p>
+              <p class="pptx-body reveal d3">结果——APM / 遥测把 <code>arch=arm64</code> 当平台维度上报。</p>
+              <p class="pptx-body reveal d4">更新 manifest 里根本没有 <code>win-arm64</code>（只有 mac-arm64 / linux-x64 / win-x64）。</p>
+              <p class="pptx-body reveal d5">我是他们监控看板上那个「理论上不存在」的活数据点。</p>
+            </div>
+            <figure class="pptx-photo wide reveal d3">
+              <img src="assets/telemetry-arm64.png" alt="遥测 ARM64 平台讨论截图" />
+              <figcaption>素材 · telemetry-arm64.png</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="corner br">02 / 32</div>
+        <div class="pptx-date">2026-09-30</div>
+      </section>
+
+      <!-- PROLOGUE 3 — delay cost -->
+      <section class="slide pptx" data-dur="6" data-sub="晚发一天，小米的数据分析同学就要多想一天这诡异的 ARM64 平台是怎么回事。">
+        <div class="pptx-frame">
+          <p class="eyebrow pptx-eyebrow reveal">COST OF DELAY</p>
+          <h2 class="pptx-title reveal d1">鸽下去的代价</h2>
+          <ul class="pptx-bullets">
+            <li class="reveal d2">我寻思着：晚发一天视频</li>
+            <li class="reveal d3">小米的数据分析兄弟们</li>
+            <li class="reveal d4">就要多想一天——</li>
+            <li class="reveal d5">这诡异的 ARM64 平台，到底是怎么回事？</li>
+          </ul>
+          <p class="pptx-foot reveal d6">与其让他们对着看板猜，不如把结论写进视频里。</p>
+        </div>
+        <div class="corner br">03 / 32</div>
+        <div class="pptx-date">2026-09-30</div>
+      </section>
+
+      <!-- PROLOGUE 4 — Smart App Control -->
+      <section class="slide pptx" data-dur="7" data-sub="没有代码签名证书，今天被 Windows 智能应用控制拦了一波。所以还是发出来为妙——万一官方有了呢。">
+        <div class="pptx-frame">
+          <p class="eyebrow pptx-eyebrow reveal">WINDOWS SMART APP CONTROL</p>
+          <h2 class="pptx-title reveal d1">智能应用控制，拦了我一波</h2>
+          <div class="pptx-split">
+            <div class="pptx-copy">
+              <p class="pptx-body reveal d2">我没有证书。</p>
+              <p class="pptx-body reveal d3">今天，Windows 智能应用控制直接阻止了 <code>Xiaomi MiMo ARM64\Xiaomi MiMo.exe</code>——发布者无法验证。</p>
+              <p class="pptx-body reveal d4">所以还是觉得发出来为妙：</p>
+              <p class="pptx-body reveal d5"><strong>万一官方 ARM64 有了呢？</strong></p>
+            </div>
+            <figure class="pptx-photo tall reveal d3">
+              <img src="assets/sac-block.jpg" alt="Windows 智能应用控制阻止 ARM64 应用" />
+              <figcaption>素材 · sac-block.jpg</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="corner br">04 / 32</div>
+        <div class="pptx-date">2026-09-30</div>
+      </section>
+
+
       <!-- 1 Cover -->
       <section class="slide" data-dur="8" data-sub="隆重推出 Mi-Mi-Mi — 已发行 Electron 应用原生运行于 win32-arm64 的新探索。">
         <div class="grid-bg"></div>
@@ -22,7 +99,7 @@
           <p class="meta reveal d3">A technical preview of native ARM64 portability.</p>
         </div>
         <div class="corner tl reveal rv-fade d5">MIMO ON TIMI</div>
-        <div class="corner br reveal rv-fade d5">01 / 29</div>
+        <div class="corner br">05 / 32</div>
       </section>
 
       <!-- 2 Tagline -->
@@ -65,11 +142,11 @@
           <p class="sub reveal d4">A closed-source Electron app, post-market ported to native Windows on ARM — by the app itself.</p>
           <p class="tiny reveal d5">Xiaomi Book S 12.4 · Snapdragon 8cx Gen 2 · Windows 11 ARM64</p>
         </div>
-        <div class="corner br reveal rv-fade d6">02 / 29</div>
+        <div class="corner br">06 / 32</div>
       </section>
 
       <!-- 3 Why -->
-      <section class="slide" data-dur="14" data-sub="为什么是 Mi-Mi-Mi？更快的启动、响应与更低开销——以下均由 CDP 与启动基准实测。">
+      <section class="slide" data-dur="11" data-sub="为什么是 Mi-Mi-Mi？更快的启动、响应与更低开销——以下均由 CDP 与启动基准实测。">
         <header class="slide-head reveal">
           <p class="eyebrow reveal">WHY MI-MI-MI?</p>
           <h2 class="reveal d1">为什么是 Mi-Mi-Mi？</h2>
@@ -102,12 +179,12 @@
         </div>
         <p class="belief reveal d4">We believe native ARM64 can provide a better experience.</p>
         <p class="footnote reveal d5">证据链：功能分段 · 10 次冷启动 · CDP 里程碑 + engine 日志。下三页展开。</p>
-        <div class="corner br reveal rv-fade">03 / 29</div>
+        <div class="corner br">07 / 32</div>
       </section>
 
       
       <!-- 4 Why one startup -->
-      <section class="slide" data-dur="16" data-sub="两条启动线：ARM64 与 x64 分别入场，再并列看分段。最大单点 engFetch 一次 HTTP。">
+      <section class="slide" data-dur="12" data-sub="两条启动线：ARM64 与 x64 分别入场，再并列看分段。最大单点 engFetch 一次 HTTP。">
         <header class="slide-head">
           <p class="eyebrow">WHY · TWO STARTUP LINES</p>
           <h2>一次完整启动 · 双线并列</h2>
@@ -145,12 +222,12 @@
           </div>
         </div>
         <p class="footnote reveal" style="animation-delay:3.4s">ARM64 13.3s / x64 31.2s · bench-functional 20260926-2258 · 冷启动 · 18 会话。x64 在 F2 Logo 与 F3 侧栏两段拉出主差距。</p>
-        <div class="corner br">04 / 29</div>
+        <div class="corner br">08 / 32</div>
       </section>
 
       
       <!-- 5 Why hotspots -->
-      <section class="slide" data-dur="16" data-sub="三个独立大头：A 壳冷启 +7.9s、B 主 bundle +6.0s、C 会话 DB +5.0s。">
+      <section class="slide" data-dur="12" data-sub="三个独立大头：A 壳冷启 +7.9s、B 主 bundle +6.0s、C 会话 DB +5.0s。">
         <header class="slide-head reveal">
           <p class="eyebrow reveal">WHY · THREE BOTTLENECKS</p>
           <h2 class="reveal d1">三个独立大头，分属不同调用</h2>
@@ -198,12 +275,12 @@
           </div>
         </div>
         <p class="footnote reveal">次级：app:// 静态 SVG 845ms vs 213ms（4×）、wasm 322ms vs 49ms。首绘被 A/B 拖住（FCP 4.7s vs 15.7s）。</p>
-        <div class="corner br reveal rv-fade">05 / 29</div>
+        <div class="corner br">09 / 32</div>
       </section>
 
       
       <!-- 6 Hot functions -->
-      <section class="slide" data-dur="16" data-sub="B 段 CPU profile：Age 是 8 次 localStorage.removeItem，oQ 是 APM 遥测序列化。">
+      <section class="slide" data-dur="12" data-sub="B 段 CPU profile：Age 是 8 次 localStorage.removeItem，oQ 是 APM 遥测序列化。">
         <header class="slide-head reveal">
           <p class="eyebrow reveal">WHY · HOT FUNCTIONS</p>
           <h2 class="reveal d1">B 段热点函数，已钉到源码</h2>
@@ -242,12 +319,12 @@
           </div>
         </div>
         <p class="footnote reveal">来源：cdp Profiler · cpuprof-ARM64-001929 / x64-001940 · index-C2vAeNdg.js:184。</p>
-        <div class="corner br reveal rv-fade">06 / 29</div>
+        <div class="corner br">10 / 32</div>
       </section>
 
       
       <!-- 7 Hot fn roles -->
-      <section class="slide" data-dur="16" data-sub="热点函数职责：init3=Zod/日志注册，C=布局量测，oQ=APM 上报，Age=localStorage。x64 在 IPC 与启动注册上被放大。">
+      <section class="slide" data-dur="12" data-sub="热点函数职责：init3=Zod/日志注册，C=布局量测，oQ=APM 上报，Age=localStorage。x64 在 IPC 与启动注册上被放大。">
         <header class="slide-head">
           <p class="eyebrow">WHY · WHAT THEY DO</p>
           <h2>热点函数，各自在做什么</h2>
@@ -275,11 +352,11 @@
           </li>
         </ul>
         <p class="footnote reveal d4">启动链：spawn/readFileUtf8/init3/IPC → Age/i18n/React mount → C 量布局 + oQ 上报 → engFetch 列表。x64 慢在同步 IPC 与启动注册被放大。</p>
-        <div class="corner br">07 / 29</div>
+        <div class="corner br">11 / 32</div>
       </section>
 
       <!-- 8 The Experiment (expanded) -->
-      <section class="slide" data-dur="14" data-sub="当前路径分层拆开：机器是 ARM64，应用却跑在 x64 转译上，启动与 IPC 全面加税。">
+      <section class="slide" data-dur="11" data-sub="当前路径分层拆开：机器是 ARM64，应用却跑在 x64 转译上，启动与 IPC 全面加税。">
         <header class="slide-head">
           <p class="eyebrow">THE STATUS QUO</p>
           <h2>The Experiment · 分层拆开</h2>
@@ -316,7 +393,7 @@
             </article>
           </div>
         </div>
-        <div class="corner br reveal rv-fade d5">08 / 29</div>
+        <div class="corner br">12 / 32</div>
       </section>
 
       <!-- 9 Tried something else -->
@@ -344,7 +421,7 @@
             <div class="path-box good reveal rv-l">MiMo Desktop</div>
           </div>
         </div>
-        <div class="corner br reveal rv-fade d5">09 / 29</div>
+        <div class="corner br">13 / 32</div>
       </section>
 
       <!-- 10 Migration timeline -->
@@ -361,7 +438,7 @@
           <li class="reveal rv-l d4"><span class="tl-i">05</span><span class="tl-t">Native ARM64 Build</span><span class="tl-d">「我现在用 ARM64 版本启动了」</span></li>
           <li class="reveal rv-l d5"><span class="tl-i">06</span><span class="tl-t">Performance Validation</span><span class="tl-d">「别瞎猜了，直接改测试脚本」</span></li>
         </ol>
-        <div class="corner br reveal rv-fade d5">10 / 29</div>
+        <div class="corner br">14 / 32</div>
       </section>
 
       <!-- 11 Process evidence -->
@@ -401,11 +478,11 @@ loadEngineSessions fetch=2796ms  ← ARM64 · 10-run
 loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           </div>
         </div>
-        <div class="corner br reveal rv-fade d5">11 / 29</div>
+        <div class="corner br">15 / 32</div>
       </section>
 
       <!-- 12 Data -->
-      <section class="slide" data-dur="12" data-sub="10 次冷启动实测：T1 快 2.65 倍。热点在 Win→Loader、Loader→T0 与 engFetch。">
+      <section class="slide" data-dur="10" data-sub="10 次冷启动实测：T1 快 2.65 倍。热点在 Win→Loader、Loader→T0 与 engFetch。">
         <header class="slide-head reveal">
           <p class="eyebrow reveal">RESULTS · 10-RUN BENCH</p>
           <h2 class="reveal d1">x64 emulation <span class="vs">vs</span> native ARM64</h2>
@@ -463,30 +540,20 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
             <p><span>+6.4s</span> engFetch IPC</p>
           </div>
         </aside>
-        <div class="corner br reveal rv-fade d5">12 / 29</div>
+        <div class="corner br">16 / 32</div>
       </section>
 
-      <!-- 13 Warm -->
-      <section class="slide" data-dur="5" data-sub="Warm start：仍然 2.6 倍。">
-        <div class="center">
-          <p class="eyebrow reveal">WARM START</p>
-          <h2 class="mega reveal d1">Still 2.6×.</h2>
-          <p class="lead reveal d2">热启动重复测量，结果一致。</p>
-          <p class="tiny reveal d3">*Same environment. Same workload. Repeated runs.</p>
-        </div>
-        <div class="corner br reveal rv-fade d5">13 / 29</div>
-      </section>
 
-      <!-- 14 But why -->
+      <!-- 13 But why -->
       <section class="slide pause theater" data-dur="3" data-sub="">
         <div class="center">
           <h1 class="mega-soft reveal rv-blur">But why?</h1>
         </div>
-        <div class="corner br reveal rv-fade d5">14 / 29</div>
+        <div class="corner br">17 / 32</div>
       </section>
 
-      <!-- 15 Another reason -->
-      <section class="slide theater" data-dur="12" data-sub="还有另一个原因：我无法理解——小米的笔记本上跑小米的 Agent，居然还要转译。">
+      <!-- 14 Another reason -->
+      <section class="slide theater" data-dur="10" data-sub="还有另一个原因：我无法理解——小米的笔记本上跑小米的 Agent，居然还要转译。">
         <header class="slide-head reveal">
           <p class="eyebrow reveal">ANOTHER REASON</p>
           <h2 class="reveal">There is, however, another reason.</h2>
@@ -498,10 +565,10 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           <p class="reason reveal rv-l d4">小米的 <em>Windows</em> 客户端。</p>
           <p class="reason big reveal rv-l d5">为什么还要转译？</p>
         </div>
-        <div class="corner br reveal rv-fade d5">15 / 29</div>
+        <div class="corner br">18 / 32</div>
       </section>
 
-      <!-- 16 Sundae -->
+      <!-- 15 Sundae -->
       <section class="slide theater" data-dur="8" data-sub="吸管吃圣代。这是全片唯一一句情绪表达。">
         <div class="center">
           <p class="eyebrow reveal">THE ONLY EMOTIONAL LINE</p>
@@ -509,9 +576,9 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           <p class="punch reveal rv-blur d2">吸管吃圣代。</p>
           <p class="tiny reveal d3">A Xiaomi laptop. A Xiaomi Agent. Through x64 emulation.</p>
         </div>
-        <div class="corner br reveal rv-fade d5">16 / 29</div>
+        <div class="corner br">19 / 32</div>
       </section>
-      <!-- 17 WoA penetration line -->
+      <!-- 16 WoA penetration line -->
       <section class="slide" data-dur="9" data-sub="TrendForce：WoA AI 笔记本渗透率 2025 年 1.2%，2026 年 3.2%，2029 年预估 11.5%——出货渗透仍低，用户基数还在早期。">
         <header class="slide-head">
           <p class="eyebrow">WINDOWS ON ARM · 渗透率</p>
@@ -552,10 +619,10 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           <span class="cl-f">机构预测（TrendForce）</span>
         </div>
         <p class="footnote reveal d2">来源：TrendForce（2026-06 报告 · 占整体笔记本出货）。旁证：Omdia（2024-08）Arm+Windows AI 笔记本出货 80 万台（绝对量口径，不可与本线混用）。</p>
-        <div class="corner br">17 / 29</div>
+        <div class="corner br">20 / 32</div>
       </section>
 
-      <!-- 18 Arm PC share line -->
+      <!-- 17 Arm PC share line -->
       <section class="slide" data-dur="10" data-sub="Arm 架构 PC 份额从 2020 年 1.4% 到 2025 年约 13%；Counterpoint 预测 2027 年到 25%——这是开发者可寻址的装机基数。">
         <header class="slide-head">
           <p class="eyebrow">WINDOWS ON ARM · 可寻址基数</p>
@@ -604,10 +671,10 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           <span class="cl-f">机构预测</span>
         </div>
         <p class="footnote reveal d2">来源：亿欧智库《2023 年中国 PC 市场研究报告》（2020=1.4%、2022=12.8%、2027E=26.7%）· 芯智讯（2023≈15%）· ABI Research（2025=13%）· Counterpoint（2027E=25%）。2021、2024 年无同口径数据，断线不补。</p>
-        <div class="corner br">18 / 29</div>
+        <div class="corner br">21 / 32</div>
       </section>
 
-      <!-- 19 native app coverage single point -->
+      <!-- 18 native app coverage single point -->
       <section class="slide" data-dur="8" data-sub="微软口径：原生 Arm 应用已覆盖用户 90% 的使用时长——生态就绪，移植有回报。">
         <header class="slide-head">
           <p class="eyebrow">WINDOWS ON ARM · 移植回报</p>
@@ -642,10 +709,10 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           <span class="cl-a">已发布值（仅 1 个点）</span>
         </div>
         <p class="footnote reveal d2">来源：Microsoft Windows Blogs（2025-09-18，Mike Adams）：「native Arm versions available for apps representing 90% of total user minutes」。2021–2024 官方无同口径公布。</p>
-        <div class="corner br">19 / 29</div>
+        <div class="corner br">22 / 32</div>
       </section>
 
-      <!-- 20 developer toolchain milestones -->
+      <!-- 19 developer toolchain milestones -->
       <section class="slide" data-dur="9" data-sub="开发者基建：2022 原生 Arm64 Visual Studio，2025 GitHub windows-11-arm 免费公开仓，2026 VS2026 镜像 GA——IDE 到 CI 已闭环。">
         <header class="slide-head">
           <p class="eyebrow">WINDOWS ON ARM · 工具链</p>
@@ -675,11 +742,11 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           </li>
         </ul>
         <p class="footnote reveal d4">来源：VS Blog《Arm64 Visual Studio is officially here!》2022-11-08 · GitHub Changelog 2025-01-16 / 2025-04-14（当时为公开预览）· Windows Developer Blog 2025-04-14 · GitHub Changelog 2026-08-20（GA）。只列有一手公告的里程碑，不为工具链编造百分比曲线。</p>
-        <div class="corner br">20 / 29</div>
+        <div class="corner br">23 / 32</div>
       </section>
 
-      <!-- 21 Snapdragon X devices -->
-      <section class="slide" data-dur="14" data-sub="主航道上的机器：首批骁龙 X Elite 机型覆盖商务到创作；2026 秋，首发 NVIDIA RTX Spark 的 Surface Laptop Ultra 将加入战局。">
+      <!-- 20 Snapdragon X devices -->
+      <section class="slide" data-dur="11" data-sub="主航道上的机器：首批骁龙 X Elite 机型覆盖商务到创作；2026 秋，首发 NVIDIA RTX Spark 的 Surface Laptop Ultra 将加入战局。">
         <header class="slide-head">
           <p class="eyebrow">SNAPDRAGON X · 机型</p>
           <h2>主航道上的机器</h2>
@@ -730,11 +797,11 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           </article>
         </div>
         <p class="footnote reveal d6">来源：各厂商产品页与 2024–2026 发布信息，规格以官方为准。第二代骁龙 X2 已于 2025-09 峰会发布；NVIDIA RTX Spark（N1X）由英伟达与微软 2026-05-31 公布，Surface Laptop Ultra 首发，首批机型 2026 秋季上市。</p>
-        <div class="corner br">21 / 29</div>
+        <div class="corner br">24 / 32</div>
       </section>
 
-      <!-- 22 To Xiaomi -->
-      <section class="slide" data-dur="16" data-sub="To Dear Xiaomi Corporation：我主动想弄明白这有多难。现在轮到你们了。">
+      <!-- 21 To Xiaomi -->
+      <section class="slide" data-dur="12" data-sub="To Dear Xiaomi Corporation：我主动想弄明白这有多难。现在轮到你们了。">
         <header class="slide-head">
           <p class="eyebrow">TO XIAOMI CORPORATION</p>
           <h2>I did it. Now it's your turn.</h2>
@@ -762,10 +829,10 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           </li>
         </ul>
         <p class="footnote reveal d4">Now it's your turn. — README《To Dear Xiaomi Corporation》</p>
-        <div class="corner br">22 / 29</div>
+        <div class="corner br">25 / 32</div>
       </section>
 
-      <!-- 23 Trick path PE -->
+      <!-- 22 Trick path PE -->
       <section class="slide" data-dur="9" data-sub="特点一：保留 asar 解析的绝对路径，只更换路径里面的 PE。解析器看字符串，装载器看机器码。">
         <header class="slide-head reveal">
           <p class="eyebrow reveal">TRICK 01 · PATH DISGUISE</p>
@@ -791,10 +858,10 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           </div>
         </div>
         <p class="footnote reveal d4">解析层只认路径字符串，装载层只看 PE 头。名实分离——保留 asar 寻找的路径，更换里面的二进制。</p>
-        <div class="corner br reveal rv-fade d5">23 / 29</div>
+        <div class="corner br">26 / 32</div>
       </section>
 
-      <!-- 24 Trick asar bypass -->
+      <!-- 23 Trick asar bypass -->
       <section class="slide" data-dur="9" data-sub="特点二：相对 require 仍被 asar 虚拟 FS 劫持。改成 resourcesPath 绝对路径，native module 从真实磁盘加载。">
         <header class="slide-head reveal">
           <p class="eyebrow reveal">TRICK 02 · ASAR BYPASS</p>
@@ -820,10 +887,10 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           </div>
         </div>
         <p class="footnote reveal d4">unpacked:true 允许改 JS，但相对 require 仍走 asar fs。把路径钉死到 app.asar.unpacked，才真正落到磁盘。</p>
-        <div class="corner br reveal rv-fade d5">24 / 29</div>
+        <div class="corner br">27 / 32</div>
       </section>
 
-      <!-- 25 Compose capability -->
+      <!-- 24 Compose capability -->
       <section class="slide" data-dur="11" data-sub="特点三：不是单点补丁，而是一场单目标 compose。Grill 到 Finalize 七阶段闭环，门禁与基准给出可核查证据。">
         <header class="slide-head reveal">
           <p class="eyebrow reveal">AGENT · COMPOSE</p>
@@ -866,10 +933,10 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
         </div>
         <p class="belief reveal d4">Post-Market binary grafting: x64 → ARM64, no source, no vendor toolchain.</p>
         <p class="footnote reveal d5">同一场对话完成迁移、验证、基准与开源整理——MiMo migrating MiMo on Timi.</p>
-        <div class="corner br reveal rv-fade d5">25 / 29</div>
+        <div class="corner br">28 / 32</div>
       </section>
 
-      <!-- 26 Trick surgical patch -->
+      <!-- 25 Trick surgical patch -->
       <section class="slide" data-dur="9" data-sub="特点四：同长替换与写死路径。白名单插入不能改文件头长度，绑定路径写死旧名，磁盘真相已是 ARM64。">
         <header class="slide-head reveal">
           <p class="eyebrow reveal">TRICK 03 · SURGICAL PATCH</p>
@@ -882,10 +949,10 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           <li class="reveal rv-l d3"><strong>应用载荷不动</strong><span>手术刀只动该动的字节，payload 原样保留</span></li>
         </ul>
         <p class="footnote reveal d4">同长才不撕裂 asar 头；绑定层继续说 x64，磁盘上的真相已是 ARM64。</p>
-        <div class="corner br reveal rv-fade d5">26 / 29</div>
+        <div class="corner br">29 / 32</div>
       </section>
 
-      <!-- 27 Open -->
+      <!-- 26 Open -->
       <section class="slide" data-dur="8" data-sub="Mi-Mi-Mi 现已开源：构建框架、迁移 Prompt、对话记录与可复现工作流。">
         <header class="slide-head reveal">
           <p class="eyebrow reveal">OPEN</p>
@@ -898,10 +965,10 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           <li class="reveal rv-l d3"><strong>Reproducible workflow</strong><span>scripts · logs · benchmarks</span></li>
         </ul>
         <p class="footnote reveal d4">用 MiMo 把 MiMo 从 x64 移植到 ARM64，又用 MiMo 生成介绍它的视频——这甚至已经超出彩蛋的范畴。MIT · Experimental research, not an official Xiaomi project.</p>
-        <div class="corner br reveal rv-fade d5">27 / 29</div>
+        <div class="corner br">30 / 32</div>
       </section>
 
-      <!-- 28 fork -->
+      <!-- 27 fork -->
       <section class="slide" data-dur="5" data-sub="欢迎模仿开发。开源仓库：github.com/IaSoC/mi-mi-mi">
         <header class="slide-head reveal">
           <p class="eyebrow reveal">FORK IT</p>
@@ -914,10 +981,10 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           <li class="reveal rv-l d3"><strong>MiMo-on-MiMo-on-Timi</strong><span>迁移动的是二进制，动脑子的是你</span></li>
         </ul>
         <p class="footnote reveal d4">克隆、拆开、复现、挑刺——开源不是姿态，是可复跑的工程。</p>
-        <div class="corner br reveal rv-fade d5">28 / 29</div>
+        <div class="corner br">31 / 32</div>
       </section>
 
-      <!-- 29 End -->
+      <!-- 28 End -->
       <section class="slide paper end" data-dur="7" data-sub="Mi-Mi-Mi · Because we couldn't accept the straw.">
         <div class="center">
           <p class="eyebrow dark reveal">EXPERIMENTAL · OPEN · ARM64</p>
@@ -927,17 +994,10 @@ loadEngineSessions fetch=9161ms  ← x64   · 10-run</pre>
           <div class="rule dark reveal rv-line d4"></div>
           <p class="punch dark reveal rv-blur d5">Because we couldn't accept the straw.</p>
         </div>
-        <div class="corner br dark reveal rv-fade d5">29 / 29</div>
+        <div class="corner br dark">32 / 32</div>
       </section>
       <div id="hud">
         <div id="progress"><div id="progress-bar"></div></div>
-        <div id="subtitle"></div>
-        <div id="controls">
-          <button type="button" id="btn-prev" title="Previous">←</button>
-          <button type="button" id="btn-play" title="Auto play (A)">▶</button>
-          <button type="button" id="btn-next" title="Next">→</button>
-          <span id="page-ind">1 / 29</span>
-        </div>
       </div>
     </div>
   </div>
