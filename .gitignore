@@ -1,6 +1,9 @@
 # Linked worktrees created by compose-style workflows
 /.worktrees/
 
+# Agent-local material indexes (not sources; for fast path lookup)
+/misc/
+
 # Build / port artifacts (proprietary Xiaomi MiMo Desktop payload — do not ship)
 /output/
 /cache/
