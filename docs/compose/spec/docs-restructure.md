@@ -3,7 +3,7 @@ feature: docs-restructure
 status: delivered
 updated: 2026-09-30
 branch: docs/restructure-mi-mi-mi
-commits: effdedc..effdedc  # worktree changes are uncommitted; no commit made (AGENTS.md hard rule 2)
+commits: effdedc..be2544f
 ---
 
 # Mi Mi Mi 文档重组（README / BUILD / STATUS）
